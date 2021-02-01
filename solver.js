@@ -6,7 +6,8 @@ var Games = require('./games.js');
 // Games.init('tetris');
 // Games.init('a2048');
 // Games.init('battlecity');
-Games.init('excitebike');
+// Games.init('excitebike');
+Games.init('icancode');
 
 var Point = require('./point.js');
 var Direction = Games.require('./direction.js');
@@ -30,6 +31,6 @@ var Solver = module.exports = {
 
         // return Direction.ACT;
         // return [Direction.LEFT, Direction.ACT3];
-        return Direction.UP;
+        return Direction.fire(Direction.LEFT);
     }
 };

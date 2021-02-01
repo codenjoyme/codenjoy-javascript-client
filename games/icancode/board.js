@@ -1,420 +1,18 @@
-/*-
- * #%L
- * Codenjoy - it's a dojo-like platform from developers to developers.
- * %%
- * Copyright (C) 2018 Codenjoy
- * %%
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as
- * published by the Free Software Foundation, either version 3 of the
- * License, or (at your option) any later version.
- * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public
- * License along with this program.  If not, see
- * <http://www.gnu.org/licenses/gpl-3.0.html>.
- * #L%
- */
-
-// you can get this code after registration on the server with your email
-var url = "http://codenjoy.com:80/codenjoy-contest/board/player/3edq63tw0bq4w4iem7nb?code=1234567890123456789";
-
-var util = require('util');
-var WSocket = require('ws');
-
-var log = function(string) {
-    console.log(string);
-    if (!!printBoardOnTextArea) {
-        printLogOnTextArea(string);
-    }
-};
-
-var printArray = function (array) {
-   var result = [];
-   for (var index in array) {
-       var element = array[index];
-       result.push(element.toString());
-   }
-   return result;
-};
-
-var processBoard = function(boardString) {
-    var boardJson = eval(boardString);
-    var board = new Board(boardJson);
-    if (!!printBoardOnTextArea) {
-        printBoardOnTextArea(board.toString());
-    }
-
-    var logMessage = board + "\n\n";
-    var answer = new YourSolver(board).whatToDo().toString();
-    logMessage += "Answer: " + answer + "\n";
-    logMessage += "---------------------------------------------------------------------------------------------------------\n";
-    
-    log(logMessage);
-
-    return answer;
-};
-
-url = url.replace("http", "ws");
-url = url.replace("board/player/", "ws?user=");
-url = url.replace("?code=", "&code=");
-
-var ws;
-
-function connect() {
-    ws = new WSocket(url);
-    log('Opening...');
-
-    ws.on('open', function() {
-        log('Web socket client opened ' + url);
-    });
-
-    ws.on('close', function() {
-        log('Web socket client closed');
-
-        setTimeout(function() {
-            connect();
-        }, 5000);
-    });
-
-    ws.on('message', function(message) {
-        var answer = processBoard(message);
-        ws.send(answer);
-    });
-}
-
-if (typeof(doNotConnect) == 'undefined') {
-    connect();
-}
-
-var elements = [];
-var elementsTypes = [];
-var elementsByChar = {};
-var elementsByType = {};
-
-var el = function(char, type, direction) {
-    var result = {
-        char: char,
-        type: type,
-        direction: direction
-    };
-
-    elementsByChar[char] = result;
-
-    if (!elementsByType[type]) {
-        elementsByType[type] = [];
-    }
-
-    elementsByType[type].push(result);
-    elements.push(result);
-
-    if (elementsTypes.indexOf(type) == -1) {
-        elementsTypes.push(type);
-    }
-
-    return result;
-}
-
-var D = function(index, dx, dy, name){
-
-    var changeX = function(x) {
-        return x + dx;
-    };
-
-    var changeY = function(y) {
-        return y + dy;
-    };
-
-    var change = function(point) {
-        return pt(changeX(point.getX()), changeY(point.getY()));
-    };
-
-    var inverted = function() {
-        switch (this) {
-            case Direction.UP : return Direction.DOWN;
-            case Direction.DOWN : return Direction.UP;
-            case Direction.LEFT : return Direction.RIGHT;
-            case Direction.RIGHT : return Direction.LEFT;
-            default : return Direction.STOP;
-        }
-    };
-
-    var clockwise = function() {
-        switch (this) {
-            case Direction.UP : return Direction.LEFT;
-            case Direction.LEFT : return Direction.DOWN;
-            case Direction.DOWN : return Direction.RIGHT;
-            case Direction.RIGHT : return Direction.UP;
-            default : return Direction.STOP;
-        }
-    };
-
-    var contrClockwise = function() {
-        switch (this) {
-            case Direction.UP : return Direction.RIGHT;
-            case Direction.RIGHT : return Direction.DOWN;
-            case Direction.DOWN : return Direction.LEFT;
-            case Direction.LEFT : return Direction.UP;
-            default : return Direction.STOP;
-        }
-    };
-
-    var mirrorTopBottom = function() {
-        switch (this) {
-            case Direction.UP : return Direction.LEFT;
-            case Direction.RIGHT : return Direction.DOWN;
-            case Direction.DOWN : return Direction.RIGHT;
-            case Direction.LEFT : return Direction.UP;
-            default : return Direction.STOP;
-        }
-    };
-
-    var mirrorBottomTop = function() {
-        switch (this) {
-            case Direction.UP : return Direction.RIGHT;
-            case Direction.RIGHT : return Direction.UP;
-            case Direction.DOWN : return Direction.LEFT;
-            case Direction.LEFT : return Direction.DOWN;
-            default : return Direction.STOP;
-        }
-    };
-
-    var toString = function() {
-        return name.toUpperCase();
-    };
-
-    var getIndex = function() {
-        return index;
-    }
-
-    return {
-        changeX : changeX,
-        changeY : changeY,
-        change : change,
-        inverted : inverted,
-        clockwise : clockwise,
-        contrClockwise : contrClockwise,
-        mirrorTopBottom : mirrorTopBottom,
-        mirrorBottomTop : mirrorBottomTop,
-        toString : toString,
-        getIndex : getIndex
-    };
-};
-
-var Direction = {
-    UP : D(2, 0, 1, 'UP'),
-    DOWN : D(3, 0, -1, 'DOWN'),
-    LEFT : D(0, -1, 0, 'LEFT'),
-    RIGHT : D(1, 1, 0, 'RIGHT'),
-    JUMP : D(4, 0, 0, 'ACT(1)'),            // jump
-    PULL : D(5, 0, 0, 'ACT(2)'),            // pull box
-    FIRE : D(6, 0, 0, 'ACT(3)'),            // fire
-    DIE  : D(7, 0, 0, 'ACT(0)'),            // die
-    STOP : D(8, 0, 0, ''),                   // stay
-
-    get : function(direction) {
-        if (typeof direction.getIndex == 'function') {
-            return direction;
-        }
-
-        direction = String(direction);
-        direction = direction.toUpperCase();
-        for (var name in Direction) {
-            var d = Direction[name];
-            if (typeof d == 'function') {
-                continue;
-            }
-            if (direction == d.name()) {
-                return Direction[name];
-            }
-        }
-        return null;
-    }
-};
-
-Direction.values = function() {
-    return [Direction.UP, Direction.DOWN, Direction.LEFT, Direction.RIGHT, Direction.JUMP, Direction.PULL, Direction.FIRE, Direction.DIE, Direction.STOP];
-};
-
-Direction.valueOf = function(indexOrName) {
-    var directions = Direction.values();
-    for (var i in directions) {
-        var direction = directions[i];
-        if (direction.getIndex() == indexOrName || direction.toString() == indexOrName) {
-             return direction;
-        }
-    }
-    return Direction.STOP;
-};
-
-Direction.where = function(from, to) {
-    var dx = to.x - from.x;
-    var dy = to.y - from.y;
-
-    return Direction.values().find(d => (d.changeX(0) == dx) && (d.changeY(0) == dy));
-}
-
-var Element = {
-    EMPTY: el('-', 'NONE'),
-    FLOOR: el('.', 'NONE'),
-
-    ANGLE_IN_LEFT: el('╔', 'WALL'),
-    WALL_FRONT: el('═', 'WALL'),
-    ANGLE_IN_RIGHT: el('┐', 'WALL'),
-    WALL_RIGHT: el('│', 'WALL'),
-    ANGLE_BACK_RIGHT: el('┘', 'WALL'),
-    WALL_BACK: el('─', 'WALL'),
-    ANGLE_BACK_LEFT: el('└', 'WALL'),
-    WALL_LEFT: el('║', 'WALL'),
-    WALL_BACK_ANGLE_LEFT: el('┌', 'WALL'),
-    WALL_BACK_ANGLE_RIGHT: el('╗', 'WALL'),
-    ANGLE_OUT_RIGHT: el('╝', 'WALL'),
-    ANGLE_OUT_LEFT: el('╚', 'WALL'),
-    SPACE: el(' ', 'WALL'),
-
-    LASER_MACHINE_CHARGING_LEFT: el('˂', 'LASER_MACHINE', Direction.LEFT),
-    LASER_MACHINE_CHARGING_RIGHT: el('˃', 'LASER_MACHINE', Direction.RIGHT),
-    LASER_MACHINE_CHARGING_UP: el('˄', 'LASER_MACHINE', Direction.UP),
-    LASER_MACHINE_CHARGING_DOWN: el('˅', 'LASER_MACHINE', Direction.DOWN),
-
-    LASER_MACHINE_READY_LEFT: el('◄', 'LASER_MACHINE_READY', Direction.LEFT),
-    LASER_MACHINE_READY_RIGHT: el('►', 'LASER_MACHINE_READY', Direction.RIGHT),
-    LASER_MACHINE_READY_UP: el('▲', 'LASER_MACHINE_READY', Direction.UP),
-    LASER_MACHINE_READY_DOWN: el('▼', 'LASER_MACHINE_READY', Direction.DOWN),
-
-    START: el('S', 'START'),
-    EXIT: el('E', 'EXIT'),
-    HOLE: el('O', 'HOLE'),
-    BOX: el('B', 'BOX'),
-    ZOMBIE_START: el('Z', 'ZOMBIE_START'),
-    GOLD: el('$', 'GOLD'),
-
-    ROBOT: el('☺', 'MY_ROBOT'),
-    ROBOT_FALLING: el('o', 'MY_ROBOT'),
-    ROBOT_FLYING: el('*', 'MY_ROBOT'),
-    ROBOT_LASER: el('☻', 'MY_ROBOT'),
-
-    ROBOT_OTHER: el('X', 'OTHER_ROBOT'),
-    ROBOT_OTHER_FALLING: el('x', 'OTHER_ROBOT'),
-    ROBOT_OTHER_FLYING: el('^', 'OTHER_ROBOT'),
-    ROBOT_OTHER_LASER: el('&', 'OTHER_ROBOT'),
-
-    LASER_LEFT: el('←', 'LASER_LEFT', Direction.LEFT),
-    LASER_RIGHT: el('→', 'LASER_RIGHT', Direction.RIGHT),
-    LASER_UP: el('↑', 'LASER_UP', Direction.UP),
-    LASER_DOWN: el('↓', 'LASER_DOWN', Direction.DOWN),
-
-    FEMALE_ZOMBIE: el('♀', 'ZOMBIE'),
-    MALE_ZOMBIE: el('♂', 'ZOMBIE'),
-    ZOMBIE_DIE: el('✝', 'ZOMBIE_DIE'),
-
-    getElements: function () {
-        return elements.slice(0);
-    },
-
-    getElement: function (char) {
-        var el = elementsByChar[char];
-        if (!el) {
-            throw "Element not found for: " + char;
-        }
-        return el;
-    },
-
-    getElementsTypes: function () {
-        var elements = [];
-        elementsTypes.forEach(function(e) {
-            if (Array.isArray(e)) {
-                elements = elements.concat(e);
-            } else {
-                elements.push(e);
-            }
-        });
-
-        var result = [];
-        elements.forEach(function(e) {
-            if (result.indexOf(e) < 0) {
-                result.push(e);
-            }
-        });
-
-        return result;
-    },
-
-    getElementsOfType: function (type) {
-        return elementsByType[type];
-    },
-
-    isWall: function(element) {
-        return element.type == 'WALL';
-    }
-};
-
-var Point = function (x, y, direction) {
-    return {
-        x: x,
-        y: y,
-        direction: direction,
-
-        equals: function (o) {
-            return o.getX() == x && o.getY() == y;
-        },
-
-        toString: function () {
-            return '[' + x + ',' + y + (!!direction ? (',' + direction) : '') + ']';
-        },
-
-        isBad: function (boardSize) {
-            return x >= boardSize || y >= boardSize || x < 0 || y < 0;
-        },
-
-        getX: function () {
-            return x;
-        },
-
-        getY: function () {
-            return y;
-        },
-
-        move: function (dx, dy) {
-            x += dx;
-            y += dy;
-        }
-    }
-};
-
-var pt = function (x, y) {
-    return new Point(x, y);
-};
-
-var LengthToXY = function (boardSize) {
-    var inversion = function (y) {
-        return boardSize - 1 - y;
-    }
-
-    return {
-        getXY: function (length) {
-            if (length == -1) {
-                return null;
-            }
-            return new Point(length % boardSize, Math.trunc(length / boardSize));
-        },
-
-        getLength: function (x, y) {
-            return inversion(y) * boardSize + x;
-        }
-    };
-};
-
-var LAYER1 = 0;
-var LAYER2 = 1;
-var LAYER3 = 2;
-
-var Board = function (boardString) {
-    var board = eval(boardString);
+var ICanCodeBoard = module.exports = function(boardString){
+
+    var Games = require('./../../games.js');
+    var Direction = Games.require('./direction.js');
+    var Point = require('./../../point.js');
+    var util = require('util');
+    var Stuff = require('./../../stuff.js');
+    var Element = Games.require('./elements.js');
+    var LengthToXY = require('./../../lxy.js');
+
+    var LAYER1 = 0;
+    var LAYER2 = 1;
+    var LAYER3 = 2;
+
+    var board = JSON.parse(boardString);
     var layersString = board.layers;
     var scannerOffset = board.offset;
     var heroPosition = board.heroPosition;
@@ -447,7 +45,7 @@ var Board = function (boardString) {
             elements = arr;
         }
 
-        if (pt(x, y).isBad(size) || getAt(layer, x, y) == null) {
+        if (new Point(x, y).isOutOf(size) || getAt(layer, x, y) == null) {
             return false;
         }
 
@@ -524,7 +122,7 @@ var Board = function (boardString) {
     };
 
     var isNear = function (layer, x, y, element) {
-        if (pt(x, y).isBad(size)) {
+        if (new Point(x, y).isOutOf(size)) {
             return false;
         }
         return isAt(layer, x + 1, y, element) || isAt(layer, x - 1, y, element)
@@ -543,7 +141,7 @@ var Board = function (boardString) {
     };
 
     var countNear = function (layer, x, y, element) {
-        if (pt(x, y).isBad(size)) {
+        if (new Point(x, y).isOutOf(size)) {
             return 0;
         }
         var count = 0;
@@ -555,9 +153,9 @@ var Board = function (boardString) {
     };
 
     var getOtherHeroes = function () {
-        var elements = [Element.ROBOT_OTHER, Element.ROBOT_OTHER_FALLING, Element.ROBOT_OTHER_LASER];
+        var elements = [Element.ROBO_OTHER, Element.ROBO_OTHER_FALLING, Element.ROBO_OTHER_LASER];
         return get(LAYER2, elements)
-            .concat(get(LAYER3, Element.ROBOT_OTHER_FLYING));
+            .concat(get(LAYER3, Element.ROBO_OTHER_FLYING));
     };
 
     var getLaserMachines = function () {
@@ -607,7 +205,7 @@ var Board = function (boardString) {
 
     var getZombies = function () {
         var elements = [Element.FEMALE_ZOMBIE, Element.MALE_ZOMBIE,
-                    Element.ZOMBIE_DIE];
+            Element.ZOMBIE_DIE];
         return get(LAYER2, elements);
     };
 
@@ -616,8 +214,8 @@ var Board = function (boardString) {
     };
 
     var isMeAlive = function () {
-        return layersString[LAYER2].indexOf(Element.ROBOT_LASER.char) == -1 &&
-            layersString[LAYER2].indexOf(Element.ROBOT_FALLING.char) == -1;
+        return layersString[LAYER2].indexOf(Element.ROBO_LASER.char) == -1 &&
+            layersString[LAYER2].indexOf(Element.ROBO_FALLING.char) == -1;
     };
 
     var barriers = null;
@@ -643,7 +241,7 @@ var Board = function (boardString) {
                 );
 
                 if (barriersMap[x][y]) {
-                    barriers.push(pt(x, y));
+                    barriers.push(new Point(x, y));
                 }
             }
         }
@@ -803,7 +401,7 @@ var Board = function (boardString) {
         while (!done) {
             comeRound(point.getX(), point.getY(), function (xx, yy) {
                 if (mask[xx][yy] == current - 1) {
-                    point = pt(xx, yy);
+                    point = new Point(xx, yy);
                     current--;
 
                     path.push(point);
@@ -820,7 +418,7 @@ var Board = function (boardString) {
         return path.reverse();
     }
 
-    var boardAsString = function (layer) {
+    var boardAsString = function(layer) {
         var result = "";
         for (var i = 0; i <= size - 1; i++) {
             result += layersString[layer].substring(i * size, (i + 1) * size);
@@ -830,7 +428,7 @@ var Board = function (boardString) {
     };
 
     var getMe = function() {
-        return pt(heroPosition.x, heroPosition.y);
+        return new Point(heroPosition.x, heroPosition.y);
     }
 
     // thanks http://jsfiddle.net/queryj/g109jvxd/
@@ -882,36 +480,36 @@ var Board = function (boardString) {
             var ii = size - 1 - i;
             var index = (ii < 10 ? ' ' : '') + ii;
             result += index + layer1[i] +
-                    ' ' + index + maskOverlay(layer2[i], layer1[i]) +
-                    ' ' + index + maskOverlay(layer3[i], layer1[i]);
+                ' ' + index + maskOverlay(layer2[i], layer1[i]) +
+                ' ' + index + maskOverlay(layer3[i], layer1[i]);
 
             switch (i) {
                 case 0:
-                    result += ' Robots: ' + getMe() + ',' + printArray(getOtherHeroes());
+                    result += ' Robots: ' + getMe() + ',' + Stuff.printArray(getOtherHeroes());
                     break;
                 case 1:
-                    result += ' Gold: ' + printArray(getGold());
+                    result += ' Gold: ' + Stuff.printArray(getGold());
                     break;
                 case 2:
-                    result += ' Starts: ' + printArray(getStarts());
+                    result += ' Starts: ' + Stuff.printArray(getStarts());
                     break;
                 case 3:
-                    result += ' Exits: ' + printArray(getExits());
+                    result += ' Exits: ' + Stuff.printArray(getExits());
                     break;
                 case 4:
-                    result += ' Boxes: ' + printArray(getBoxes());
+                    result += ' Boxes: ' + Stuff.printArray(getBoxes());
                     break;
                 case 5:
-                    result += ' Holes: ' + printArray(getHoles());
+                    result += ' Holes: ' + Stuff.printArray(getHoles());
                     break;
                 case 6:
-                    result += ' LaserMachine: ' + printArray(getLaserMachines());
+                    result += ' LaserMachine: ' + Stuff.printArray(getLaserMachines());
                     break;
                 case 7:
-                    result += ' Lasers: ' + printArray(getLasers());
+                    result += ' Lasers: ' + Stuff.printArray(getLasers());
                     break;
                 case 8:
-                    result += ' Zombies: ' + printArray(getZombies());
+                    result += ' Zombies: ' + Stuff.printArray(getZombies());
                     break;
             }
 
@@ -924,6 +522,9 @@ var Board = function (boardString) {
     };
 
     return {
+        LAYER1 : LAYER1,
+        LAYER2 : LAYER2,
+        LAYER3 : LAYER3,
         size: function () {
             return size;
         },
@@ -947,6 +548,9 @@ var Board = function (boardString) {
         getAt: getAt,
         get: get,
         toString: toString,
+        boardAsString: function () {
+            return board;
+        },
         layer1: function () {
             return boardAsString(LAYER1)
         },
@@ -964,90 +568,7 @@ var Board = function (boardString) {
         countNear: countNear,
         getShortestWay: getShortestWay,
         getScannerOffset: function () {
-            return pt(scannerOffset.x, scannerOffset.y);
+            return new Point(scannerOffset.x, scannerOffset.y);
         }
     };
 };
-
-var random = function (n) {
-    return Math.floor(Math.random() * n);
-};
-
-var Command = {
-
-    /**
-     * Says to Hero do nothing
-     */
-    doNothing : function() {
-        return Direction.STOP.toString();
-    },
-
-    /**
-     * Reset current level
-     */
-    die : function() {
-        return Direction.DIE.toString();
-    },
-
-    /**
-     * Says to Hero jump to direction
-     */
-    jump : function(direction) {
-        return Direction.JUMP.toString() + "," + direction.toString();
-    },
-
-    /**
-     * Says to Hero pull box on this direction
-     */
-    pull : function(direction) {
-        return Direction.PULL.toString() + "," + direction.toString();
-    },
-
-    /**
-     * Says to Hero fire on this direction
-     */
-    fire : function(direction) {
-        return Direction.FIRE.toString() + "," + direction.toString();
-    },
-
-    /**
-     * Says to Hero jump in place
-     */
-    jump : function() {
-        return Direction.JUMP.toString();
-    },
-
-    /**
-     * Says to Hero go to direction
-     */
-    go : function(direction) {
-        return Direction.valueOf(direction.toString()).toString();
-    },
-
-    /**
-     * Says to Hero goes to start point
-     */
-    reset : function() {
-        return Direction.DIE.toString();
-    }
-
-}
-
-var direction;
-
-var YourSolver = function(board){
-
-    return {
-        /**
-         * @return next robot action
-         */
-        whatToDo : function() {
-            var hero = board.getMe();
-
-            // TODO your code here
-
-            return Command.go(Direction.JUMP);
-        }
-    };
-};
-

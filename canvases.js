@@ -30,6 +30,9 @@ alphabetElements = function() {
         if (typeof value == 'function') {
             continue;
         }
+        if (typeof value == 'object' && !!value.char) {
+            value = value.char;
+        }
 
         result = result + value;
     }
@@ -39,6 +42,10 @@ alphabetElements = function() {
 spriteElements = function() {
     var result = [];
     for (const key in Element) {
+        var value = Element[key];
+        if (typeof value == 'function') {
+            continue;
+        }
         result.push(key.toLowerCase());
     }
     return result;
@@ -53,6 +60,9 @@ function onBoardData(data) {
 }
 
 function size(data) {
+    if (!!data.layers) {
+        return Math.sqrt(data.layers[0].length);
+    }
     return data.split('\n')[0].length;
 }
 
@@ -95,7 +105,10 @@ function initCanvas(gameName, boardSize) {
 
             $('body').on('board-updated', function(events, data) {
                 canvas.boardSize = size(data);
-                drawBoard(getBoardDrawer(canvas, data.split('\n').join('')));
+                if (!data.layers) {
+                    data = data.split('\n').join('');
+                }
+                drawBoard(getBoardDrawer(canvas, data));
             });
         });
     }

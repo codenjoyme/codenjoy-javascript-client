@@ -29,6 +29,8 @@ var Games = module.exports = {
                 return Element = BattlecityElement;
             } else if (this.gameName == 'excitebike') {
                 return Element = ExcitebikeElement;
+            } else if (this.gameName == 'icancode') {
+                return Element = ICanCodeElement;
             }
         } else if (name == 'board') {
             // case node
@@ -48,6 +50,8 @@ var Games = module.exports = {
                 return Board = BattlecityBoard;
             } else if (this.gameName == 'excitebike') {
                 return Board = ExcitebikeBoard;
+            } else if (this.gameName == 'icancode') {
+                return Board = ICanCodeBoard;
             }
         } else if (name == 'direction') {
             // case node
@@ -67,6 +71,8 @@ var Games = module.exports = {
                 return Direction = BattlecityDirection();
             } else if (this.gameName == 'excitebike') {
                 return Direction = ExcitebikeDirection();
+            } else if (this.gameName == 'icancode') {
+                return Direction = ICanCodeDirection();
             }
         }
     }

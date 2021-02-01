@@ -22,15 +22,39 @@
 var browser = true;
 var module = {};
 
+var getSize = function(data) {
+    if (!!data.layers) {
+        return Math.sqrt(data.layers[0].length);
+    }
+    return data.split('\n')[0].length;
+}
+
+var chunk = function(str, n) {
+    var ret = [];
+    var i;
+    var len;
+
+    for(i = 0, len = str.length; i < len; i += n) {
+        ret.push(str.substr(i, n))
+    }
+
+    return ret
+};
+
 var printBoardOnTextArea = function(data) {
     if (!!onBoardData) {
         onBoardData(data);
     }
+
     var textarea = document.getElementById('board');
     if (!textarea) return;
-    var size = data.split('\n')[0].length;
+    var size = getSize(data);
     textarea.cols = size;
     textarea.rows = size;
+
+    if (!!data.layers) {
+        data = chunk(data.layers[0], size).join('\n');
+    }
     textarea.value = data;
 }
 
@@ -74,6 +98,8 @@ var require = function(name) {
         return Stuff;
     } else if (name == 'solver') {
         return Solver;
+    } else if (name == 'direction') {
+        return Direction;
     } else if (name == 'lxy') {
         return LengthToXY;
     } else if (name == 'point') {
