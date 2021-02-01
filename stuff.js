@@ -1,7 +1,3 @@
-if (typeof module == 'undefined') {
-    module = {};
-}
-
 var Stuff = module.exports = {
     random : function(n){
         return Math.floor(Math.random()*n);
