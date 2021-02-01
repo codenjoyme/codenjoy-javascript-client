@@ -4,7 +4,8 @@
 var Games = require('./games.js');
 // Games.init('bomberman');
 // Games.init('tetris');
-Games.init('a2048');
+// Games.init('a2048');
+Games.init('battlecity');
 
 var Point = require('./point.js');
 var Direction = Games.require('./direction.js');

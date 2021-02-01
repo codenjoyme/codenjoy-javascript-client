@@ -5,6 +5,7 @@ var Element = Games.require('./elements.js');
 var LengthToXY = require('./../../lxy.js');
 
 const TetrisBoard = module.exports = function(boardString) {
+
     const boardObj = JSON.parse(boardString);
     const board = boardObj && boardObj.layers[0];
 

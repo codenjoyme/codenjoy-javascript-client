@@ -7,6 +7,7 @@ var Element = Games.require('./elements.js');
 var LengthToXY = require('./../../lxy.js');
 
 var BombermanBoard = module.exports = function(board){
+
     var contains  = function(a, obj) {
         var i = a.length;
         while (i--) {

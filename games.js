@@ -25,6 +25,8 @@ var Games = module.exports = {
                 return Element = TetrisElement;
             } else if (this.gameName == 'a2048') {
                 return Element = A2048Element;
+            } else if (this.gameName == 'battlecity') {
+                return Element = BattlecityElement;
             }
         } else if (name == 'board') {
             // case node
@@ -40,6 +42,8 @@ var Games = module.exports = {
                 return Board = TetrisBoard;
             } else if (this.gameName == 'a2048') {
                 return Board = A2048Board;
+            } else if (this.gameName == 'battlecity') {
+                return Board = BattlecityBoard;
             }
         } else if (name == 'direction') {
             // case node
@@ -55,6 +59,8 @@ var Games = module.exports = {
                 return Direction = TetrisDirection();
             } else if (this.gameName == 'a2048') {
                 return Direction = A2048Direction();
+            } else if (this.gameName == 'battlecity') {
+                return Direction = BattlecityDirection();
             }
         }
     }
