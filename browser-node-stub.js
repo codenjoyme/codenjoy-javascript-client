@@ -20,6 +20,7 @@
  * #L%
  */
 var browser = true;
+var module = {};
 
 var printBoardOnTextArea = function(data) {
     if (!!onBoardData) {
@@ -62,16 +63,24 @@ var printLogOnTextArea = function(data) {
 var sendSockets = true;
 var boardData = false;
 
-var require = function(string) {
-    if (string == 'stuff') {
+var require = function(name) {
+    if (name.startsWith('./games/')) {
+        return;
+    }
+
+    name = Stuff.clean(name);
+
+    if (name == 'stuff') {
         return Stuff;
-    } else if (string == 'solver') {
+    } else if (name == 'solver') {
         return Solver;
-    } else if (string == 'point') {
+    } else if (name == 'lxy') {
+        return LengthToXY;
+    } else if (name == 'point') {
         return Point;
-    } else if (string == 'games') {
+    } else if (name == 'games') {
         return Games;
-    } else if (string == 'util') {
+    } else if (name == 'util') {
         return {
             // thanks to http://stackoverflow.com/a/4673436
             'format': function(format) {
@@ -86,7 +95,7 @@ var require = function(string) {
                 });
             }
         }
-    } else if (string == 'ws') {
+    } else if (name == 'ws') {
         return function(uri) {
             var socket = new WebSocket(uri);
             var isSend = true;

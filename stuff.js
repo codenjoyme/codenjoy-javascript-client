@@ -1,4 +1,8 @@
-var Stuff = {
+if (typeof module == 'undefined') {
+    module = {};
+}
+
+var Stuff = module.exports = {
     random : function(n){
         return Math.floor(Math.random()*n);
     },
@@ -10,5 +14,21 @@ var Stuff = {
             result.push(element.toString());
         }
         return "[" + result + "]";
+    },
+
+    clean : function(string) {
+        if (typeof string.replaceAll == 'undefined') {
+            // case node
+            return string.replace('.js', '')
+                        .replace('.', '')
+                        .replace('/', '');
+
+        } else {
+            // case browser stub
+            return string.replaceAll('.js', '')
+                        .replaceAll('.', '')
+                        .replaceAll('/', '');
+
+        }
     }
 }

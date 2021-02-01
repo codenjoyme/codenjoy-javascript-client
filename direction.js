@@ -1,4 +1,4 @@
-var D = function(index, dx, dy, name){
+var _init = function(index, dx, dy, name){
 
     var changeX = function(x) {
         return x + dx;
@@ -37,8 +37,10 @@ var D = function(index, dx, dy, name){
     };
 };
 
-var Direction = {
-    STOP : D(0, 0, 0, '')
+var Direction = module.exports = {
+    STOP : _init(0, 0, 0, ''),
+
+    _init : _init
 
     // others will be added later
 };

@@ -20,10 +20,10 @@
  * #L%
  */
 
-var Solver = require('solver');
-var Games = require('games');
+var Solver = require('./solver.js');
+var Games = require('./games.js');
 var WSocket = require('ws');
-var Board = Games.require('board');
+var Board = Games.require('./board.js');
 
 var browser = (browser !== undefined);
 

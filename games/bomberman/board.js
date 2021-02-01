@@ -1,11 +1,12 @@
-var Games = require('games');
-var Direction = Games.require('direction');
-var Point = require('point');
+var Games = require('./../../games.js');
+var Direction = Games.require('./direction.js');
+var Point = require('./../../point.js');
 var util = require('util');
-var Stuff = require('stuff');
-var Element = Games.require('elements');
+var Stuff = require('./../../stuff.js');
+var Element = Games.require('./elements.js');
+var LengthToXY = require('./../../lxy.js');
 
-var BombermanBoard = function(board){
+var BombermanBoard = module.exports = function(board){
     var contains  = function(a, obj) {
         var i = a.length;
         while (i--) {
@@ -55,14 +56,14 @@ var BombermanBoard = function(board){
     };
 
     var isAt = function(x, y, element) {
-        if (pt(x, y).isOutOf(size)) {
+        if (new Point(x, y).isOutOf(size)) {
             return false;
         }
         return getAt(x, y) == element;
     };
 
     var getAt = function(x, y) {
-        if (pt(x, y).isOutOf(size)) {
+        if (new Point(x, y).isOutOf(size)) {
             return Element.WALL;
         }
         return board.charAt(xyl.getLength(x, y));
@@ -190,7 +191,7 @@ var BombermanBoard = function(board){
     };
 
     var isNear = function(x, y, element) {
-        if (pt(x, y).isOutOf(size)) {
+        if (new Point(x, y).isOutOf(size)) {
             return false;
         }
         return isAt(x + 1, y, element) || // TODO to remove duplicate
@@ -200,11 +201,11 @@ var BombermanBoard = function(board){
     };
 
     var isBarrierAt = function(x, y) {
-        return contains(getBarriers(), pt(x, y));
+        return contains(getBarriers(), new Point(x, y));
     };
 
     var countNear = function(x, y, element) {
-        if (pt(x, y).isOutOf(size)) {
+        if (new Point(x, y).isOutOf(size)) {
             return 0;
         }
         var count = 0;

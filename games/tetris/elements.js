@@ -1,4 +1,4 @@
-const TetrisElement = {
+const TetrisElement = module.exports = {
     BLUE: "I",
     CYAN: "J",
     ORANGE: "L",

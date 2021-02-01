@@ -1,10 +1,14 @@
-var BombermanDirection = function() {
+var Direction = require('./../../direction.js');
+
+var BombermanDirection = module.exports = function() {
     // move bomberman
-    Direction.LEFT = D(1, -1, 0, 'left');
-    Direction.RIGHT = D(2, 1, 0, 'right');
-    Direction.UP = D(3, 0, 1, 'up');
-    Direction.DOWN = D(4, 0, -1, 'down');
+    Direction.LEFT = Direction._init(1, -1, 0, 'left');
+    Direction.RIGHT = Direction._init(2, 1, 0, 'right');
+    Direction.UP = Direction._init(3, 0, 1, 'up');
+    Direction.DOWN = Direction._init(4, 0, -1, 'down');
 
     // drop the bomb
-    Direction.ACT = D(5, 0, 0, 'act');
+    Direction.ACT = Direction._init(5, 0, 0, 'act');
+
+    return Direction;
 }
