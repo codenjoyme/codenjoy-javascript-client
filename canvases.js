@@ -49,7 +49,7 @@ function initCanvas(boardSize) {
             var ch = alphabet[index];
             var color = elements[index];
             plots[ch] = color;
-            plotsUrls[color] = 'sprites/' + game + '/' + color + '.png';
+            plotsUrls[color] = 'games/' + game + '/sprites/' + color + '.png';
 
             var image = new Image();
             image.onload = function() {
