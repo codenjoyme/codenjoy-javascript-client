@@ -23,6 +23,8 @@ var Games = module.exports = {
                 return Element = BombermanElement;
             } else if (this.gameName == 'tetris') {
                 return Element = TetrisElement;
+            } else if (this.gameName == 'a2048') {
+                return Element = A2048Element;
             }
         } else if (name == 'board') {
             // case node
@@ -36,6 +38,8 @@ var Games = module.exports = {
                 return Board = BombermanBoard;
             } else if (this.gameName == 'tetris') {
                 return Board = TetrisBoard;
+            } else if (this.gameName == 'a2048') {
+                return Board = A2048Board;
             }
         } else if (name == 'direction') {
             // case node
@@ -46,11 +50,12 @@ var Games = module.exports = {
 
             // case browser stub
             if (this.gameName == 'bomberman') {
-                BombermanDirection();
+                return Direction = BombermanDirection();
             } else if (this.gameName == 'tetris') {
-                TetrisDirection();
+                return Direction = TetrisDirection();
+            } else if (this.gameName == 'a2048') {
+                return Direction = A2048Direction();
             }
-            return Direction;
         }
     }
 };

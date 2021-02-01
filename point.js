@@ -18,6 +18,10 @@ var Point = module.exports = function (x, y) {
 
         getY : function() {
             return y;
+        },
+
+        moveTo : function(direction) {
+            return pt(direction.changeX(x), direction.changeY(y));
         }
     }
 };

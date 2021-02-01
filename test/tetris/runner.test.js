@@ -19,11 +19,12 @@
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  * #L%
  */
-var Games = require('games');
-var Direction = Games.require('direction');
-var Point = require('point');
-var Board = Games.require('board');
-var Element = Games.require('elements');
+// TODO fix this test
+var Games = require('./../../games.js');
+var Direction = Games.require('./direction.js');
+var Point = require('./../../point.js');
+var Board = Games.require('./board.js');
+var Element = Games.require('./elements.js');
 
 describe('Point function', () => {
   let point;
@@ -246,17 +247,17 @@ describe('Board function', () => {
 
     test('Should return true if YELLOW figure at 0,0 coords', () => {
       const point = new Point({ x: 0, y: 0 });
-      expect(board.isAt(point, Elements.YELLOW)).toBeTruthy();
+      expect(board.isAt(point, Element.YELLOW)).toBeTruthy();
     });
 
     test('Should return true if RED figure at 12,1 coords', () => {
       const point = new Point({ x: 12, y: 1 });
-      expect(board.isAt(point, Elements.RED)).toBeTruthy();
+      expect(board.isAt(point, Element.RED)).toBeTruthy();
     });
 
     test('Should return false if RED figure is not at 0,0 coords', () => {
       const point = new Point({ x: 0, y: 0 });
-      expect(board.isAt(point, Elements.RED)).toBeFalsy();
+      expect(board.isAt(point, Element.RED)).toBeFalsy();
     });
   });
 
@@ -267,12 +268,12 @@ describe('Board function', () => {
 
     test('Should return BLUE figure at 2,3 coords', () => {
       const point = new Point({ x: 2, y: 3 });
-      expect(board.getAt(point)).toBe(Elements.RED);
+      expect(board.getAt(point)).toBe(Element.RED);
     });
 
     test('Should return NONE element if no figure at 3,0 coords', () => {
       const point = new Point({ x: 3, y: 0 });
-      expect(board.getAt(point)).toBe(Elements.NONE);
+      expect(board.getAt(point)).toBe(Element.NONE);
     });
 
     test('Should return undefined if position out of the board', () => {
@@ -299,7 +300,7 @@ describe('Board function', () => {
           new Point({ x: 9, y: 0 }),
           new Point({ x: 10, y: 0 }),
       ];
-      const answer = board.findAll(Elements.YELLOW);
+      const answer = board.findAll(Element.YELLOW);
 
       expect(answer.length).toBe(result.length);
       answer.forEach((item, index) => {
@@ -309,7 +310,7 @@ describe('Board function', () => {
     });
 
     test('Should return empty array if element does not exist', () => {
-      expect(board.findAll(Elements.CYAN)).toEqual([])
+      expect(board.findAll(Element.CYAN)).toEqual([])
     })
   });
 
@@ -338,13 +339,13 @@ describe('Board function', () => {
       const point1 = new Point({ x: 13, y: 2 });
       const point2 = new Point({ x: 1, y: 3 });
 
-      expect(board.isNear(point1, Elements.RED)).toBeTruthy();
-      expect(board.isNear(point2, Elements.RED)).toBeTruthy();
+      expect(board.isNear(point1, Element.RED)).toBeTruthy();
+      expect(board.isNear(point2, Element.RED)).toBeTruthy();
     });
 
     test('Should return false if BLUE figure not near with 0,3', () => {
       const point = new Point({ x: 0, y: 3 });
-      expect(board.isNear(point, Elements.BLUE)).toBeFalsy();
+      expect(board.isNear(point, Element.BLUE)).toBeFalsy();
     })
   });
 
@@ -355,10 +356,10 @@ describe('Board function', () => {
 
     test('Should return array with 4 elements which near with 13,1', () => {
       const result = [
-        Elements.RED,
-        Elements.GREEN,
-        Elements.GREEN,
-        Elements.RED
+        Element.RED,
+        Element.GREEN,
+        Element.GREEN,
+        Element.RED
       ];
 
       const point = new Point({ x: 13, y: 1 })
@@ -369,7 +370,7 @@ describe('Board function', () => {
     test('Should return array with 1 element which near with 13,2', () => {
       const point = new Point({ x: 13, y: 2 });
 
-      expect(board.getNear(point)).toEqual([Elements.RED])
+      expect(board.getNear(point)).toEqual([Element.RED])
     });
 
     test('Should return empty array for ', () => {
@@ -417,15 +418,15 @@ describe('Board function', () => {
 
     test('Should return 2 for PURPLE element', () => {
       const point1 = new Point({ x: 17, y: 1 });
-      expect(board.countNear(point1, Elements.PURPLE)).toBe(2);
+      expect(board.countNear(point1, Element.PURPLE)).toBe(2);
 
       const point2 = new Point({ x: 15, y: 1 })
-      expect(board.countNear(point2, Elements.PURPLE))
+      expect(board.countNear(point2, Element.PURPLE))
     });
 
     test('Should return 0 for ORANGE element', () => {
       const point = new Point({ x: 13, y: 1 });
-      expect(board.countNear(point, Elements.ORANGE)).toBe(0)
+      expect(board.countNear(point, Element.ORANGE)).toBe(0)
     })
   });
 
@@ -587,7 +588,7 @@ describe('Board function', () => {
 
     test('Should raise error if direction does not match', () => {
       const point = new Point({ x: 0, y: 0 })
-      expect(() => board.getDistanceToNextElementByDirection(point, 'topp', Elements.RED)).toThrowError('Direction can be one of [top, bottom, left, right]')
+      expect(() => board.getDistanceToNextElementByDirection(point, 'topp', Element.RED)).toThrowError('Direction can be one of [top, bottom, left, right]')
     })
 
     describe('Right direction', () => {
@@ -617,7 +618,7 @@ describe('Board function', () => {
 
         const point = new Point({ x: 0, y: 0 });
 
-        expect(board.getDistanceToNextElementByDirection(point, 'right', Elements.YELLOW)).toBe(1)
+        expect(board.getDistanceToNextElementByDirection(point, 'right', Element.YELLOW)).toBe(1)
       });
 
       test('Should return 16 for 0,0 coords for RED element', () => {
@@ -645,7 +646,7 @@ describe('Board function', () => {
 
         const point = new Point({ x: 0, y: 0 });
 
-        expect(board.getDistanceToNextElementByDirection(point, 'right', Elements.RED)).toBe(16);
+        expect(board.getDistanceToNextElementByDirection(point, 'right', Element.RED)).toBe(16);
       });
 
       test('Should return size - 1 of board for 0,0 coords for YELLOW', () => {
@@ -673,7 +674,7 @@ describe('Board function', () => {
 
         const point = new Point({ x: 0, y: 0 });
 
-        expect(board.getDistanceToNextElementByDirection(point, 'right', Elements.YELLOW)).toBe(17)
+        expect(board.getDistanceToNextElementByDirection(point, 'right', Element.YELLOW)).toBe(17)
       })
     })
 
@@ -704,7 +705,7 @@ describe('Board function', () => {
 
         const point = new Point({ x: 17, y: 0 });
 
-        expect(board.getDistanceToNextElementByDirection(point, 'left', Elements.GREEN)).toBe(16)
+        expect(board.getDistanceToNextElementByDirection(point, 'left', Element.GREEN)).toBe(16)
       });
 
       test('Should return 1 for 17,0 coords for GREEN element', () => {
@@ -733,7 +734,7 @@ describe('Board function', () => {
 
         const point = new Point({ x: 17, y: 0 });
 
-        expect(board.getDistanceToNextElementByDirection(point, 'left', Elements.GREEN)).toBe(1)
+        expect(board.getDistanceToNextElementByDirection(point, 'left', Element.GREEN)).toBe(1)
       });
 
       test('Should return size of board for 17,0 for GREEN element', () => {
@@ -760,7 +761,7 @@ describe('Board function', () => {
 
         const point = new Point({ x: 17, y: 0 });
 
-        expect(board.getDistanceToNextElementByDirection(point, 'left', Elements.GREEN)).toBe(17)
+        expect(board.getDistanceToNextElementByDirection(point, 'left', Element.GREEN)).toBe(17)
       });
     });
 
@@ -790,7 +791,7 @@ describe('Board function', () => {
 
         const point = new Point({ x: 5, y: 0 });
 
-        expect(board.getDistanceToNextElementByDirection(point, 'top', Elements.RED)).toBe(16)
+        expect(board.getDistanceToNextElementByDirection(point, 'top', Element.RED)).toBe(16)
       });
 
       test('Should return 1 for 5,0 coords for RED element', () => {
@@ -818,7 +819,7 @@ describe('Board function', () => {
 
         const point = new Point({ x: 5, y: 0 });
 
-        expect(board.getDistanceToNextElementByDirection(point, 'top', Elements.RED)).toBe(1)
+        expect(board.getDistanceToNextElementByDirection(point, 'top', Element.RED)).toBe(1)
       });
 
       test('Should return size of board for 5,0 for RED element', () => {
@@ -845,7 +846,7 @@ describe('Board function', () => {
 
         const point = new Point({ x: 5, y: 0 });
 
-        expect(board.getDistanceToNextElementByDirection(point, 'top', Elements.RED)).toBe(17)
+        expect(board.getDistanceToNextElementByDirection(point, 'top', Element.RED)).toBe(17)
       });
     });
 
@@ -875,7 +876,7 @@ describe('Board function', () => {
 
         const point = new Point({ x: 8, y: 17 });
 
-        expect(board.getDistanceToNextElementByDirection(point, 'bottom', Elements.PURPLE)).toBe(16)
+        expect(board.getDistanceToNextElementByDirection(point, 'bottom', Element.PURPLE)).toBe(16)
       });
 
       test('Should return 1 for 8,2 coords for PURPLE element', () => {
@@ -903,7 +904,7 @@ describe('Board function', () => {
 
         const point = new Point({ x: 8, y: 2 });
 
-        expect(board.getDistanceToNextElementByDirection(point, 'bottom', Elements.PURPLE)).toBe(1)
+        expect(board.getDistanceToNextElementByDirection(point, 'bottom', Element.PURPLE)).toBe(1)
       });
 
       test('Should return size of board for 8,17 for PURPLE element', () => {
@@ -930,7 +931,7 @@ describe('Board function', () => {
 
         const point = new Point({ x: 8, y: 17 });
 
-        expect(board.getDistanceToNextElementByDirection(point, 'bottom', Elements.PURPLE)).toBe(17)
+        expect(board.getDistanceToNextElementByDirection(point, 'bottom', Element.PURPLE)).toBe(17)
       });
     });
   })

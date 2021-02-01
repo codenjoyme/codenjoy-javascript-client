@@ -8,6 +8,10 @@ var _init = function(index, dx, dy, name){
         return y - dy;
     };
 
+    var change = function(point) {
+        return point.moveTo(this);
+    };
+
     var inverted = function() {
         switch (this) {
             case Direction.UP : return Direction.DOWN;
@@ -24,13 +28,10 @@ var _init = function(index, dx, dy, name){
 
     return {
         changeX : changeX,
-
         changeY : changeY,
-
+        change : change,
         inverted : inverted,
-
         toString : toString,
-
         getIndex : function() {
             return index;
         }
