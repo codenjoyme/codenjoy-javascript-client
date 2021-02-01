@@ -33,7 +33,6 @@ function size(data) {
 
 function initCanvas(boardSize) {
     setup = true;
-    var canvas = null;
     var plots = {};
     var plotsUrls = {};
     var plotSize = 0;
@@ -41,14 +40,11 @@ function initCanvas(boardSize) {
     var images = {};
     var isDrawByOrder = true;
 
-    var elements = Element;
-    var spriteElements = ["bomberman", "bomb_bomberman", "dead_bomberman", "other_bomberman", "other_bomb_bomberman", "other_dead_bomberman", "bomb_timer_5", "bomb_timer_4", "bomb_timer_3", "bomb_timer_2", "bomb_timer_1", "boom", "wall", "destroyable_wall", "destroyed_wall", "meat_chopper", "dead_meat_chopper", "bomb_blast_radius_increase", "bomb_count_increase", "bomb_remote_control", "bomb_immune", "none"];
-    var alphabet = '☺☻Ѡ♥♠♣54321҉☼#H&x+cri ';
     var game = 'bomberman';
 
-    loadCanvasData(alphabet, spriteElements);
+    loadCanvasData(game, Element.spriteElements(), Element.alphabet());
 
-    function loadSpriteImages(elements, alphabet, onImageLoad) {
+    function loadSpriteImages(game, elements, alphabet, onImageLoad) {
         for (var index in elements) {
             var ch = alphabet[index];
             var color = elements[index];
@@ -70,8 +66,8 @@ function initCanvas(boardSize) {
         }
     }
 
-    function loadCanvasData(alphabet, elements) {
-        loadSpriteImages(elements, alphabet, function() {
+    function loadCanvasData(game, elements, alphabet) {
+        loadSpriteImages(game, elements, alphabet, function() {
             var canvas = createCanvas('board-canvas');
 
             $('body').on('board-updated', function(events, data) {
