@@ -1,8 +1,8 @@
-var Direction = Direction | require('direction');
-var Element = Element | require('elements');
-var Point = Point | require('point');
-var Board = Board | require('board');
-var Utils = Utils | require('utils');
+var Direction = Direction || require('direction');
+var Element = Element || require('elements');
+var Point = Point || require('point');
+var Board = Board || require('board');
+var Utils = Utils || require('utils');
 
 var direction;
 

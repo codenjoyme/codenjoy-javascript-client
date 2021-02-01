@@ -22,7 +22,8 @@
 
 var util = require('util');
 var WSocket = require('ws');
-var Solver = Solver | require('solver');
+var Board = Board || require('board');
+var Solver = Solver || require('solver');
 
 var browser = (browser !== undefined);
 
@@ -66,7 +67,7 @@ var parseBoard = function(message) {
 }
 
 // you can get this code after registration on the server with your email
-var url = "http://codenjoy.com:80/codenjoy-contest/board/player/3edq63tw0bq4w4iem7nb?code=12345678901234567890";
+var url = "http://127.0.0.1:8080/codenjoy-contest/board/player/0?code=000000000000";
 
 url = url.replace("http", "ws");
 url = url.replace("board/player/", "ws?user=");
