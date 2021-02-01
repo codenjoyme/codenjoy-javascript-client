@@ -19,7 +19,11 @@
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  * #L%
  */
-const { Point, Board, Elements } = require('../runner');
+var games = require('games');
+var Direction = require('direction');
+var Point = require('point');
+var Board = games.require('board');
+var Element = games.require('elements');
 
 describe('Point function', () => {
   let point;
