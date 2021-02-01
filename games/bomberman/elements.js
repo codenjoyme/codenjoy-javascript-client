@@ -40,24 +40,3 @@ var Element = {
     /// a void
     NONE : ' '                  // this is the only place where you can move your Bomberman
 };
-
-Element.alphabet = function() {
-    var result = '';
-    for (const key in this) {
-        var value = this[key];
-        if (typeof value == 'function') {
-            continue;
-        }
-
-        result = result + value;
-    }
-    return result;
-}
-
-Element.spriteElements = function() {
-    var result = [];
-    for (const key in this) {
-        result.push(key.toLowerCase());
-    }
-    return result;
-}

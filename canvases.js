@@ -19,6 +19,30 @@
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  * #L%
  */
+
+var Element = Element || require('elements');
+
+Element.alphabet = function() {
+    var result = '';
+    for (const key in this) {
+        var value = this[key];
+        if (typeof value == 'function') {
+            continue;
+        }
+
+        result = result + value;
+    }
+    return result;
+}
+
+Element.spriteElements = function() {
+    var result = [];
+    for (const key in this) {
+        result.push(key.toLowerCase());
+    }
+    return result;
+}
+
 var setup = false;
 function onBoardData(data) {
     if (!setup) {
