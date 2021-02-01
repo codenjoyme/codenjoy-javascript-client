@@ -27,6 +27,8 @@ var Games = module.exports = {
                 return Element = A2048Element;
             } else if (this.gameName == 'battlecity') {
                 return Element = BattlecityElement;
+            } else if (this.gameName == 'excitebike') {
+                return Element = ExcitebikeElement;
             }
         } else if (name == 'board') {
             // case node
@@ -44,6 +46,8 @@ var Games = module.exports = {
                 return Board = A2048Board;
             } else if (this.gameName == 'battlecity') {
                 return Board = BattlecityBoard;
+            } else if (this.gameName == 'excitebike') {
+                return Board = ExcitebikeBoard;
             }
         } else if (name == 'direction') {
             // case node
@@ -61,6 +65,8 @@ var Games = module.exports = {
                 return Direction = A2048Direction();
             } else if (this.gameName == 'battlecity') {
                 return Direction = BattlecityDirection();
+            } else if (this.gameName == 'excitebike') {
+                return Direction = ExcitebikeDirection();
             }
         }
     }
