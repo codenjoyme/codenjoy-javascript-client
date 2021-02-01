@@ -15,6 +15,13 @@ var Games = {
             } else if (this.gameName == 'tetris') {
                 return Board = TetrisBoard;
             }
+        } else if (module == 'direction') {
+            if (this.gameName == 'bomberman') {
+                BombermanDirection();
+            } else if (this.gameName == 'tetris') {
+                TetrisDirection();
+            }
+            return Direction;
         }
     }
 };

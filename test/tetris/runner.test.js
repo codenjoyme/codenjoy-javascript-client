@@ -20,7 +20,7 @@
  * #L%
  */
 var Games = require('games');
-var Direction = require('direction');
+var Direction = Games.require('direction');
 var Point = require('point');
 var Board = Games.require('board');
 var Element = Games.require('elements');

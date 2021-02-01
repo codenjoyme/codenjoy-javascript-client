@@ -1,5 +1,5 @@
 var Games = require('games');
-var Direction = require('direction');
+var Direction = Games.require('direction');
 var Point = require('point');
 var util = require('util');
 var Stuff = require('stuff');

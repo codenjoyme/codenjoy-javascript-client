@@ -38,16 +38,17 @@ var D = function(index, dx, dy, name){
 };
 
 var Direction = {
-    UP : D(2, 0, 1, 'up'),
-    DOWN : D(3, 0, -1, 'down'),
-    LEFT : D(0, -1, 0, 'left'),
-    RIGHT : D(1, 1, 0, 'right'),
-    ACT : D(4, 0, 0, 'act'),
-    STOP : D(5, 0, 0, '')
+    STOP : D(0, 0, 0, '')
+
+    // others will be added later
 };
 
 Direction.values = function() {
-    return [Direction.UP, Direction.DOWN, Direction.LEFT, Direction.RIGHT, Direction.ACT, Direction.STOP];
+    var result = [];
+    for (var key in Direstion) {
+        result.push(Direstion[key]);
+    }
+    return result;
 };
 
 Direction.valueOf = function(index) {
