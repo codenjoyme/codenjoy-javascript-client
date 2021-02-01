@@ -20,8 +20,8 @@
  * #L%
  */
 
-var games = require('games');
-var Element = games.require('elements');
+var Games = require('games');
+var Element = Games.require('elements');
 
 alphabetElements = function() {
     var result = '';
@@ -47,7 +47,7 @@ spriteElements = function() {
 var setup = false;
 function onBoardData(data) {
     if (!setup) {
-        initCanvas(size(data));
+        initCanvas(Games.gameName, size(data));
     }
     $('body').trigger('board-updated', data);
 }
@@ -56,7 +56,7 @@ function size(data) {
     return data.split('\n')[0].length;
 }
 
-function initCanvas(boardSize) {
+function initCanvas(gameName, boardSize) {
     setup = true;
     var plots = {};
     var plotsUrls = {};
@@ -65,9 +65,7 @@ function initCanvas(boardSize) {
     var images = {};
     var isDrawByOrder = true;
 
-    var game = 'bomberman';
-
-    loadCanvasData(game, spriteElements(), alphabetElements());
+    loadCanvasData(gameName, spriteElements(), alphabetElements());
 
     function loadSpriteImages(game, elements, alphabet, onImageLoad) {
         for (var index in elements) {

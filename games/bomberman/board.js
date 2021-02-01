@@ -1,7 +1,9 @@
-var games = require('games');
+var Games = require('games');
 var Direction = require('direction');
 var Point = require('point');
-var Element = games.require('elements');
+var util = require('util');
+var Stuff = require('stuff');
+var Element = Games.require('elements');
 
 var BombermanBoard = function(board){
     var contains  = function(a, obj) {
@@ -97,13 +99,13 @@ var BombermanBoard = function(board){
             "Perks at: %s",
             boardAsString(),
             getBomberman(),
-            printArray(getOtherBombermans()),
-            printArray(getMeatChoppers()),
-            printArray(getDestroyWalls()),
-            printArray(getBombs()),
-            printArray(getBlasts()),
-            printArray(getFutureBlasts()),
-            printArray(getPerks())
+            Stuff.printArray(getOtherBombermans()),
+            Stuff.printArray(getMeatChoppers()),
+            Stuff.printArray(getDestroyWalls()),
+            Stuff.printArray(getBombs()),
+            Stuff.printArray(getBlasts()),
+            Stuff.printArray(getFutureBlasts()),
+            Stuff.printArray(getPerks())
         );
     };
 

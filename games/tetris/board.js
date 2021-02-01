@@ -1,7 +1,7 @@
-var games = require('games');
+var Games = require('games');
 var Direction = require('direction');
 var Point = require('point');
-var Element = games.require('elements');
+var Element = Games.require('elements');
 
 const TetrisBoard = function(boardString) {
     const boardObj = JSON.parse(boardString);

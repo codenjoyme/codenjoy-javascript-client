@@ -62,17 +62,18 @@ var printLogOnTextArea = function(data) {
 var sendSockets = true;
 var boardData = false;
 
-var gameName = 'bomberman';
-
 var require = function(string) {
-    if (string == 'solver') {
+    if (string == 'stuff') {
+        return Stuff;
+    } else if (string == 'solver') {
+        Games.gameName = Solver.game;
         return Solver;
     } else if (string == 'direction') {
         return Direction;
     } else if (string == 'point') {
         return Point;
     } else if (string == 'games') {
-        return Game;
+        return Games;
     } else if (string == 'util') {
         return {
             // thanks to http://stackoverflow.com/a/4673436

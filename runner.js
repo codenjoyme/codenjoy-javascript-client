@@ -20,11 +20,10 @@
  * #L%
  */
 
-var games = require('games');
-var util = require('util');
-var WSocket = require('ws');
-var Board = games.require('board');
 var Solver = require('solver');
+var Games = require('games');
+var WSocket = require('ws');
+var Board = Games.require('board');
 
 var browser = (browser !== undefined);
 
@@ -35,15 +34,6 @@ var log = function(string) {
     }
 };
 
-var printArray = function (array) {
-   var result = [];
-   for (var index in array) {
-       var element = array[index];
-       result.push(element.toString());
-   }
-   return "[" + result + "]";
-};
-
 var processBoard = function(boardString) {
     var board = new Board(boardString);
     if (browser) {
@@ -51,7 +41,7 @@ var processBoard = function(boardString) {
     }
 
     var logMessage = board + "\n\n";
-    var answer = new Solver(board).get().toString();
+    var answer = Solver.get(board).toString();
     logMessage += "Answer: " + answer + "\n";
     logMessage += "-----------------------------------\n";
     
@@ -67,14 +57,14 @@ var parseBoard = function(message) {
     return board;
 }
 
-// you can get this code after registration on the server with your email
-var url = "http://127.0.0.1:8080/codenjoy-contest/board/player/0?code=000000000000";
-
-url = url.replace("http", "ws");
-url = url.replace("board/player/", "ws?user=");
-url = url.replace("?code=", "&code=");
+function getWSUrl(url) {
+    return url.replace("http", "ws")
+              .replace("board/player/", "ws?user=")
+              .replace("?code=", "&code=");
+}
 
 function connect() {
+    var url = getWSUrl(Solver.url);
     var socket = new WSocket(url);
     log('Opening...');
 

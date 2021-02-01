@@ -1,15 +1,18 @@
-var Game = {
+var Games = {
+
+    gameName : '',
+
     'require': function(module) {
         if (module == 'elements') {
-            if (gameName == 'bomberman') {
+            if (this.gameName == 'bomberman') {
                 return Element = BombermanElement;
-            } else if (gameName == 'tetris') {
+            } else if (this.gameName == 'tetris') {
                 return Element = TetrisElement;
             }
         } else if (module == 'board') {
-            if (gameName == 'bomberman') {
+            if (this.gameName == 'bomberman') {
                 return Board = BombermanBoard;
-            } else if (gameName == 'tetris') {
+            } else if (this.gameName == 'tetris') {
                 return Board = TetrisBoard;
             }
         }
