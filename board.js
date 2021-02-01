@@ -1,3 +1,7 @@
+var Direction = Direction | require('direction');
+var Element = Element | require('elements');
+var Point = Point | require('point');
+
 var Board = function(board){
     var contains  = function(a, obj) {
         var i = a.length;

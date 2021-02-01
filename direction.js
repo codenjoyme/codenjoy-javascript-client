@@ -38,12 +38,12 @@ var D = function(index, dx, dy, name){
 };
 
 var Direction = {
-    UP : D(2, 0, 1, 'up'),                 // you can move
+    UP : D(2, 0, 1, 'up'),
     DOWN : D(3, 0, -1, 'down'),
     LEFT : D(0, -1, 0, 'left'),
     RIGHT : D(1, 1, 0, 'right'),
-    ACT : D(4, 0, 0, 'act'),                // drop bomb
-    STOP : D(5, 0, 0, '')                   // stay
+    ACT : D(4, 0, 0, 'act'),
+    STOP : D(5, 0, 0, '')
 };
 
 Direction.values = function() {
