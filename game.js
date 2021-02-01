@@ -7,7 +7,11 @@ var Game = {
                 return Element = TetrisElement;
             }
         } else if (module == 'board') {
-            return Board = Board;
+            if (gameName == 'bomberman') {
+                return Board = BombermanBoard;
+            } else if (gameName == 'tetris') {
+                return Board = TetrisBoard;
+            }
         }
     }
 };

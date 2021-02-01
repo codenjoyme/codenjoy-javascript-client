@@ -3,7 +3,7 @@ var Direction = require('direction');
 var Point = require('point');
 var Element = games.require('elements');
 
-var Board = function(board){
+var BombermanBoard = function(board){
     var contains  = function(a, obj) {
         var i = a.length;
         while (i--) {
