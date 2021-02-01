@@ -5,7 +5,7 @@ var _init = function(index, dx, dy, name){
     };
 
     var changeY = function(y) {
-        return y - dy;
+        return y + dy;
     };
 
     var change = function(point) {
