@@ -1,10 +1,10 @@
-var Games = require('./../../games.js');
-var Direction = Games.require('./direction.js');
-var Point = require('./../../point.js');
-var Element = Games.require('./elements.js');
-var LengthToXY = require('./../../lxy.js');
-
 const TetrisBoard = module.exports = function(boardString) {
+
+    var Games = require('./../../games.js');
+    var Direction = Games.require('./direction.js');
+    var Point = require('./../../point.js');
+    var Element = Games.require('./elements.js');
+    var LengthToXY = require('./../../lxy.js');
 
     const boardObj = JSON.parse(boardString);
     const board = boardObj && boardObj.layers[0];

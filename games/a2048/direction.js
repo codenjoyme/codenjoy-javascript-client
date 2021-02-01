@@ -1,6 +1,5 @@
-var Direction = require('./../../direction.js');
-
 var A2048Direction = module.exports = function() {
+    var Direction = require('./../../direction.js');
 
     // move numbers
     Direction.LEFT = Direction._init(1, -1, 0, 'left');

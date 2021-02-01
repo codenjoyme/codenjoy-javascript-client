@@ -1,6 +1,6 @@
-var Direction = require('./../../direction.js');
-
 var BombermanDirection = module.exports = function() {
+
+    var Direction = require('./../../direction.js');
 
     // TODO why we need this?
     var invert = function(dy) {

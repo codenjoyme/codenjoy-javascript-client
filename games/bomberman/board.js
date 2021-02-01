@@ -1,12 +1,12 @@
-var Games = require('./../../games.js');
-var Direction = Games.require('./direction.js');
-var Point = require('./../../point.js');
-var util = require('util');
-var Stuff = require('./../../stuff.js');
-var Element = Games.require('./elements.js');
-var LengthToXY = require('./../../lxy.js');
-
 var BombermanBoard = module.exports = function(board){
+
+    var Games = require('./../../games.js');
+    var Direction = Games.require('./direction.js');
+    var Point = require('./../../point.js');
+    var util = require('util');
+    var Stuff = require('./../../stuff.js');
+    var Element = Games.require('./elements.js');
+    var LengthToXY = require('./../../lxy.js');
 
     var contains  = function(a, obj) {
         var i = a.length;

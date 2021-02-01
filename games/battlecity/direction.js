@@ -1,6 +1,6 @@
-var Direction = require('./../../direction.js');
-
 var BattlecityDirection = module.exports = function() {
+
+    var Direction = require('./../../direction.js');
 
     // move numbers
     Direction.LEFT = Direction._init(1, -1, 0, 'left');

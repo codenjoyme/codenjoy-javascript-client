@@ -1,6 +1,6 @@
-var Direction = require('./../../direction.js');
-
 var ExcitebikeDirection = module.exports = function() {
+
+    var Direction = require('./../../direction.js');
 
     // move hero
     Direction.UP = Direction._init(1, 0, 1, 'up');

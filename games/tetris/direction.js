@@ -1,6 +1,7 @@
-var Direction = require('./../../direction.js');
-
 var TetrisDirection = module.exports = function() {
+
+    var Direction = require('./../../direction.js');
+
     // move figure
     Direction.LEFT = Direction._init(1, -1, 0, 'left');
     Direction.RIGHT = Direction._init(2, 1, 0, 'right');

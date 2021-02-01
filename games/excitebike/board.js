@@ -1,13 +1,13 @@
-var Games = require('./../../games.js');
-var Direction = Games.require('./direction.js');
-var Point = require('./../../point.js');
-var util = require('util');
-var Stuff = require('./../../stuff.js');
-var Element = Games.require('./elements.js');
-var LengthToXY = require('./../../lxy.js');
-
 var ExcitebikeBoard = module.exports = function(board){
-    
+
+    var Games = require('./../../games.js');
+    var Direction = Games.require('./direction.js');
+    var Point = require('./../../point.js');
+    var util = require('util');
+    var Stuff = require('./../../stuff.js');
+    var Element = Games.require('./elements.js');
+    var LengthToXY = require('./../../lxy.js');
+
     // Отступ от нижней границы в поинтах(10 полос на дороге по вертикали + 2 полосы ограждений)
     var MAX_Y_SIZE = 12;
     

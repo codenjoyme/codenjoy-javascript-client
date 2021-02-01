@@ -1,4 +1,5 @@
 const TetrisElement = module.exports = {
+
     BLUE: "I",
     CYAN: "J",
     ORANGE: "L",
@@ -7,4 +8,5 @@ const TetrisElement = module.exports = {
     PURPLE: "T",
     RED: "Z",
     NONE: "."
+
 };
