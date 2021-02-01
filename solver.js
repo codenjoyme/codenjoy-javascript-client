@@ -1,12 +1,13 @@
-var Direction = Direction || require('direction');
-var Element = Element || require('elements');
-var Point = Point || require('point');
-var Board = Board || require('board');
-var Utils = Utils || require('utils');
+var games = require('games');
+var Point = require('point');
+var Direction = require('direction');
+var Element = games.require('elements');
+var Board = games.require('board');
+var Utils = require('utils');
 
 var direction;
 
-var DirectionSolver = function(board){
+var Solver = function(board){
 
     return {
         /**

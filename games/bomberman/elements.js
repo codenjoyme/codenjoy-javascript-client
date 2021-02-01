@@ -1,4 +1,4 @@
-var Element = {
+var BombermanElement = {
     /// This is your Bomberman
     BOMBERMAN : '☺',             // this is what he usually looks like
     BOMB_BOMBERMAN : '☻',        // this is if he is sitting on own bomb

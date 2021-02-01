@@ -20,12 +20,13 @@
  * #L%
  */
 
-var Element = Element || require('elements');
+var games = require('games');
+var Element = games.require('elements');
 
-Element.alphabet = function() {
+alphabetElements = function() {
     var result = '';
-    for (const key in this) {
-        var value = this[key];
+    for (const key in Element) {
+        var value = Element[key];
         if (typeof value == 'function') {
             continue;
         }
@@ -35,9 +36,9 @@ Element.alphabet = function() {
     return result;
 }
 
-Element.spriteElements = function() {
+spriteElements = function() {
     var result = [];
-    for (const key in this) {
+    for (const key in Element) {
         result.push(key.toLowerCase());
     }
     return result;
@@ -66,7 +67,7 @@ function initCanvas(boardSize) {
 
     var game = 'bomberman';
 
-    loadCanvasData(game, Element.spriteElements(), Element.alphabet());
+    loadCanvasData(game, spriteElements(), alphabetElements());
 
     function loadSpriteImages(game, elements, alphabet, onImageLoad) {
         for (var index in elements) {

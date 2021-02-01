@@ -1,4 +1,4 @@
-const Element = {
+const TetrisElement = {
     BLUE: "I",
     CYAN: "J",
     ORANGE: "L",

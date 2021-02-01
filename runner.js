@@ -20,10 +20,11 @@
  * #L%
  */
 
+var games = require('games');
 var util = require('util');
 var WSocket = require('ws');
-var Board = Board || require('board');
-var Solver = Solver || require('solver');
+var Board = games.require('board');
+var Solver = require('solver');
 
 var browser = (browser !== undefined);
 
@@ -50,7 +51,7 @@ var processBoard = function(boardString) {
     }
 
     var logMessage = board + "\n\n";
-    var answer = new DirectionSolver(board).get().toString();
+    var answer = new Solver(board).get().toString();
     logMessage += "Answer: " + answer + "\n";
     logMessage += "-----------------------------------\n";
     
