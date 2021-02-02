@@ -8,7 +8,8 @@ var Games = require('./games.js');
 // Games.init('battlecity');
 // Games.init('excitebike');
 // Games.init('icancode');
-Games.init('minesweeper');
+// Games.init('minesweeper');
+Games.init('snake');
 
 var Point = require('./point.js');
 var Direction = Games.require('./direction.js');

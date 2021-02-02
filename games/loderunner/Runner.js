@@ -299,72 +299,72 @@ var Board = function(board) {
 
     var getMe = function() {
         var result = [];
-        result = result.concat(findAll(Elements.HERO_DIE));
-        result = result.concat(findAll(Elements.HERO_DRILL_LEFT));
-        result = result.concat(findAll(Elements.HERO_DRILL_RIGHT));
-        result = result.concat(findAll(Elements.HERO_FALL_RIGHT));
-        result = result.concat(findAll(Elements.HERO_FALL_LEFT));
-        result = result.concat(findAll(Elements.HERO_LADDER));
-        result = result.concat(findAll(Elements.HERO_LEFT));
-        result = result.concat(findAll(Elements.HERO_RIGHT));
-        result = result.concat(findAll(Elements.HERO_PIPE_LEFT));
-        result = result.concat(findAll(Elements.HERO_PIPE_RIGHT));
+        result = result.concat(findAll(Element.HERO_DIE));
+        result = result.concat(findAll(Element.HERO_DRILL_LEFT));
+        result = result.concat(findAll(Element.HERO_DRILL_RIGHT));
+        result = result.concat(findAll(Element.HERO_FALL_RIGHT));
+        result = result.concat(findAll(Element.HERO_FALL_LEFT));
+        result = result.concat(findAll(Element.HERO_LADDER));
+        result = result.concat(findAll(Element.HERO_LEFT));
+        result = result.concat(findAll(Element.HERO_RIGHT));
+        result = result.concat(findAll(Element.HERO_PIPE_LEFT));
+        result = result.concat(findAll(Element.HERO_PIPE_RIGHT));
         return result[0];
     };
 
     var getOtherHeroes = function() {
         var result = [];
-        result = result.concat(findAll(Elements.OTHER_HERO_LEFT));
-        result = result.concat(findAll(Elements.OTHER_HERO_RIGHT));
-        result = result.concat(findAll(Elements.OTHER_HERO_LADDER));
-        result = result.concat(findAll(Elements.OTHER_HERO_PIPE_LEFT));
-        result = result.concat(findAll(Elements.OTHER_HERO_PIPE_RIGHT));
+        result = result.concat(findAll(Element.OTHER_HERO_LEFT));
+        result = result.concat(findAll(Element.OTHER_HERO_RIGHT));
+        result = result.concat(findAll(Element.OTHER_HERO_LADDER));
+        result = result.concat(findAll(Element.OTHER_HERO_PIPE_LEFT));
+        result = result.concat(findAll(Element.OTHER_HERO_PIPE_RIGHT));
         return result;
     };
 
     var getEnemies = function() {
         var result = [];
-        result = result.concat(findAll(Elements.ENEMY_LADDER));
-        result = result.concat(findAll(Elements.ENEMY_LADDER));
-        result = result.concat(findAll(Elements.ENEMY_LEFT));
-        result = result.concat(findAll(Elements.ENEMY_PIPE_LEFT));
-        result = result.concat(findAll(Elements.ENEMY_PIPE_RIGHT));
-        result = result.concat(findAll(Elements.ENEMY_RIGHT));
-        result = result.concat(findAll(Elements.ENEMY_PIT));
+        result = result.concat(findAll(Element.ENEMY_LADDER));
+        result = result.concat(findAll(Element.ENEMY_LADDER));
+        result = result.concat(findAll(Element.ENEMY_LEFT));
+        result = result.concat(findAll(Element.ENEMY_PIPE_LEFT));
+        result = result.concat(findAll(Element.ENEMY_PIPE_RIGHT));
+        result = result.concat(findAll(Element.ENEMY_RIGHT));
+        result = result.concat(findAll(Element.ENEMY_PIT));
         return result;
     };
 
     var getGold = function() {
-        return findAll(Elements.GOLD);
+        return findAll(Element.GOLD);
     };
 
     var getWalls = function() {
         var result = [];
-        result = result.concat(findAll(Elements.BRICK));
-        result = result.concat(findAll(Elements.UNDESTROYABLE_WALL));
+        result = result.concat(findAll(Element.BRICK));
+        result = result.concat(findAll(Element.UNDESTROYABLE_WALL));
         return result;
     };
 
     var getLadders = function() {
         var result = [];
-        result = result.concat(findAll(Elements.LADDER));
-        result = result.concat(findAll(Elements.HERO_LADDER));
-        result = result.concat(findAll(Elements.ENEMY_LADDER));
+        result = result.concat(findAll(Element.LADDER));
+        result = result.concat(findAll(Element.HERO_LADDER));
+        result = result.concat(findAll(Element.ENEMY_LADDER));
         return result;
     };
 
     var getPipes = function() {
         var result = [];
-        result = result.concat(findAll(Elements.PIPE));
-        result = result.concat(findAll(Elements.HERO_PIPE_LEFT));
-        result = result.concat(findAll(Elements.HERO_PIPE_RIGHT));
-        result = result.concat(findAll(Elements.OTHER_HERO_PIPE_LEFT));
-        result = result.concat(findAll(Elements.OTHER_HERO_PIPE_RIGHT));
+        result = result.concat(findAll(Element.PIPE));
+        result = result.concat(findAll(Element.HERO_PIPE_LEFT));
+        result = result.concat(findAll(Element.HERO_PIPE_RIGHT));
+        result = result.concat(findAll(Element.OTHER_HERO_PIPE_LEFT));
+        result = result.concat(findAll(Element.OTHER_HERO_PIPE_RIGHT));
         return result;
     };
 
     var isGameOver = function() {
-        return board.indexOf(Elements.HERO_DIE) != -1;
+        return board.indexOf(Element.HERO_DIE) != -1;
     };
 
     var isAt = function(x, y, element) {
@@ -376,7 +376,7 @@ var Board = function(board) {
 
     var getAt = function(x, y) {
         if (pt(x, y).isOutOf(size)) {
-            return Elements.UNDESTROYABLE_WALL;
+            return Element.UNDESTROYABLE_WALL;
         }
         return board.charAt(xyl.getLength(x, y));
     };
@@ -455,32 +455,32 @@ var Board = function(board) {
 
     var hasEnemyAt = function(x, y) {
         return isAnyOfAt(x, y,
-            [Elements.ENEMY_LADDER, Elements.ENEMY_LEFT, Elements.ENEMY_PIPE_LEFT, Elements.ENEMY_PIPE_RIGHT, Elements.ENEMY_PIT, Elements.ENEMY_RIGHT]);
+            [Element.ENEMY_LADDER, Element.ENEMY_LEFT, Element.ENEMY_PIPE_LEFT, Element.ENEMY_PIPE_RIGHT, Element.ENEMY_PIT, Element.ENEMY_RIGHT]);
     };
 
     var hasOtherHeroAt = function(x, y) {
         return isAnyOfAt(x, y,
-            [Elements.OTHER_HERO_LEFT, Elements.OTHER_HERO_RIGHT, Elements.OTHER_HERO_LADDER, Elements.OTHER_HERO_PIPE_LEFT, Elements.OTHER_HERO_PIPE_RIGHT]);
+            [Element.OTHER_HERO_LEFT, Element.OTHER_HERO_RIGHT, Element.OTHER_HERO_LADDER, Element.OTHER_HERO_PIPE_LEFT, Element.OTHER_HERO_PIPE_RIGHT]);
     };
 
     var hasWallAt = function(x, y) {
         if (pt(x, y).isOutOf(size)) {
             return true;
         }
-        return isAnyOfAt(x, y, [Elements.BRICK, Elements.UNDESTROYABLE_WALL]);
+        return isAnyOfAt(x, y, [Element.BRICK, Element.UNDESTROYABLE_WALL]);
     };
 
     var hasLadderAt = function(x, y) {
-        return isAnyOfAt(x, y, [Elements.LADDER, Elements.HERO_LADDER, Elements.ENEMY_LADDER]);
+        return isAnyOfAt(x, y, [Element.LADDER, Element.HERO_LADDER, Element.ENEMY_LADDER]);
     };
 
     var hasGoldAt = function(x, y) {
-        return isAt(x, y, Elements.GOLD);
+        return isAt(x, y, Element.GOLD);
     };
 
     var hasPipeAt = function(x, y) {
         return isAnyOfAt(x, y,
-            [Elements.PIPE, Elements.HERO_PIPE_LEFT, Elements.HERO_PIPE_RIGHT, Elements.OTHER_HERO_PIPE_LEFT, Elements.OTHER_HERO_PIPE_RIGHT]);
+            [Element.PIPE, Element.HERO_PIPE_LEFT, Element.HERO_PIPE_RIGHT, Element.OTHER_HERO_PIPE_LEFT, Element.OTHER_HERO_PIPE_RIGHT]);
     };
 
     var countNear = function(x, y, element) {

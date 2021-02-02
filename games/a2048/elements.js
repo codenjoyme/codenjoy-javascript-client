@@ -1,4 +1,5 @@
 var A2048Element = module.exports = {
+
     NONE: ' ',
     _x: 'x',
     _2: '2',

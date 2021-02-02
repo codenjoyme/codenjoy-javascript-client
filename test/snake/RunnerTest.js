@@ -72,17 +72,17 @@ function runTest() {
 
     assertEquals("[7,11]", board.getMyHead());
 
-    assertEquals(true, board.isAt(9, 13, Elements.BAD_APPLE));
-    assertEquals(false, board.isAt(9, 13, Elements.GOOD_APPLE));
-    assertEquals(true, board.isAt(6, 8, Elements.TAIL_LEFT_UP));
-    assertEquals(false, board.isAt(3, -1, Elements.TAIL_LEFT_UP));
+    assertEquals(true, board.isAt(9, 13, Element.BAD_APPLE));
+    assertEquals(false, board.isAt(9, 13, Element.GOOD_APPLE));
+    assertEquals(true, board.isAt(6, 8, Element.TAIL_LEFT_UP));
+    assertEquals(false, board.isAt(3, -1, Element.TAIL_LEFT_UP));
 
-    assertEquals(false, board.isAt(3, board.size(), Elements.BREAK));
-    assertEquals(true, board.isAt(3, board.size() - 1, Elements.BREAK));
+    assertEquals(false, board.isAt(3, board.size(), Element.BREAK));
+    assertEquals(true, board.isAt(3, board.size() - 1, Element.BREAK));
 
-    assertEquals(Elements.BAD_APPLE, board.getAt(9, 13));
-    assertEquals(Elements.TAIL_LEFT_UP, board.getAt(6, 8));
-    assertEquals(Elements.BREAK, board.getAt(3, -1));
+    assertEquals(Element.BAD_APPLE, board.getAt(9, 13));
+    assertEquals(Element.TAIL_LEFT_UP, board.getAt(6, 8));
+    assertEquals(Element.BREAK, board.getAt(3, -1));
 
     assertEquals("☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼\n" +
         "☼        ☻    ☼\n" +
@@ -125,81 +125,81 @@ function runTest() {
         "Stone at: [[9,13]]\n", board.toString());
 
     assertEquals("[4,8],[6,8]",
-        board.findAll(Elements.TAIL_LEFT_UP));
+        board.findAll(Element.TAIL_LEFT_UP));
 
     assertEquals("[3,7],[3,8],[5,10],[5,11],[6,11]",
-        board.findAll(Elements.TAIL_HORIZONTAL));
+        board.findAll(Element.TAIL_HORIZONTAL));
 
     assertEquals("[9,13]",
-        board.findAll(Elements.BAD_APPLE));
+        board.findAll(Element.BAD_APPLE));
 
     assertEquals("[13,12]",
-        board.findAll(Elements.GOOD_APPLE));
+        board.findAll(Element.GOOD_APPLE));
 
     assertEquals("[7,11]",
-        board.findAll(Elements.HEAD_RIGHT));
+        board.findAll(Element.HEAD_RIGHT));
 
     assertEquals("",
-        board.findAll(Elements.HEAD_DOWN));
+        board.findAll(Element.HEAD_DOWN));
 
     assertEquals(true,
         board.isAnyOfAt(9, 13,
-            [Elements.HEAD_DOWN,
-            Elements.HEAD_UP,
-            Elements.HEAD_RIGHT,
-            Elements.HEAD_LEFT,
-            Elements.BAD_APPLE]));
+            [Element.HEAD_DOWN,
+            Element.HEAD_UP,
+            Element.HEAD_RIGHT,
+            Element.HEAD_LEFT,
+            Element.BAD_APPLE]));
 
     assertEquals(true,
         board.isAnyOfAt(9, 13,
-            [Elements.BAD_APPLE]));
+            [Element.BAD_APPLE]));
 
     assertEquals(true,
         board.isAnyOfAt(9, 13,
-            Elements.BAD_APPLE));
+            Element.BAD_APPLE));
 
     assertEquals(false,
         board.isAnyOfAt(9, 13,
-            [Elements.HEAD_DOWN,
-            Elements.HEAD_UP,
-            Elements.HEAD_RIGHT,
-            Elements.HEAD_LEFT]));
+            [Element.HEAD_DOWN,
+            Element.HEAD_UP,
+            Element.HEAD_RIGHT,
+            Element.HEAD_LEFT]));
 
     assertEquals(false,
         board.isAnyOfAt(9, 13,
-            [Elements.HEAD_DOWN]));
+            [Element.HEAD_DOWN]));
 
     assertEquals(false,
         board.isAnyOfAt(9, 13,
-            Elements.HEAD_DOWN));
+            Element.HEAD_DOWN));
 
     assertEquals(false,
         board.isAnyOfAt(3, -1,
-            Elements.HEAD_DOWN));
+            Element.HEAD_DOWN));
 
     assertEquals(true,
         board.isNear(9, 12,
-            Elements.BAD_APPLE));
+            Element.BAD_APPLE));
 
     assertEquals(true,
         board.isNear(9, 14,
-            Elements.BAD_APPLE));
+            Element.BAD_APPLE));
 
     assertEquals(true,
         board.isNear(8, 13,
-            Elements.BAD_APPLE));
+            Element.BAD_APPLE));
 
     assertEquals(true,
         board.isNear(10, 13,
-            Elements.BAD_APPLE));
+            Element.BAD_APPLE));
 
     assertEquals(false,
         board.isNear(8, 12,
-            Elements.BAD_APPLE));
+            Element.BAD_APPLE));
 
     assertEquals(false,
         board.isNear(3, -1,
-            Elements.BAD_APPLE));
+            Element.BAD_APPLE));
 
     assertEquals(true,
         board.isBarrierAt(9, 13));
@@ -214,13 +214,13 @@ function runTest() {
         board.isBarrierAt(3, 3));
 
     assertEquals(1,
-        board.countNear(9, 12, Elements.BAD_APPLE));
+        board.countNear(9, 12, Element.BAD_APPLE));
 
     assertEquals(2,
-        board.countNear(0, 0, Elements.BREAK));
+        board.countNear(0, 0, Element.BREAK));
 
     assertEquals(0,
-        board.countNear(3, -1, Elements.GOOD_APPLE));
+        board.countNear(3, -1, Element.GOOD_APPLE));
 
     assertEquals("[5,4]",
         Direction.DOWN.change(new Point(5, 5)));

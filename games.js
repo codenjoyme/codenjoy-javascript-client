@@ -33,6 +33,8 @@ var Games = module.exports = {
                 return Element = ICanCodeElement;
             } else if (this.gameName == 'minesweeper') {
                 return Element = MinesweeperElement;
+            } else if (this.gameName == 'snake') {
+                return Element = SnakeElement;
             }
         } else if (name == 'board') {
             // case node
@@ -56,6 +58,8 @@ var Games = module.exports = {
                 return Board = ICanCodeBoard;
             } else if (this.gameName == 'minesweeper') {
                 return Board = MinesweeperBoard;
+            } else if (this.gameName == 'snake') {
+                return Board = SnakeBoard;
             }
         } else if (name == 'direction') {
             // case node
@@ -79,6 +83,8 @@ var Games = module.exports = {
                 return Direction = ICanCodeDirection();
             } else if (this.gameName == 'minesweeper') {
                 return Direction = MinesweeperDirection();
+            } else if (this.gameName == 'snake') {
+                return Direction = SnakeDirection();
             }
         }
     }

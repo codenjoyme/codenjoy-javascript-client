@@ -72,20 +72,20 @@ function runTest() {
     assertEquals("[2,5],[2,6]", board.getSpringboardTopElements());
 
 
-    assertEquals(true, board.isAt(0, 4, Elements.ACCELERATOR));
-    assertEquals(false, board.isAt(1, 4, Elements.ACCELERATOR));
-    assertEquals(true, board.isAt(1, 4, Elements.INHIBITOR));
-    assertEquals(false, board.isAt(2, 4, Elements.INHIBITOR));
-    assertEquals(true, board.isAt(0, 0, Elements.FENCE));
-    assertEquals(false, board.isAt(1, 4, Elements.FENCE));
+    assertEquals(true, board.isAt(0, 4, Element.ACCELERATOR));
+    assertEquals(false, board.isAt(1, 4, Element.ACCELERATOR));
+    assertEquals(true, board.isAt(1, 4, Element.INHIBITOR));
+    assertEquals(false, board.isAt(2, 4, Element.INHIBITOR));
+    assertEquals(true, board.isAt(0, 0, Element.FENCE));
+    assertEquals(false, board.isAt(1, 4, Element.FENCE));
 
-    assertEquals(true, board.isAtMany(0, 0, [Elements.OBSTACLE, Elements.LINE_CHANGER_UP, Elements.FENCE, Elements.LINE_CHANGER_DOWN]));
-    assertEquals(false, board.isAtMany(1, 4, [Elements.OBSTACLE, Elements.LINE_CHANGER_UP, Elements.FENCE, Elements.LINE_CHANGER_DOWN]));
+    assertEquals(true, board.isAtMany(0, 0, [Element.OBSTACLE, Element.LINE_CHANGER_UP, Element.FENCE, Element.LINE_CHANGER_DOWN]));
+    assertEquals(false, board.isAtMany(1, 4, [Element.OBSTACLE, Element.LINE_CHANGER_UP, Element.FENCE, Element.LINE_CHANGER_DOWN]));
 
 
-    assertEquals(Elements.ACCELERATOR, board.getAt(0, 4));
-    assertEquals(Elements.INHIBITOR, board.getAt(1, 4));
-    assertEquals(Elements.FENCE, board.getAt(0, 0));
+    assertEquals(Element.ACCELERATOR, board.getAt(0, 4));
+    assertEquals(Element.INHIBITOR, board.getAt(1, 4));
+    assertEquals(Element.FENCE, board.getAt(0, 0));
 
 
     assertEquals("          \n" +
@@ -130,33 +130,33 @@ function runTest() {
 
     assertEquals(true,
         board.isAnyOfAt(0, 4,
-            [Elements.INHIBITOR,
-            Elements.BIKE,
-            Elements.OTHER_BIKE_FALLEN,
-            Elements.ACCELERATOR]));
+            [Element.INHIBITOR,
+            Element.BIKE,
+            Element.OTHER_BIKE_FALLEN,
+            Element.ACCELERATOR]));
 
     assertEquals(true,
         board.isAnyOfAt(0, 0,
-            [Elements.FENCE]));
+            [Element.FENCE]));
 
     assertEquals(false,
         board.isAnyOfAt(0, 1,
-            [Elements.FENCE]));
+            [Element.FENCE]));
 
     assertEquals(true,
         board.isNear(1, 1,
-            Elements.BIKE));
+            Element.BIKE));
 
     assertEquals(false,
         board.isNear(2, 2,
-            Elements.BIKE));
+            Element.BIKE));
 
 
     assertEquals("[0,0],[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0],[9,0],[0,6],[4,6]",
-        board.findAll(Elements.FENCE));
+        board.findAll(Element.FENCE));
 
     assertEquals("",
-        board.findAll(Elements.BIKE_FALLEN));
+        board.findAll(Element.BIKE_FALLEN));
 
 
     assertEquals(true,
@@ -169,16 +169,16 @@ function runTest() {
         board.isBarrierAt(4, 1));
 
     assertEquals(2,
-        board.countNear(1, 0, Elements.FENCE));
+        board.countNear(1, 0, Element.FENCE));
 
     assertEquals(0,
-        board.countNear(1, 0, Elements.BIKE));
+        board.countNear(1, 0, Element.BIKE));
 
-    assertEquals(true, board.checkNearMe(Direction.DOWN, [Elements.ACCELERATOR, Elements.FENCE]));
-    assertEquals(false, board.checkNearMe(Direction.DOWN, [Elements.ACCELERATOR, Elements.INHIBITOR, Elements.LINE_CHANGER_UP]));
+    assertEquals(true, board.checkNearMe(Direction.DOWN, [Element.ACCELERATOR, Element.FENCE]));
+    assertEquals(false, board.checkNearMe(Direction.DOWN, [Element.ACCELERATOR, Element.INHIBITOR, Element.LINE_CHANGER_UP]));
 
-    assertEquals(true, board.checkNearMeManyMoves([Direction.RIGHT, Direction.RIGHT, Direction.DOWN], [Elements.ACCELERATOR, Elements.FENCE]));
-    assertEquals(false, board.checkNearMeManyMoves([Direction.RIGHT, Direction.RIGHT, Direction.DOWN], [Elements.ACCELERATOR, Elements.INHIBITOR, Elements.LINE_CHANGER_UP]));
+    assertEquals(true, board.checkNearMeManyMoves([Direction.RIGHT, Direction.RIGHT, Direction.DOWN], [Element.ACCELERATOR, Element.FENCE]));
+    assertEquals(false, board.checkNearMeManyMoves([Direction.RIGHT, Direction.RIGHT, Direction.DOWN], [Element.ACCELERATOR, Element.INHIBITOR, Element.LINE_CHANGER_UP]));
 
     assertEquals(true, board.isOutOfFieldRelativeToMe(Direction.LEFT));
     assertEquals(false, board.isOutOfFieldRelativeToMe(Direction.RIGHT));
