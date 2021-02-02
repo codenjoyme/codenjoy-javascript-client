@@ -7,7 +7,8 @@ var Games = require('./games.js');
 // Games.init('a2048');
 // Games.init('battlecity');
 // Games.init('excitebike');
-Games.init('icancode');
+// Games.init('icancode');
+Games.init('minesweeper');
 
 var Point = require('./point.js');
 var Direction = Games.require('./direction.js');
@@ -29,8 +30,9 @@ var Solver = module.exports = {
     get : function(board) {
         // TODO your code here
 
+        return Direction.UP;
         // return Direction.ACT;
         // return [Direction.LEFT, Direction.ACT3];
-        return Direction.fire(Direction.LEFT);
+        // return Direction.fire(Direction.LEFT);
     }
 };

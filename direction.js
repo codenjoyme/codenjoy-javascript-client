@@ -1,4 +1,11 @@
-var _init = function(index, dx, dy, name){
+var _init = function(index, dx, dy, name, isAction){
+
+    var withAct = function(){
+        if (!! isAction) {
+            return _init(index, dx, dy, name, !!isAction);
+        }
+        return _init(index, 0, 0, name + ',act', true);
+    };
 
     var changeX = function(x) {
         return x + dx;
@@ -80,7 +87,9 @@ var _init = function(index, dx, dy, name){
         mirrorTopBottom : mirrorTopBottom,
         mirrorBottomTop : mirrorBottomTop,
         toString : toString,
-        getIndex : getIndex
+        getIndex : getIndex,
+        withAct: withAct,
+        isAction: isAction
     };
 };
 

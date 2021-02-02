@@ -31,6 +31,8 @@ var Games = module.exports = {
                 return Element = ExcitebikeElement;
             } else if (this.gameName == 'icancode') {
                 return Element = ICanCodeElement;
+            } else if (this.gameName == 'minesweeper') {
+                return Element = MinesweeperElement;
             }
         } else if (name == 'board') {
             // case node
@@ -52,6 +54,8 @@ var Games = module.exports = {
                 return Board = ExcitebikeBoard;
             } else if (this.gameName == 'icancode') {
                 return Board = ICanCodeBoard;
+            } else if (this.gameName == 'minesweeper') {
+                return Board = MinesweeperBoard;
             }
         } else if (name == 'direction') {
             // case node
@@ -73,6 +77,8 @@ var Games = module.exports = {
                 return Direction = ExcitebikeDirection();
             } else if (this.gameName == 'icancode') {
                 return Direction = ICanCodeDirection();
+            } else if (this.gameName == 'minesweeper') {
+                return Direction = MinesweeperDirection();
             }
         }
     }
