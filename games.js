@@ -35,6 +35,8 @@ var Games = module.exports = {
                 return Element = MinesweeperElement;
             } else if (this.gameName == 'snake') {
                 return Element = SnakeElement;
+            } else if (this.gameName == 'snakebattle') {
+                return Element = SnakeBattleElement;
             }
         } else if (name == 'board') {
             // case node
@@ -60,6 +62,8 @@ var Games = module.exports = {
                 return Board = MinesweeperBoard;
             } else if (this.gameName == 'snake') {
                 return Board = SnakeBoard;
+            } else if (this.gameName == 'snakebattle') {
+                return Board = SnakeBattleBoard;
             }
         } else if (name == 'direction') {
             // case node
@@ -85,6 +89,8 @@ var Games = module.exports = {
                 return Direction = MinesweeperDirection();
             } else if (this.gameName == 'snake') {
                 return Direction = SnakeDirection();
+            } else if (this.gameName == 'snakebattle') {
+                return Direction = SnakeBattleDirection();
             }
         }
     }
