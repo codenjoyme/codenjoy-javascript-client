@@ -19,6 +19,7 @@
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  * #L%
  */
+// TODO fix this test
 function runTest() {
     var board = new Board(
       /*14*/'☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼' +
