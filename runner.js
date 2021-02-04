@@ -63,8 +63,18 @@ function getWSUrl(url) {
               .replace("?code=", "&code=");
 }
 
+function getUrl() {
+    if (typeof process == 'undefined' || typeof process.argv == 'undefined') {
+        return Solver.url;
+    } else {
+        var url = process.argv.slice(2)[0];
+        console.log(url)
+        return url;
+    }
+}
+
 function connect() {
-    var url = getWSUrl(Solver.url);
+    var url = getWSUrl(getUrl());
     var socket = new WSocket(url);
     log('Opening...');
 

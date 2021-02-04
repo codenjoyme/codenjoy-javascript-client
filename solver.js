@@ -24,7 +24,7 @@ var Solver = module.exports = {
      * paste here board page url from browser (board page) after registration
      */
     // url : 'http://127.0.0.1:8080/codenjoy-contest/board/player/demo2?code=8849690732208865792',
-    url : 'http://127.0.0.1:8080/codenjoy-contest/board/player/0?code=000000000000  ',
+    url : 'http://127.0.0.1:8080/codenjoy-contest/board/player/0?code=000000000000',
 
     /**
      * @return next hero action
