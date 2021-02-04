@@ -4,13 +4,13 @@
 var Games = require('./games.js');
 // Games.init('bomberman');
 // Games.init('tetris');
-// Games.init('a2048');
+Games.init('a2048');
 // Games.init('battlecity');
 // Games.init('excitebike');
 // Games.init('icancode');
 // Games.init('minesweeper');
 // Games.init('snake');
-Games.init('snakebattle');
+// Games.init('snakebattle');
 
 var Point = require('./point.js');
 var Direction = Games.require('./direction.js');
