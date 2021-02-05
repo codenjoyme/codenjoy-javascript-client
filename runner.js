@@ -64,13 +64,17 @@ function getWSUrl(url) {
 }
 
 function getUrl() {
-    if (typeof process == 'undefined' || typeof process.argv == 'undefined') {
-        return Solver.url;
-    } else {
-        var url = process.argv.slice(2)[0];
-        console.log(url)
-        return url;
+    if (typeof process != 'undefined' && typeof process.argv != 'undefined') {
+        var env = process.argv.slice(2);
+        if (env != '') {
+            var url = env[0];
+            console.log('Got url from Environment: ' + url);
+            return url;
+        }
     }
+    var url = Solver.url;
+    console.log('Got url from Solver: ' + url);
+    return url;
 }
 
 function connect() {
