@@ -83,6 +83,9 @@ var ICanCodeElement = module.exports = function() {
         FEMALE_ZOMBIE: el('♀', 'ZOMBIE'),
         MALE_ZOMBIE: el('♂', 'ZOMBIE'),
         ZOMBIE_DIE: el('✝', 'ZOMBIE_DIE'),
+		
+		FOG: el('F', null),
+		BACKGROUND: el('G', null),
 
         getElements: function() {
             return elements.slice(0);
