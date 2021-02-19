@@ -13,7 +13,76 @@ var ICanCodeBoard = module.exports = function(boardString){
     var LAYER3 = 2;
 
     var board = JSON.parse(boardString);
-    var layersString = board.layers;
+
+	var temp = {};
+	temp.layers = [];
+	temp.layers[0] =
+	'                    ' +
+	'┐      ╔═════════┐  ' +
+	'│      ║˃.....$..│  ' +
+	'│      ║....Z....│ ╔' +
+	'│      ║.........│ ║' +
+	'│  ╔═══╝˃...$...O│ ║' +
+	'╚══╝......O..S...│ ║' +
+	'.....┌─╗....$..OO│ ║' +
+	'┌────┘ ║.O.......│ ║' +
+	'│      ║.........╚═╝' +
+	'┘ ╔════╝...OO.......' +
+	'  ║..$..............' +
+	'  ║$..┌─╗...┌─────╗.' +
+	'  ║...│ ║...│     ║O' +
+	'  └───┘ ║...│     ║.' +
+	'┐       ║...│  ╔══╝.' +
+	'│  ╔════╝...│  ║....' +
+	'│  ║........╚══╝....' +
+	'╚══╝O...O...$....┌──' +
+	'...........O┌────┘  ';
+
+	temp.layers[1] =
+	'--------------------' +    
+	'--------------------' +    
+	'---------→------→---' +    
+	'--------------------' +    
+	'-----------B-BBBB---' +    
+	'---------→------→---' +
+	'--------♂------☺----' +
+	'--------------------' +
+	'--------------------' +
+	'--------------------' +
+	'----------B---------' +
+	'--------B-B----B-B--' +
+	'----------B--------B' +
+	'---------BB---------' +
+	'--------------------' +
+	'----------B---------' +
+	'----------BB--------' +
+	'----B------------BB-' +
+	'----------------♀---' +
+	'--------------------';
+
+	temp.layers[2] =
+	'--------------------' +
+	'--------------------' +    
+	'--------------------' +    
+	'--------------------' +    
+	'--------------------' +    
+	'--------------------' +    
+	'--------------------' +    
+	'--------------------' +    
+	'--------------------' +    
+	'--------------------' +    
+	'--------------------' +    
+	'--------------------' +    
+	'--------------------' +    
+	'--------------------' +    
+	'--------------------' +    
+	'--------------------' +    
+	'--------------------' +    
+	'--------------------' +    
+	'--------------------' +    
+	'--------------------';	
+	
+    var layersString = board.layers;	
     var scannerOffset = board.offset;
     var heroPosition = board.heroPosition;
     var levelFinished = board.levelFinished;
@@ -208,6 +277,18 @@ var ICanCodeBoard = module.exports = function(boardString){
             Element.ZOMBIE_DIE];
         return get(LAYER2, elements);
     };
+
+    var getPerks = function () {
+        var elements = [
+            Element.UNSTOPPABLE_LASER_PERK,
+            Element.DEATH_RAY_PERK,
+            Element.UNLIMITED_FIRE_PERK,
+            Element.FIRE_PERK,
+            Element.JUMP_PERK,
+            Element.MOVE_BOXES_PERK
+        ];
+        return get(LAYER1, elements);
+    }
 
     var getHoles = function () {
         return get(LAYER1, Element.HOLE);
@@ -511,6 +592,9 @@ var ICanCodeBoard = module.exports = function(boardString){
                 case 8:
                     result += ' Zombies: ' + Stuff.printArray(getZombies());
                     break;
+                case 9:
+                    result += ' Perks: ' + printArray(getPerks());
+                    break;
             }
 
             if (i != layer1.length - 1) {
@@ -541,6 +625,7 @@ var ICanCodeBoard = module.exports = function(boardString){
         getStarts: getStarts,
         getZombies: getZombies,
         getZombieStart: getZombieStart,
+        getPerks: getPerks,
         getExits: getExits,
         getHoles: getHoles,
         isMeAlive: isMeAlive,
