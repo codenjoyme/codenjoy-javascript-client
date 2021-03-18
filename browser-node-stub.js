@@ -42,7 +42,7 @@ var chunk = function(str, n) {
 };
 
 var printBoardOnTextArea = function(data) {
-    if (!!onBoardData) {
+    if (typeof(onBoardData) != 'undefined' && !!onBoardData) {
         onBoardData(data);
     }
 

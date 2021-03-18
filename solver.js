@@ -2,15 +2,7 @@
  * Choose game
  */
 var Games = require('./games.js');
-// Games.init('bomberman');
-// Games.init('tetris');
-Games.init('a2048');
-// Games.init('battlecity');
-// Games.init('excitebike');
-// Games.init('icancode');
-// Games.init('minesweeper');
-// Games.init('snake');
-// Games.init('snakebattle');
+Games.init('battlecity');
 
 var Point = require('./point.js');
 var Direction = Games.require('./direction.js');
@@ -23,8 +15,7 @@ var Solver = module.exports = {
     /**
      * paste here board page url from browser (board page) after registration
      */
-    // url : 'http://127.0.0.1:8080/codenjoy-contest/board/player/demo2?code=8849690732208865792',
-    url : 'http://127.0.0.1:8080/codenjoy-contest/board/player/0?code=000000000000',
+    url : 'http://codenjoy.com:80/codenjoy-contest/board/player/3edq63tw0bq4w4iem7nb?code=1234567890123456789',
 
     /**
      * @return next hero action
@@ -32,9 +23,6 @@ var Solver = module.exports = {
     get : function(board) {
         // TODO your code here
 
-        return Direction.UP;
-        // return Direction.ACT;
-        // return [Direction.LEFT, Direction.ACT3];
-        // return Direction.fire(Direction.LEFT);
+        return Direction.ACT;
     }
 };

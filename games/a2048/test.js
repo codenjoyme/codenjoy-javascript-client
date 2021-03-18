@@ -1,26 +1,19 @@
-/*-
- * #%L
- * Codenjoy - it's a dojo-like platform from developers to developers.
- * %%
- * Copyright (C) 2018 - 2019 Codenjoy
- * %%
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as
- * published by the Free Software Foundation, either version 3 of the
- * License, or (at your option) any later version.
- * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public
- * License along with this program.  If not, see
- * <http://www.gnu.org/licenses/gpl-3.0.html>.
- * #L%
- */
-// TODO fix this test
-function runTest() {
+var A2048Test = module.exports = function(){
+	
+	var Games = require('./../../games.js');
+	var Direction = Games.require('./direction.js');
+	var Point = require('./../../point.js');
+	var Board = Games.require('./board.js');
+	var Element = Games.require('./elements.js');
+
+	assertEquals = function(expected, actual) {
+		expected = String(expected)
+		actual = String(actual)
+		if (expected !== actual) {
+			throw new Error('Expected: "' + expected + '" but was: "' + actual + '"');
+		}
+	}
+	
     var board = new Board(
       /*4*/ '22 AB' +
       /*3*/ '  x  ' +
@@ -62,7 +55,7 @@ function runTest() {
         "4 x  \n" +
         "   8 \n" +
         "\n" +
-        "Barriers at: [2,1],[1,2],[2,2],[3,2],[2,3]\n", board.toString());
+        "Barriers at: [[2,1],[1,2],[2,2],[3,2],[2,3]]\n", board.toString());
 
     assertEquals("[2,1],[1,2],[2,2],[3,2],[2,3]",
         board.getBarriers());
@@ -228,13 +221,4 @@ function runTest() {
     assertEquals(false,
         board.isNear(-1, 9,
             Element._x));
-
-}
-
-assertEquals = function(expected, actual) {
-    expected = String(expected)
-    actual = String(actual)
-    if (expected !== actual) {
-        throw Error('Expected: "' + expected + '" but was: "' + actual + '"');
-    }
 }

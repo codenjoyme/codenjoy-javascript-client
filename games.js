@@ -92,6 +92,33 @@ var Games = module.exports = {
             } else if (this.gameName == 'snakebattle') {
                 return Direction = SnakeBattleDirection();
             }
+        } else if (name == 'test') {
+            // case node
+            var module = require('./games/' + this.gameName + '/test.js');
+            if (typeof module != 'undefined') {
+                return module;
+            }
+
+            // case browser stub
+            if (this.gameName == 'bomberman') {
+                return Test = BombermanTest;
+            } else if (this.gameName == 'tetris') {
+                return Test = TetrisTest;
+            } else if (this.gameName == 'a2048') {
+                return Test = A2048Test;
+            } else if (this.gameName == 'battlecity') {
+                return Test = BattlecityTest;
+            } else if (this.gameName == 'excitebike') {
+                return Test = ExcitebikeTest;
+            } else if (this.gameName == 'icancode') {
+                return Test = ICanCodeTest;
+            } else if (this.gameName == 'minesweeper') {
+                return Test = MinesweeperTest;
+            } else if (this.gameName == 'snake') {
+                return Test = SnakeTest;
+            } else if (this.gameName == 'snakebattle') {
+                return Test = SnakeBattleTest;
+            }
         }
     }
 };

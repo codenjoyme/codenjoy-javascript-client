@@ -84,7 +84,7 @@ var A2048Board = module.exports = function(board){
         return util.format("Board:\n%s\n" +
             "Barriers at: %s\n",
             boardAsString(),
-            getBarriers()
+            Stuff.printArray(getBarriers())
         );
     };
 

@@ -8,6 +8,6 @@
   },
   "scripts": {
     "start": "npm install && node runner.js",
-    "test": "jest"
+    "test": "npm install && node test.js"
   }
 }

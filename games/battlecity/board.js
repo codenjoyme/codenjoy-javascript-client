@@ -137,8 +137,8 @@ var BattlecityBoard = module.exports = function(board){
             "Bulets at: %s\n",
             boardAsString(),
             getMe(),
-            getEnemies(),
-            getBullets()
+            Stuff.printArray(getEnemies()),
+            Stuff.printArray(getBullets())
         );
     };
 
