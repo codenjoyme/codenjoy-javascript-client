@@ -26,5 +26,19 @@ var Stuff = module.exports = {
                         .replaceAll('/', '');
 
         }
+    },
+
+    parameter : function(name, index, value) {
+        if (typeof process != 'undefined' && typeof process.argv != 'undefined') {
+            var env = process.argv.slice(2);
+            if (env != '') {
+                var value = env[index];
+                console.log('Got ' + name + ' from Environment: ' + value);
+
+                return value;
+            }
+        }
+        console.log('Got ' + name + ' from Solver: ' + value);
+        return value;
     }
 }

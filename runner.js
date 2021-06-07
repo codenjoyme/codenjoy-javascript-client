@@ -24,6 +24,7 @@ var Solver = require('./solver.js');
 var Games = require('./games.js');
 var WSocket = require('ws');
 var Board = Games.require('./board.js');
+var Stuff = require('./stuff.js');
 
 var browser = (browser !== undefined);
 
@@ -64,17 +65,7 @@ function getWSUrl(url) {
 }
 
 function getUrl() {
-    if (typeof process != 'undefined' && typeof process.argv != 'undefined') {
-        var env = process.argv.slice(2);
-        if (env != '') {
-            var url = env[0];
-            console.log('Got url from Environment: ' + url);
-            return url;
-        }
-    }
-    var url = Solver.url;
-    console.log('Got url from Solver: ' + url);
-    return url;
+    return Stuff.parameter('url', 1, Solver.url);
 }
 
 function connect() {

@@ -4,8 +4,8 @@ var Games = module.exports = {
 
     gameName : '',
 
-    init : function(name) {
-        this.gameName = name;
+    init : function(game) {
+        this.gameName = Stuff.parameter('game', 0, game);
     },
 
     'require': function(name) {

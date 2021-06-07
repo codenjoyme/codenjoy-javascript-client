@@ -2,7 +2,7 @@
  * Choose game
  */
 var Games = require('./games.js');
-Games.init('battlecity');
+Games.init('bomberman');
 
 var Point = require('./point.js');
 var Direction = Games.require('./direction.js');
@@ -23,6 +23,6 @@ var Solver = module.exports = {
     get : function(board) {
         // TODO your code here
 
-        return Direction.ACT;
+        return Direction.UP;
     }
 };
