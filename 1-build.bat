@@ -10,7 +10,7 @@ echo        +-------------------------------------------------------------------
 echo [0m
 echo on
 
-call npm install
+call %NPM% install
 
 call :ask
 

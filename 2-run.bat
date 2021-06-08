@@ -13,7 +13,7 @@ echo on
 chcp %CODE_PAGE%
 cls
 
-call npm start %GAME_TO_RUN% %BOARD_URL%
+call %NPM% start %GAME_TO_RUN% %BOARD_URL%
 
 call :ask
 

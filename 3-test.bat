@@ -13,7 +13,7 @@ echo on
 chcp %CODE_PAGE%
 cls
 
-call npm test
+call %NPM% test
 
 call :ask
 
