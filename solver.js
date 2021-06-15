@@ -2,7 +2,7 @@
  * Choose game
  */
 var Games = require('./games.js');
-Games.init('bomberman');
+Games.init('mollymage');
 
 var Point = require('./point.js');
 var Direction = Games.require('./direction.js');

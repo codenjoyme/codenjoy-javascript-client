@@ -19,8 +19,8 @@ var Games = module.exports = {
             }
 
             // case browser stub
-            if (this.gameName == 'bomberman') {
-                return Element = BombermanElement;
+            if (this.gameName == 'mollymage') {
+                return Element = MollyMageElement;
             } else if (this.gameName == 'tetris') {
                 return Element = TetrisElement;
             } else if (this.gameName == 'a2048') {
@@ -46,8 +46,8 @@ var Games = module.exports = {
             }
 
             // case browser stub
-            if (this.gameName == 'bomberman') {
-                return Board = BombermanBoard;
+            if (this.gameName == 'mollymage') {
+                return Board = MollyMageBoard;
             } else if (this.gameName == 'tetris') {
                 return Board = TetrisBoard;
             } else if (this.gameName == 'a2048') {
@@ -73,8 +73,8 @@ var Games = module.exports = {
             }
 
             // case browser stub
-            if (this.gameName == 'bomberman') {
-                return Direction = BombermanDirection();
+            if (this.gameName == 'mollymage') {
+                return Direction = MollyMageDirection();
             } else if (this.gameName == 'tetris') {
                 return Direction = TetrisDirection();
             } else if (this.gameName == 'a2048') {
@@ -100,8 +100,8 @@ var Games = module.exports = {
             }
 
             // case browser stub
-            if (this.gameName == 'bomberman') {
-                return Test = BombermanTest;
+            if (this.gameName == 'mollymage') {
+                return Test = MollyMageTest;
             } else if (this.gameName == 'tetris') {
                 return Test = TetrisTest;
             } else if (this.gameName == 'a2048') {

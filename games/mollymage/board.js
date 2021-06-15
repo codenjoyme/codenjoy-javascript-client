@@ -1,4 +1,4 @@
-var BombermanBoard = module.exports = function(board){
+var MollyMageBoard = module.exports = function(board){
 
     var Games = require('./../../games.js');
     var Direction = Games.require('./direction.js');
@@ -36,24 +36,24 @@ var BombermanBoard = module.exports = function(board){
     var size = boardSize();
     var xyl = new LengthToXY(size);
 
-    var getBomberman = function() {
+    var getHero = function() {
         var result = [];
-        result = result.concat(findAll(Element.BOMBERMAN));
-        result = result.concat(findAll(Element.BOMB_BOMBERMAN));
-        result = result.concat(findAll(Element.DEAD_BOMBERMAN));
+        result = result.concat(findAll(Element.HERO));
+        result = result.concat(findAll(Element.POTION_HERO));
+        result = result.concat(findAll(Element.DEAD_HERO));
         return result[0];
     };
 
-    var getOtherBombermans = function() {
+    var getOtherHeroes = function() {
         var result = [];
-        result = result.concat(findAll(Element.OTHER_BOMBERMAN));
-        result = result.concat(findAll(Element.OTHER_BOMB_BOMBERMAN));
-        result = result.concat(findAll(Element.OTHER_DEAD_BOMBERMAN));
+        result = result.concat(findAll(Element.OTHER_HERO));
+        result = result.concat(findAll(Element.OTHER_POTION_HERO));
+        result = result.concat(findAll(Element.OTHER_DEAD_HERO));
         return result;
     };
 
-    var isMyBombermanDead = function() {
-        return board.indexOf(Element.DEAD_BOMBERMAN) != -1;
+    var isMyHeronDead = function() {
+        return board.indexOf(Element.DEAD_HERO) != -1;
     };
 
     var isAt = function(x, y, element) {
@@ -80,39 +80,39 @@ var BombermanBoard = module.exports = function(board){
     };
 
     var getBarriers = function() {
-        var all = getMeatChoppers();
+        var all = getGhosts();
         all = all.concat(getWalls());
-        all = all.concat(getBombs());
-        all = all.concat(getDestroyWalls());
-        all = all.concat(getOtherBombermans());
+        all = all.concat(getPotions());
+        all = all.concat(getTreasureBoxes());
+        all = all.concat(getOtherHeroes());
         all = all.concat(getFutureBlasts());
         return removeDuplicates(all);
     };
 
     var toString = function() {
         return util.format("%s\n" +
-            "Bomberman at: %s\n" +
-            "Other bombermans at: %s\n" +
-            "Meat choppers at: %s\n" +
-            "Destroy walls at: %s\n" +
-            "Bombs at: %s\n" +
+            "Hero at: %s\n" +
+            "Other heroes at: %s\n" +
+            "Ghosts at: %s\n" +
+            "Treasure boxes at: %s\n" +
+            "Potions at: %s\n" +
             "Blasts: %s\n" +
             "Expected blasts at: %s\n" +
             "Perks at: %s",
             boardAsString(),
-            getBomberman(),
-            Stuff.printArray(getOtherBombermans()),
-            Stuff.printArray(getMeatChoppers()),
-            Stuff.printArray(getDestroyWalls()),
-            Stuff.printArray(getBombs()),
+            getHero(),
+            Stuff.printArray(getOtherHeroes()),
+            Stuff.printArray(getGhosts()),
+            Stuff.printArray(getTreasureBoxes()),
+            Stuff.printArray(getPotions()),
             Stuff.printArray(getBlasts()),
             Stuff.printArray(getFutureBlasts()),
             Stuff.printArray(getPerks())
         );
     };
 
-    var getMeatChoppers = function() {
-        return findAll(Element.MEAT_CHOPPER);
+    var getGhosts = function() {
+        return findAll(Element.GHOST);
     };
 
     var findAll = function(element) {
@@ -130,28 +130,28 @@ var BombermanBoard = module.exports = function(board){
         return findAll(Element.WALL);
     };
 
-    var getDestroyWalls = function() {
-        return findAll(Element.DESTROYABLE_WALL);
+    var getTreasureBoxes = function() {
+        return findAll(Element.TREASURE_BOX);
     };
 
-    var getBombs = function() {
+    var getPotions = function() {
         var result = [];
-        result = result.concat(findAll(Element.BOMB_TIMER_1));
-        result = result.concat(findAll(Element.BOMB_TIMER_2));
-        result = result.concat(findAll(Element.BOMB_TIMER_3));
-        result = result.concat(findAll(Element.BOMB_TIMER_4));
-        result = result.concat(findAll(Element.BOMB_TIMER_5));
-        result = result.concat(findAll(Element.BOMB_BOMBERMAN));
-        result = result.concat(findAll(Element.OTHER_BOMB_BOMBERMAN));
+        result = result.concat(findAll(Element.POTION_TIMER_1));
+        result = result.concat(findAll(Element.POTION_TIMER_2));
+        result = result.concat(findAll(Element.POTION_TIMER_3));
+        result = result.concat(findAll(Element.POTION_TIMER_4));
+        result = result.concat(findAll(Element.POTION_TIMER_5));
+        result = result.concat(findAll(Element.POTION_HERO));
+        result = result.concat(findAll(Element.OTHER_POTION_HERO));
         return result;
     };
 
     var getPerks = function() {
         var result = [];
-        result = result.concat(findAll(Element.BOMB_BLAST_RADIUS_INCREASE));
-        result = result.concat(findAll(Element.BOMB_COUNT_INCREASE));
-        result = result.concat(findAll(Element.BOMB_REMOTE_CONTROL));
-        result = result.concat(findAll(Element.BOMB_IMMUNE));
+        result = result.concat(findAll(Element.POTION_BLAST_RADIUS_INCREASE));
+        result = result.concat(findAll(Element.POTION_COUNT_INCREASE));
+        result = result.concat(findAll(Element.POTION_REMOTE_CONTROL));
+        result = result.concat(findAll(Element.POTION_IMMUNE));
         return result;
     }
 
@@ -160,15 +160,15 @@ var BombermanBoard = module.exports = function(board){
     };
 
     var getFutureBlasts = function() {
-        var bombs = getBombs();
+        var potions = getPotions();
         var result = [];
-        for (var index in bombs) {
-            var bomb = bombs[index];
-            result.push(bomb);
-            result.push(new Point(bomb.getX() - 1, bomb.getY())); // TODO to remove duplicate
-            result.push(new Point(bomb.getX() + 1, bomb.getY()));
-            result.push(new Point(bomb.getX()    , bomb.getY() - 1));
-            result.push(new Point(bomb.getX()    , bomb.getY() + 1));
+        for (var index in potions) {
+            var potion = potions[index];
+            result.push(potion);
+            result.push(new Point(potion.getX() - 1, potion.getY())); // TODO to remove duplicate
+            result.push(new Point(potion.getX() + 1, potion.getY()));
+            result.push(new Point(potion.getX()    , potion.getY() - 1));
+            result.push(new Point(potion.getX()    , potion.getY() + 1));
         }
         var result2 = [];
         for (var index in result) {
@@ -219,18 +219,18 @@ var BombermanBoard = module.exports = function(board){
 
     return {
         size : boardSize,
-        getBomberman : getBomberman,
-        getOtherBombermans : getOtherBombermans,
-        isMyBombermanDead : isMyBombermanDead,
+        getHero : getHero,
+        getOtherHeroes : getOtherHeroes,
+        isMyHeroDead : isMyHeroDead,
         isAt : isAt,
         boardAsString : boardAsString,
         getBarriers : getBarriers,
         toString : toString,
-        getMeatChoppers : getMeatChoppers,
+        getGhosts : getGhosts,
         findAll : findAll,
         getWalls : getWalls,
-        getDestroyWalls : getDestroyWalls,
-        getBombs : getBombs,
+        getTreasureBoxes : getTreasureBoxes,
+        getPotions : getPotions,
         getBlasts : getBlasts,
         getFutureBlasts : getFutureBlasts,
         isAnyOfAt : isAnyOfAt,
