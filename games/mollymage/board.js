@@ -52,7 +52,7 @@ var MollyMageBoard = module.exports = function(board){
         return result;
     };
 
-    var isMyHeronDead = function() {
+    var isMyHeroDead = function() {
         return board.indexOf(Element.DEAD_HERO) != -1;
     };
 
