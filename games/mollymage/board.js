@@ -52,6 +52,14 @@ var MollyMageBoard = module.exports = function(board){
         return result;
     };
 
+    var getEnemyHeroes = function() {
+        var result = [];
+        result = result.concat(findAll(Element.ENEMY_HERO));
+        result = result.concat(findAll(Element.ENEMY_POTION_HERO));
+        result = result.concat(findAll(Element.ENEMY_DEAD_HERO));
+        return result;
+    };
+
     var isMyHeroDead = function() {
         return board.indexOf(Element.DEAD_HERO) != -1;
     };
@@ -85,6 +93,7 @@ var MollyMageBoard = module.exports = function(board){
         all = all.concat(getPotions());
         all = all.concat(getTreasureBoxes());
         all = all.concat(getOtherHeroes());
+        all = all.concat(getEnemyHeroes());
         all = all.concat(getFutureBlasts());
         return removeDuplicates(all);
     };
@@ -93,6 +102,7 @@ var MollyMageBoard = module.exports = function(board){
         return util.format("%s\n" +
             "Hero at: %s\n" +
             "Other heroes at: %s\n" +
+            "Enemy heroes at: %s\n" +
             "Ghosts at: %s\n" +
             "Treasure boxes at: %s\n" +
             "Potions at: %s\n" +
@@ -102,6 +112,7 @@ var MollyMageBoard = module.exports = function(board){
             boardAsString(),
             getHero(),
             Stuff.printArray(getOtherHeroes()),
+            Stuff.printArray(getEnemyHeroes()),
             Stuff.printArray(getGhosts()),
             Stuff.printArray(getTreasureBoxes()),
             Stuff.printArray(getPotions()),
@@ -143,6 +154,7 @@ var MollyMageBoard = module.exports = function(board){
         result = result.concat(findAll(Element.POTION_TIMER_5));
         result = result.concat(findAll(Element.POTION_HERO));
         result = result.concat(findAll(Element.OTHER_POTION_HERO));
+        result = result.concat(findAll(Element.ENEMY_POTION_HERO));
         return result;
     };
 
