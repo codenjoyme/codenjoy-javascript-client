@@ -164,6 +164,7 @@ var MollyMageBoard = module.exports = function(board){
         result = result.concat(findAll(Element.POTION_COUNT_INCREASE));
         result = result.concat(findAll(Element.POTION_REMOTE_CONTROL));
         result = result.concat(findAll(Element.POTION_IMMUNE));
+        result = result.concat(findAll(Element.POISON_THROWER));
         return result;
     }
 
