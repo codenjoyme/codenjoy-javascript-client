@@ -27,9 +27,9 @@ var WSocket = require('ws');
 
 var log = function(string) {
     console.log(string);
-    if (!!printBoardOnTextArea) {
-        printLogOnTextArea(string);
-    }
+    // if (!!printBoardOnTextArea) {
+    //     printLogOnTextArea(string);
+    // }
 };
 
 var printArray = function (array) {
@@ -43,9 +43,9 @@ var printArray = function (array) {
 
 var processBoard = function(boardString) {
     var board = new Board(boardString);
-    if (!!printBoardOnTextArea) {
-        printBoardOnTextArea(board.boardAsString());
-    }
+    // if (!!printBoardOnTextArea) {
+    //     printBoardOnTextArea(board.boardAsString());
+    // }
 
     var logMessage = /*board +*/ "\n";
     var answer = new DirectionSolver(board).get().toString();
@@ -206,6 +206,19 @@ var Element = {
     ROBBER_PIPE_RIGHT : '>',
     ROBBER_PIT_LEFT : '⍇',
     ROBBER_PIT_RIGHT : '⍈',
+
+    // Ворота
+    OPENED_DOOR_GOLD : '⍙',
+    OPENED_DOOR_SILVER : '⍚',
+    OPENED_DOOR_BRONZE : '⍜',
+
+    CLOSED_DOOR_GOLD : '⍍',
+    CLOSED_DOOR_SILVER : '⌺',
+    CLOSED_DOOR_BRONZE : '⌼',
+
+    KEY_GOLD : '✦',
+    KEY_SILVER : '✼',
+    KEY_BRONZE : '⍟',
 
     LADDER : 'H',              // Лестница - по ней можно перемещаться по уровню
     PIPE : '~',                // Труба - по ней так же можно перемещаться по уровню, но только горизонтально
@@ -520,6 +533,25 @@ var Board = function(board) {
         return result;
     };
 
+    var getDoors = function() {
+        var result = [];
+        result = result.concat(findAll(Element.OPENED_DOOR_GOLD));
+        result = result.concat(findAll(Element.OPENED_DOOR_SILVER));
+        result = result.concat(findAll(Element.OPENED_DOOR_BRONZE));
+        result = result.concat(findAll(Element.CLOSED_DOOR_GOLD));
+        result = result.concat(findAll(Element.CLOSED_DOOR_SILVER));
+        result = result.concat(findAll(Element.CLOSED_DOOR_BRONZE));
+        return result;
+    };
+
+    var getKeys = function() {
+        var result = [];
+        result = result.concat(findAll(Element.KEY_GOLD));
+        result = result.concat(findAll(Element.KEY_SILVER));
+        result = result.concat(findAll(Element.KEY_BRONZE));
+        return result;
+    };
+
     var isGameOver = function() {
         return !(board.indexOf(Element.HERO_DIE) == -1 && board.indexOf(Element.HERO_MASK_DIE) == -1);
     };
@@ -562,13 +594,15 @@ var Board = function(board) {
             "Other heroes at: %s\n" +
             "Enemy heroes at: %s\n" +
             "Robbers at: %s\n" +
-            "Mask potions at: %s\n",
+            "Mask potions at: %s\n" +
+            "Keys at: %s\n",
                 boardAsString(),
                 getMe(),
                 printArray(getOtherHeroes()),
                 printArray(getEnemyHeroes()),
                 printArray(getRobbers()),
-                printArray(getPotions())
+                printArray(getPotions()),
+                printArray(getKeys())
             );
     };
 
@@ -640,6 +674,14 @@ var Board = function(board) {
         return isAnyOfAt(x, y,getPipes());
     };
 
+    var hasDoorAt = function(x, y) {
+        return isAnyOfAt(x, y, getDoors());
+    };
+
+    var hasKeyAt = function(x, y) {
+        return isAnyOfAt(x, y, getKeys());
+    };
+
     var countNear = function(x, y, element) {
         if (pt(x, y).isOutOf(size)) {
             return 0;
@@ -668,6 +710,8 @@ var Board = function(board) {
         getPipes : getPipes,
         getClues : getClues,
         getPotions : getPotions,
+        getDoors : getDoors,
+        getKeys : getKeys,
         isAnyOfAt : isAnyOfAt,
         isNear : isNear,
         isBarrierAt : isBarrierAt,
@@ -677,6 +721,8 @@ var Board = function(board) {
         hasLadderAt : hasLadderAt,
         hasClueAt : hasClueAt,
         hasPipeAt : hasPipeAt,
+        hasDoorAt : hasDoorAt,
+        hasKeyAt : hasKeyAt,
         countNear : countNear
     };
 };
