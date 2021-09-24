@@ -38,7 +38,7 @@ var util = require('util');
 
 var processBoard = function(boardString) {
     var board = new Board(boardString);
-	if (!!printBoardOnTextArea) {
+    if (!!printBoardOnTextArea) {
         printBoardOnTextArea(JSON.stringify(board.getParsedBoard(), null, 4));
     }
 
@@ -46,7 +46,7 @@ var processBoard = function(boardString) {
     var answer = new LemonadeSolver(board).get().toString();
     logMessage += "Your request to the server: " + answer + "\n";
     logMessage += "-----------------------------------\n";
-	
+    
     log(logMessage);
 
     return answer;
@@ -84,7 +84,7 @@ var getCommand = function(amountOfGlassesToMake, signsToMake, priceCents){
 };
 
 var resetCall = function(){
-	return 'message(\'go reset\')';
+    return 'message(\'go reset\')';
 }
 
 var Board = function(board) {
@@ -102,7 +102,7 @@ var Board = function(board) {
     var isGameOver = function() {
         return boardObj.isGameOver;
     };
-	var getMessages = function() {
+    var getMessages = function() {
         return boardObj.messages;
     };
     var getDay = function() {
@@ -114,27 +114,27 @@ var Board = function(board) {
     var getHistory = function() {
         return boardObj.history;
     };
-	var getLogString = function() {
+    var getLogString = function() {
         return "Your assets: $" + getAssets() 
-			+ "\nLemonsville weather report: " + getWeatherForecast() 
-			+ "\nOn day " + getDay() 
-			+ ", the cost of lemonade is: $" + getLemonadeCost();
+            + "\nLemonsville weather report: " + getWeatherForecast() 
+            + "\nOn day " + getDay() 
+            + ", the cost of lemonade is: $" + getLemonadeCost();
     };
-	var getParsedBoard = function() {
+    var getParsedBoard = function() {
         return boardObj;
     };
 
     return {
-		getAssets : getAssets,
+        getAssets : getAssets,
         getWeatherForecast : getWeatherForecast,
         isBankrupt : isBankrupt,
         isGameOver : isGameOver,
         getMessages : getMessages,
         getDay : getDay,
-		getLemonadeCost : getLemonadeCost,
-		getHistory : getHistory,
-		getLogString : getLogString,
-		getParsedBoard : getParsedBoard
+        getLemonadeCost : getLemonadeCost,
+        getHistory : getHistory,
+        getLogString : getLogString,
+        getParsedBoard : getParsedBoard
    };
 };
 
@@ -152,7 +152,7 @@ var LemonadeSolver = function(board) {
             if (board.isBankrupt() || board.isGameOver()) {
                 return resetCall();
             }
-			
+            
             //TODO: Code your logic here and return direction
             return getCommand(30,0,10);
         }

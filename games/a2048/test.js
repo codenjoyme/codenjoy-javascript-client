@@ -1,19 +1,19 @@
 var A2048Test = module.exports = function(){
-	
-	var Games = require('./../../games.js');
-	var Direction = Games.require('./direction.js');
-	var Point = require('./../../point.js');
-	var Board = Games.require('./board.js');
-	var Element = Games.require('./elements.js');
+    
+    var Games = require('./../../games.js');
+    var Direction = Games.require('./direction.js');
+    var Point = require('./../../point.js');
+    var Board = Games.require('./board.js');
+    var Element = Games.require('./elements.js');
 
-	assertEquals = function(expected, actual) {
-		expected = String(expected)
-		actual = String(actual)
-		if (expected !== actual) {
-			throw new Error('Expected: "' + expected + '" but was: "' + actual + '"');
-		}
-	}
-	
+    assertEquals = function(expected, actual) {
+        expected = String(expected)
+        actual = String(actual)
+        if (expected !== actual) {
+            throw new Error('Expected: "' + expected + '" but was: "' + actual + '"');
+        }
+    }
+    
     var board = new Board(
       /*4*/ '22 AB' +
       /*3*/ '  x  ' +

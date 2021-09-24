@@ -1,11 +1,11 @@
 var ICanCodeTest = module.exports = function(){
-	
-	var Games = require('./../../games.js');
-	var Direction = Games.require('./direction.js');
-	var Point = require('./../../point.js');
-	var Board = Games.require('./board.js');
-	var Element = Games.require('./elements.js');
-	
+    
+    var Games = require('./../../games.js');
+    var Direction = Games.require('./direction.js');
+    var Point = require('./../../point.js');
+    var Board = Games.require('./board.js');
+    var Element = Games.require('./elements.js');
+    
     var toString = function (data) {
         if (data === undefined || data == null) {
             return data;

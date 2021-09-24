@@ -60,7 +60,7 @@ var processBoard = function(boardString) {
     var answer = new DirectionSolver(board).get().toString();
     logMessage += "Answer: " + answer + "\n";
     logMessage += "-----------------------------------\n";
-	
+    
     log(logMessage);
 
     return answer;

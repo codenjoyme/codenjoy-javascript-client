@@ -53,6 +53,6 @@ var BattlecityElement = module.exports = {
     PRIZE_IMMORTALITY: '1',
     PRIZE_BREAKING_WALLS: '2',
     PRIZE_WALKING_ON_WATER: '3',
-	PRIZE_VISIBILITY: '4',
+    PRIZE_VISIBILITY: '4',
     PRIZE_NO_SLIDING: '5'
 };

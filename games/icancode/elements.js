@@ -91,8 +91,8 @@ var ICanCodeElement = module.exports = function() {
         JUMP_PERK: el('j', 'JUMP_PERK'),
         MOVE_BOXES_PERK: el('m', 'MOVE_BOXES_PERK'),
 
-		FOG: el('F', null),
-		BACKGROUND: el('G', null),
+        FOG: el('F', null),
+        BACKGROUND: el('G', null),
 
         getElements: function() {
             return elements.slice(0);
