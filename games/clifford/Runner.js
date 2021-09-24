@@ -27,9 +27,9 @@ var WSocket = require('ws');
 
 var log = function(string) {
     console.log(string);
-    // if (!!printBoardOnTextArea) {
-    //     printLogOnTextArea(string);
-    // }
+    if (!!printBoardOnTextArea) {
+        printLogOnTextArea(string);
+    }
 };
 
 var printArray = function (array) {
@@ -43,9 +43,9 @@ var printArray = function (array) {
 
 var processBoard = function(boardString) {
     var board = new Board(boardString);
-    // if (!!printBoardOnTextArea) {
-    //     printBoardOnTextArea(board.boardAsString());
-    // }
+    if (!!printBoardOnTextArea) {
+        printBoardOnTextArea(board.boardAsString());
+    }
 
     var logMessage = /*board +*/ "\n";
     var answer = new DirectionSolver(board).get().toString();
