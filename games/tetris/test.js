@@ -6,914 +6,185 @@ var TetrisTest = module.exports = function(){
     var Board = Games.require('./board.js');
     var Element = Games.require('./elements.js');
 
-    describe('Point function', () => {
-      let point;
+    assertEquals = function(expected, actual) {
+        expected = String(expected)
+        actual = String(actual)
+        if (expected !== actual) {
+           throw new Error('Expected: "' + expected + '" but was: "' + actual + '"');
+        }
+    }
 
-      beforeEach(() => {
-        point = new Point({ x: 0, y: 0 })
-      })
+    try {
+        new Point();
+    } catch (e) {
+        assertEquals('X and Y are required and should be a number', e);
+    }
 
-      test('Should be defined', () => {
-        expect(Point).toBeDefined()
-      });
+    var pt = new Point(0, 0);
+    assertEquals('function', typeof pt.equals);
+    assertEquals('function', typeof pt.getX);
+    assertEquals('function', typeof pt.getY);
+    assertEquals('function', typeof pt.toString);
+    assertEquals('function', typeof pt.isOutOf);
 
-      test('Should raise error without coordinates', () => {
-        let point;
-        expect(() => point = new Point()).toThrowError('X and Y are required and should be a number')
-        expect(point).not.toBeDefined();
-      })
+    assertEquals(true, pt.equals(pt));
+    assertEquals(true, pt.equals(new Point(0, 0)));
+    assertEquals(false, pt.equals(new Point(0, 1)));
+    assertEquals(false, pt.equals(new Point(1, 0)));
 
-      test('Should contains specified methods', () => {
-        const methods = Object.getOwnPropertyNames(point);
-        expect(methods).toContain('equals');
-        expect(methods).toContain('getX');
-        expect(methods).toContain('getY');
-        expect(methods).toContain('toString');
-        expect(methods).toContain('top');
-        expect(methods).toContain('bottom');
-        expect(methods).toContain('left');
-        expect(methods).toContain('right');
-        expect(methods).toContain('isOutOf');
-      });
+    assertEquals(111, new Point(111, 0).getX()); 
+    assertEquals(222, new Point(0, 222).getY());
+    assertEquals('[111,222]', new Point(111, 222).toString());
 
-      describe('Equals method', () => {
-        test('Should be defined', () => {
-          expect(point.equals).toBeDefined();
-        });
+    var size = 5;
+    assertEquals(false, new Point(0, 0).isOutOf(size));
+    assertEquals(false, new Point(2, 2).isOutOf(size));
+    assertEquals(false, new Point(0, 4).isOutOf(size));
+    assertEquals(false, new Point(4, 0).isOutOf(size));
+    assertEquals(false, new Point(4, 4).isOutOf(size));
+    
+    assertEquals(true, new Point(-1, 0).isOutOf(size));
+    assertEquals(true, new Point(0, -1).isOutOf(size));
+    assertEquals(true, new Point(-1, -1).isOutOf(size));
+    assertEquals(true, new Point(5, 0).isOutOf(size));
+    assertEquals(true, new Point(0, 5).isOutOf(size));
+    assertEquals(true, new Point(5, 5).isOutOf(size));
+    assertEquals(true, new Point(12, 12).isOutOf(size));
 
-        test('Should return true', () => {
-          const point2 = new Point({ x: 0, y: 0 });
-          expect(point.equals(point2)).toBeTruthy();
-        })
-
-        test('Should return false', () => {
-          const point2 = new Point({ x: 0, y: 1 })
-          const point3 = new Point({ x: 1, y: 0 })
-          expect(point.equals(point2)).toBeFalsy();
-          expect(point.equals(point3)).toBeFalsy();
-        })
-      });
-
-      describe('getX method', () => {
-        test('Should be defined', () => {
-          expect(point.getX).toBeDefined();
-        });
-
-        test('Should return correct x coordinates', () => {
-          const point = new Point({ x: 111, y: 0 });
-          expect(point.getX()).toBe(111);
-        });
-      })
-
-      describe('getY method', () => {
-        test('Should be defined', () => {
-          expect(point.getY).toBeDefined();
-        });
-
-        test('Should return correct y coordinates', () => {
-          const point = new Point({ x: 0, y: 222 });
-          expect(point.getY()).toBe(222);
-        })
-      });
-
-      describe('toString method', () => {
-        test('Should be defined', () => {
-          expect(point.toString).toBeDefined();
-        });
-
-        test('Should return correct value', () => {
-          const coords = { x: 1, y: 2 }
-          const point = new Point(coords);
-          const answer =  `[${ coords.x }, ${ coords.y }]`
-
-          expect(point.toString()).toBe(answer)
-        })
-      });
-
-      describe('top method', () => {
-        test('Should be defined', () => {
-          expect(point.top).toBeDefined();
-        });
-
-        test('Should return point above itself by 1', () => {
-          const point = new Point({x: 1, y: 1});
-          const newPoint = point.top();
-          expect(newPoint.getX()).toBe(1);
-          expect(newPoint.getY()).toBe(2)
-        })
-      });
-
-      describe('bottom method', () => {
-        test('Should be defined', () => {
-          expect(point.bottom).toBeDefined();
-        });
-
-        test('Should return point below itself by 1', () => {
-          const point = new Point({x: 1, y: 1});
-          const newPoint = point.bottom();
-          expect(newPoint.getX()).toBe(1);
-          expect(newPoint.getY()).toBe(0)
-        })
-      });
-
-      describe('left method', () => {
-        test('Should be defined', () => {
-          expect(point.left).toBeDefined();
-        });
-
-        test('Should return point to the left from itself by 1', () => {
-          const point = new Point({x: 1, y: 1});
-          const newPoint = point.left();
-          expect(newPoint.getX()).toBe(0);
-          expect(newPoint.getY()).toBe(1)
-        })
-      });
-
-      describe('right method', () => {
-        test('Should be defined', () => {
-          expect(point.right).toBeDefined();
-        });
-
-        test('Should return point to the right from itself by 1', () => {
-          const point = new Point({x: 1, y: 1});
-          const newPoint = point.right();
-          expect(newPoint.getX()).toBe(2);
-          expect(newPoint.getY()).toBe(1)
-        })
-      });
-
-      describe('isOutOf method', () => {
-        test('Should be defined', () => {
-          expect(point.isOutOf).toBeDefined();
-        });
-
-        test('Should return false if point is not out of board', () => {
-          const size = 5;
-          const point1 = new Point({ x: 0, y: 0 });
-          const point2 = new Point({ x: 2, y: 2 });
-          const point3 = new Point({ x: 0, y: 4 });
-          const point4 = new Point({ x: 4, y: 0 });
-          const point5 = new Point({ x: 4, y: 4 });
-
-          expect(point1.isOutOf(size)).toBeFalsy();
-          expect(point2.isOutOf(size)).toBeFalsy();
-          expect(point3.isOutOf(size)).toBeFalsy();
-          expect(point4.isOutOf(size)).toBeFalsy();
-          expect(point5.isOutOf(size)).toBeFalsy();
-        });
-
-        test('Should return true if point is out of board', () => {
-          const size = 5;
-          const point1 = new Point({ x: -1, y: 0 });
-          const point2 = new Point({ x: 0, y: -1 });
-          const point3 = new Point({ x: -1, y: -1 });
-          const point4 = new Point({ x: 5, y: 0 });
-          const point5 = new Point({ x: 0, y: 5 });
-          const point6 = new Point({ x: 5, y: 5 });
-          const point7 = new Point({ x: 12, y: 12 });
-
-          expect(point1.isOutOf(size)).toBeTruthy();
-          expect(point2.isOutOf(size)).toBeTruthy();
-          expect(point3.isOutOf(size)).toBeTruthy();
-          expect(point4.isOutOf(size)).toBeTruthy();
-          expect(point5.isOutOf(size)).toBeTruthy();
-          expect(point6.isOutOf(size)).toBeTruthy();
-          expect(point7.isOutOf(size)).toBeTruthy();
-        })
-      })
-    })
-
-    describe('Board function', () => {
-      let board;
-      const boardString = '..................' +
-                        '..................' +
-                        '..................' +
-                        '..................' +
-                        '..................' +
-                        '..................' +
-                        '..................' +
-                        '..................' +
-                        '..................' +
-                        '..................' +
-                        '..................' +
-                        '..................' +
-                        '..................' +
-                        '..................' +
-                        '.ZZ...............' +
-                        '..ZZ.........Z....' +
-                        'OOI......OO.ZZSST.' +
-                        'OOI.IIII.OO.ZSSTTT';
-
-      const boardObj = {
+    var boardString = '..................' +
+                      '..................' +
+                      '..................' +
+                      '..................' +
+                      '..................' +
+                      '..................' +
+                      '..................' +
+                      '..................' +
+                      '..................' +
+                      '..................' +
+                      '..................' +
+                      '..................' +
+                      '..................' +
+                      '..................' +
+                      '.ZZ...............' +
+                      '..ZZ.........Z....' +
+                      'OOI......OO.ZZSST.' +
+                      'OOI.IIII.OO.ZSSTTT';
+    const boardObj = {
         currentFigureType: "O",
         futureFigures: ["O", "O", "O", "O"],
         layers: [boardString],
-        currentFigurePoint: { x: 0, y: 0 },
+        currentFigurePoint: new Point(0, 0),
         levelProgress: { total: 0, current: 1, lastPassed: 0 }
-      }
+      };
+    board = new Board(JSON.stringify(boardObj));
+    
+    assertEquals(true, board.isAt(new Point(0, 0), Element.YELLOW));
+    assertEquals(true, board.isAt(new Point(12, 1), Element.RED));
+    assertEquals(false, board.isAt(new Point(0, 0), Element.RED));
+    assertEquals(Element.RED, board.getAt(new Point(2, 3)));
+    assertEquals(Element.NONE, board.getAt(new Point(3, 0)));
+    assertEquals(undefined, board.getAt(new Point(-1, -1)));
+    assertEquals(undefined, board.getAt(new Point(18, 18)));
+
+    assertEquals('[0,1],[1,1],[9,1],[10,1],[0,0],[1,0],[9,0],[10,0]',
+        board.findAll(Element.YELLOW));
+    assertEquals('', board.findAll(Element.CYAN));
+
+    assertEquals(true, board.isAnyOfAt(new Point(17, 0),
+        [Element.RED, Element.PURPLE, Element.BLUE]));
+    assertEquals(false, board.isAnyOfAt(new Point(5, 5),
+        [Element.RED, Element.YELLOW]));
+
+    assertEquals(true, board.isNear(new Point(13, 2), Element.RED));
+    assertEquals(true, board.isNear(new Point(1, 3), Element.RED));
+    assertEquals(false, board.isNear(new Point(0, 3), Element.BLUE));
+
+    assertEquals('Z,S,Z,S', board.getNear(new Point(13, 1)));
+    assertEquals('Z', board.getNear(new Point(13, 2)));
+    assertEquals('I', board.getNear(new Point(7, 0)));
+    assertEquals('', board.getNear(new Point(6, 3)));
+
+    assertEquals(2, board.countNear(new Point(17, 1), Element.PURPLE));
+    assertEquals(2, board.countNear(new Point(15, 1), Element.PURPLE));
+    assertEquals(0, board.countNear(new Point(13, 1), Element.PURPLE));
+
+    assertEquals(0, board.countNear(new Point(2, 7)));
+    assertEquals(0, board.countNear(new Point(0, 1)));
+
+    assertEquals('[0,17],[1,17],[2,17],[3,17],[4,17],[5,17],[6,17],' +
+        '[7,17],[8,17],[9,17],[10,17],[11,17],[12,17],[13,17],[14,17],' +
+        '[15,17],[16,17],[17,17],[0,16],[1,16],[2,16],[3,16],[4,16],' +
+        '[5,16],[6,16],[7,16],[8,16],[9,16],[10,16],[11,16],[12,16],' +
+        '[13,16],[14,16],[15,16],[16,16],[17,16],[0,15],[1,15],[2,15],' +
+        '[3,15],[4,15],[5,15],[6,15],[7,15],[8,15],[9,15],[10,15],' +
+        '[11,15],[12,15],[13,15],[14,15],[15,15],[16,15],[17,15],[0,14],' +
+        '[1,14],[2,14],[3,14],[4,14],[5,14],[6,14],[7,14],[8,14],[9,14],' +
+        '[10,14],[11,14],[12,14],[13,14],[14,14],[15,14],[16,14],[17,14],' +
+        '[0,13],[1,13],[2,13],[3,13],[4,13],[5,13],[6,13],[7,13],[8,13],' +
+        '[9,13],[10,13],[11,13],[12,13],[13,13],[14,13],[15,13],[16,13],' +
+        '[17,13],[0,12],[1,12],[2,12],[3,12],[4,12],[5,12],[6,12],[7,12],' +
+        '[8,12],[9,12],[10,12],[11,12],[12,12],[13,12],[14,12],[15,12],' +
+        '[16,12],[17,12],[0,11],[1,11],[2,11],[3,11],[4,11],[5,11],[6,11],' +
+        '[7,11],[8,11],[9,11],[10,11],[11,11],[12,11],[13,11],[14,11],' +
+        '[15,11],[16,11],[17,11],[0,10],[1,10],[2,10],[3,10],[4,10],[5,10],' +
+        '[6,10],[7,10],[8,10],[9,10],[10,10],[11,10],[12,10],[13,10],' +
+        '[14,10],[15,10],[16,10],[17,10],[0,9],[1,9],[2,9],[3,9],[4,9],' +
+        '[5,9],[6,9],[7,9],[8,9],[9,9],[10,9],[11,9],[12,9],[13,9],[14,9],' +
+        '[15,9],[16,9],[17,9],[0,8],[1,8],[2,8],[3,8],[4,8],[5,8],[6,8],' +
+        '[7,8],[8,8],[9,8],[10,8],[11,8],[12,8],[13,8],[14,8],[15,8],[16,8],' +
+        '[17,8],[0,7],[1,7],[2,7],[3,7],[4,7],[5,7],[6,7],[7,7],[8,7],' +
+        '[9,7],[10,7],[11,7],[12,7],[13,7],[14,7],[15,7],[16,7],[17,7],' +
+        '[0,6],[1,6],[2,6],[3,6],[4,6],[5,6],[6,6],[7,6],[8,6],[9,6],' +
+        '[10,6],[11,6],[12,6],[13,6],[14,6],[15,6],[16,6],[17,6],[0,5],' +
+        '[1,5],[2,5],[3,5],[4,5],[5,5],[6,5],[7,5],[8,5],[9,5],[10,5],' +
+        '[11,5],[12,5],[13,5],[14,5],[15,5],[16,5],[17,5],[0,4],[1,4],' +
+        '[2,4],[3,4],[4,4],[5,4],[6,4],[7,4],[8,4],[9,4],[10,4],[11,4],' +
+        '[12,4],[13,4],[14,4],[15,4],[16,4],[17,4],[0,3],[3,3],[4,3],[5,3],' +
+        '[6,3],[7,3],[8,3],[9,3],[10,3],[11,3],[12,3],[13,3],[14,3],[15,3],' +
+        '[16,3],[17,3],[0,2],[1,2],[4,2],[5,2],[6,2],[7,2],[8,2],[9,2],' +
+        '[10,2],[11,2],[12,2],[14,2],[15,2],[16,2],[17,2],[3,1],[4,1],[5,1],' +
+        '[6,1],[7,1],[8,1],[11,1],[17,1],[3,0],[8,0],[11,0]',
+        board.findAllFreeSpace());
+
+    try {
+        board.getDistanceToNextElementByDirection(
+            new Point(0,0), 'topp', Element.RED);
+    } catch (e) {
+        assertEquals('Error: Direction can be one of [top, bottom, left, right]', e);
+    }
+    assertEquals(15, board.getDistanceToNextElementByDirection(
+        new Point(2, 1), 'right', Element.BLUE));
+
+    assertEquals(2, board.getDistanceToNextElementByDirection(
+        new Point(2, 1), 'left', Element.BLUE));
+
+    assertEquals(16, board.getDistanceToNextElementByDirection(
+        new Point(2, 1), 'up', Element.BLUE))
+
+    assertEquals(1, board.getDistanceToNextElementByDirection(
+        new Point(2, 1), 'down', Element.BLUE))
+
+    assertEquals(5, board.getDistanceToNextElementByDirection(
+        new Point(12, 2), 'right', Element.BLUE));
+
+    assertEquals(12, board.getDistanceToNextElementByDirection(
+        new Point(12, 2), 'left', Element.BLUE));
+
+    assertEquals(15, board.getDistanceToNextElementByDirection(
+        new Point(12, 2), 'up', Element.BLUE))
+
+    assertEquals(2, board.getDistanceToNextElementByDirection(
+        new Point(12, 2), 'down', Element.BLUE))
+
+    assertEquals(2, board.getDistanceToNextElementByDirection(
+        new Point(0, 0), 'right', Element.BLUE));
 
-      beforeEach(() => {
-        board = new Board(JSON.stringify(boardObj))
-      });
+    assertEquals(0, board.getDistanceToNextElementByDirection(
+        new Point(0, 0), 'left', Element.BLUE));
 
-      test('Should be defined', () => {
-        expect(Board).toBeDefined();
-      });
+    assertEquals(17, board.getDistanceToNextElementByDirection(
+        new Point(0, 0), 'up', Element.BLUE))
 
-      describe('isAt method', () => {
-        test('Should be defined', () => {
-          expect(board.isAt).toBeDefined();
-        });
-
-        test('Should return true if YELLOW figure at 0,0 coords', () => {
-          const point = new Point({ x: 0, y: 0 });
-          expect(board.isAt(point, Element.YELLOW)).toBeTruthy();
-        });
-
-        test('Should return true if RED figure at 12,1 coords', () => {
-          const point = new Point({ x: 12, y: 1 });
-          expect(board.isAt(point, Element.RED)).toBeTruthy();
-        });
-
-        test('Should return false if RED figure is not at 0,0 coords', () => {
-          const point = new Point({ x: 0, y: 0 });
-          expect(board.isAt(point, Element.RED)).toBeFalsy();
-        });
-      });
-
-      describe('getAt method', () => {
-        test('Should be defined', () => {
-          expect(board.getAt).toBeDefined();
-        });
-
-        test('Should return BLUE figure at 2,3 coords', () => {
-          const point = new Point({ x: 2, y: 3 });
-          expect(board.getAt(point)).toBe(Element.RED);
-        });
-
-        test('Should return NONE element if no figure at 3,0 coords', () => {
-          const point = new Point({ x: 3, y: 0 });
-          expect(board.getAt(point)).toBe(Element.NONE);
-        });
-
-        test('Should return undefined if position out of the board', () => {
-          const point1 = new Point({ x: -1, y: -1 });
-          const point2 = new Point({ x: 18, y: 18 });
-          expect(board.getAt(point1)).not.toBeDefined();
-          expect(board.getAt(point2)).not.toBeDefined();
-        });
-      });
-
-      describe('findAll method', () => {
-        test('Should be defined', () => {
-          expect(board.findAll).toBeDefined();
-        });
-
-        test('Should return array with 8 points of YELLOW element', () => {
-          const result = [
-              new Point({ x: 0, y: 1 }),
-              new Point({ x: 1, y: 1 }),
-              new Point({ x: 9, y: 1 }),
-              new Point({ x: 10, y: 1 }),
-              new Point({ x: 0, y: 0 }),
-              new Point({ x: 1, y: 0 }),
-              new Point({ x: 9, y: 0 }),
-              new Point({ x: 10, y: 0 }),
-          ];
-          const answer = board.findAll(Element.YELLOW);
-
-          expect(answer.length).toBe(result.length);
-          answer.forEach((item, index) => {
-            expect(item.getX()).toBe(result[index].getX());
-            expect(item.getY()).toBe(result[index].getY())
-          })
-        });
-
-        test('Should return empty array if element does not exist', () => {
-          expect(board.findAll(Element.CYAN)).toEqual([])
-        })
-      });
-
-      describe('isAnyOfAt method', () => {
-        test('Should be defined', () => {
-          expect(board.isAnyOfAt).toBeDefined();
-        });
-
-        test('Should return true if any figure at 17,0', () => {
-          const point = new Point({ x: 17, y: 0 });
-          expect(board.isAnyOfAt(point)).toBeTruthy();
-        });
-
-        test('Should return false if any figure not at 5,5', () => {
-          const point = new Point({ x: 5, y: 5 })
-          expect(board.isAnyOfAt(point)).toBeFalsy();
-        })
-      });
-
-      describe('isNear method', () => {
-        test('Should be defined', () => {
-          expect(board.isNear).toBeDefined();
-        });
-
-        test('Should return true if RED figure near with 13,2', () => {
-          const point1 = new Point({ x: 13, y: 2 });
-          const point2 = new Point({ x: 1, y: 3 });
-
-          expect(board.isNear(point1, Element.RED)).toBeTruthy();
-          expect(board.isNear(point2, Element.RED)).toBeTruthy();
-        });
-
-        test('Should return false if BLUE figure not near with 0,3', () => {
-          const point = new Point({ x: 0, y: 3 });
-          expect(board.isNear(point, Element.BLUE)).toBeFalsy();
-        })
-      });
-
-      describe('getNear method', () => {
-        test('Should be defined', () => {
-          expect(board.getNear).toBeDefined();
-        });
-
-        test('Should return array with 4 elements which near with 13,1', () => {
-          const result = [
-            Element.RED,
-            Element.GREEN,
-            Element.GREEN,
-            Element.RED
-          ];
-
-          const point = new Point({ x: 13, y: 1 })
-
-          expect(board.getNear(point)).toEqual(result);
-        });
-
-        test('Should return array with 1 element which near with 13,2', () => {
-          const point = new Point({ x: 13, y: 2 });
-
-          expect(board.getNear(point)).toEqual([Element.RED])
-        });
-
-        test('Should return empty array for ', () => {
-          let board;
-          const boardString = '..................' +
-              '..................' +
-              '..................' +
-              '..................' +
-              '..................' +
-              '..................' +
-              '..................' +
-              '..................' +
-              '..................' +
-              '..................' +
-              '..................' +
-              '..................' +
-              '..................' +
-              '..................' +
-              '..I...L...........' +
-              '..I..........Z....' +
-              'OOI......OO.ZZSST.' +
-              'OOI.II.I.OO.ZSSTTT';
-
-          const boardObj = {
-            currentFigureType: "O",
-            futureFigures: ["O", "O", "O", "O"],
-            layers: [boardString],
-            currentFigurePoint: { x: 0, y: 0 },
-            levelProgress: { total: 0, current: 1, lastPassed: 0 }
-          };
-          board = new Board(JSON.stringify(boardObj));
-
-          const point1 = new Point({ x: 7, y: 0 });
-          const point2 = new Point({ x: 6, y: 3 });
-
-          expect(board.getNear(point1)).toEqual([]);
-          expect(board.getNear(point2)).toEqual([]);
-        })
-      });
-
-      describe('countNear method', () => {
-        test('Should be defined', () => {
-          expect(board.countNear).toBeDefined();
-        });
-
-        test('Should return 2 for PURPLE element', () => {
-          const point1 = new Point({ x: 17, y: 1 });
-          expect(board.countNear(point1, Element.PURPLE)).toBe(2);
-
-          const point2 = new Point({ x: 15, y: 1 })
-          expect(board.countNear(point2, Element.PURPLE))
-        });
-
-        test('Should return 0 for ORANGE element', () => {
-          const point = new Point({ x: 13, y: 1 });
-          expect(board.countNear(point, Element.ORANGE)).toBe(0)
-        })
-      });
-
-      describe('isFreeAt method', () => {
-        test('Should be defined', () => {
-          expect(board.isFreeAt).toBeDefined();
-        });
-
-        test('Should return true at 2,7', () => {
-          const point = new Point({ x: 2, y: 7 });
-          expect(board.isFreeAt(point)).toBeTruthy();
-        });
-
-        test('Should return false at 0,1', () => {
-          const point = new Point({ x: 0, y: 1 })
-          expect(board.isFreeAt(point)).toBeFalsy();
-        })
-      });
-
-      describe('findAllFreeSpace method', () => {
-        test('Should be defined', () => {
-          expect(board.findAllFreeSpace).toBeDefined();
-        });
-
-        test('Should return array of points of free space', () => {
-          const boardString = '..................' +
-                              '..................' +
-                              '..................' +
-                              '..................' +
-                              '..................' +
-                              '..................' +
-                              '..................' +
-                              '..................' +
-                              '..................' +
-                              '..................' +
-                              '..................' +
-                              '..................' +
-                              '..................' +
-                              '..................' +
-                              '..................' +
-                              'L................J' +
-                              'L.......OO.......J' +
-                              'LL......OO......JJ';
-          const boardObj = {
-            currentFigureType: "O",
-            futureFigures: ["O", "O", "O", "O"],
-            layers: [boardString],
-            currentFigurePoint: { x: 0, y: 0 },
-            levelProgress: { total: 0, current: 1, lastPassed: 0 }
-          };
-          board = new Board(JSON.stringify(boardObj));
-
-          let result = []
-          for (let x = 17; x <= 0; x--) {
-            for (let y = 17; x <= 0; y--) {
-              if (
-                  x === 0 && y === 0 ||
-                  x === 0 && y === 1 ||
-                  x === 1 && y === 2 ||
-                  x === 0 && y === 3 ||
-
-                  x === 8 && y === 0 ||
-                  x === 9 && y === 0 ||
-                  x === 8 && y === 1 ||
-                  x === 9 && y === 1 ||
-
-                  x === 16 && y === 0 ||
-                  x === 17 && y === 0 ||
-                  x === 17 && y === 1 ||
-                  x === 17 && y === 2
-              ) continue;
-
-              result.push(new Point({ x, y }));
-
-              const answer = board.findAllFreeSpace();
-
-              expect(answer.length).toBe(result.length);
-
-              answer.forEach((item, index) => {
-                expect(item.getX()).toBe(result[index].getX());
-                expect(item.getY()).toBe(result[index].getY());
-              })
-            }
-          }
-        });
-
-        test('Should return empty array', () => {
-          const boardString = 'IIIIIIIIIIIIIIIIII' +
-                              'OOOOOOOOOOOOOOOOOO' +
-                              'LLLLLLLLLLLLLLLLLL' +
-                              'JJJJJJJJJJJJJJJJJJ' +
-                              'SSSSSSSSSSSSSSSSSS' +
-                              'ZZZZZZZZZZZZZZZZZZ' +
-                              'TTTTTTTTTTTTTTTTTT' +
-                              'IIIIIIIIIIIIIIIIII' +
-                              'OOOOOOOOOOOOOOOOOO' +
-                              'LLLLLLLLLLLLLLLLLL' +
-                              'JJJJJJJJJJJJJJJJJJ' +
-                              'SSSSSSSSSSSSSSSSSS' +
-                              'ZZZZZZZZZZZZZZZZZZ' +
-                              'TTTTTTTTTTTTTTTTTT' +
-                              'IIIIIIIIIIIIIIIIII' +
-                              'OOOOOOOOOOOOOOOOOO' +
-                              'LLLLLLLLLLLLLLLLLL' +
-                              'JJJJJJJJJJJJJJJJJJ';
-          const boardObj = {
-            currentFigureType: "O",
-            futureFigures: ["O", "O", "O", "O"],
-            layers: [boardString],
-            currentFigurePoint: { x: 0, y: 0 },
-            levelProgress: { total: 0, current: 1, lastPassed: 0 }
-          };
-          board = new Board(JSON.stringify(boardObj));
-
-          expect(board.findAllFreeSpace().length).toBe(0)
-          expect(board.findAllFreeSpace()).toEqual([])
-        })
-      });
-
-      describe('getDistanceToNextElementByDirection method', () => {
-        let boardString;
-        let boardObj;
-        let board;
-
-        beforeEach(() => {
-          boardString = '..................' +
-              '..................' +
-              '..................' +
-              '..................' +
-              '..................' +
-              '..................' +
-              '..................' +
-              '..................' +
-              '..................' +
-              '..................' +
-              '..................' +
-              '..................' +
-              '..................' +
-              '..................' +
-              '..I...............' +
-              '..I..........Z....' +
-              'OOI......OO.ZZSST.' +
-              'OOI.IIII.OO.ZSSTTT';
-
-          boardObj = {
-            currentFigureType: "O",
-            futureFigures: ["O", "O", "O", "O"],
-            layers: [boardString],
-            currentFigurePoint: { x: 0, y: 0 },
-            levelProgress: { total: 0, current: 1, lastPassed: 0 }
-          };
-
-          board = new Board(JSON.stringify(boardObj))
-        })
-
-        test('Should be defined', () => {
-          expect(board.getDistanceToNextElementByDirection).toBeDefined();
-        });
-
-        test('Should raise error if direction does not match', () => {
-          const point = new Point({ x: 0, y: 0 })
-          expect(() => board.getDistanceToNextElementByDirection(point, 'topp', Element.RED)).toThrowError('Direction can be one of [top, bottom, left, right]')
-        })
-
-        describe('Right direction', () => {
-          test('Should return 1 for 0,0 coords for YELLOW element', () => {
-            boardString = '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          'OO................';
-
-            boardObj.layers = [boardString]
-
-            board = new Board(JSON.stringify(boardObj));
-
-            const point = new Point({ x: 0, y: 0 });
-
-            expect(board.getDistanceToNextElementByDirection(point, 'right', Element.YELLOW)).toBe(1)
-          });
-
-          test('Should return 16 for 0,0 coords for RED element', () => {
-            boardString = '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '................ZZ';
-
-            boardObj.layers = [boardString]
-            board = new Board(JSON.stringify(boardObj));
-
-            const point = new Point({ x: 0, y: 0 });
-
-            expect(board.getDistanceToNextElementByDirection(point, 'right', Element.RED)).toBe(16);
-          });
-
-          test('Should return size - 1 of board for 0,0 coords for YELLOW', () => {
-            boardString = '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '................ZZ';
-
-            boardObj.layers = [boardString]
-            board = new Board(JSON.stringify(boardObj));
-
-            const point = new Point({ x: 0, y: 0 });
-
-            expect(board.getDistanceToNextElementByDirection(point, 'right', Element.YELLOW)).toBe(17)
-          })
-        })
-
-        describe('Left direction', () => {
-          test('Should return 16 for 17,0 coords for GREEN element', () => {
-            boardString = '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                'SS................';
-
-            boardObj.layers = [boardString]
-
-            board = new Board(JSON.stringify(boardObj));
-
-            const point = new Point({ x: 17, y: 0 });
-
-            expect(board.getDistanceToNextElementByDirection(point, 'left', Element.GREEN)).toBe(16)
-          });
-
-          test('Should return 1 for 17,0 coords for GREEN element', () => {
-            boardString = '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '................SS';
-
-            boardObj.layers = [boardString]
-
-            board = new Board(JSON.stringify(boardObj));
-
-            const point = new Point({ x: 17, y: 0 });
-
-            expect(board.getDistanceToNextElementByDirection(point, 'left', Element.GREEN)).toBe(1)
-          });
-
-          test('Should return size of board for 17,0 for GREEN element', () => {
-            boardString = '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                'OO................';
-            boardObj.layers = [boardString]
-            board = new Board(JSON.stringify(boardObj));
-
-            const point = new Point({ x: 17, y: 0 });
-
-            expect(board.getDistanceToNextElementByDirection(point, 'left', Element.GREEN)).toBe(17)
-          });
-        });
-
-        describe('Top direction', () => {
-          test('Should return 16 for 5,0 coords for RED element', () => {
-            boardString = '....ZZ............' +
-                          '.....ZZ...........' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................';
-
-            boardObj.layers = [boardString]
-            board = new Board(JSON.stringify(boardObj));
-
-            const point = new Point({ x: 5, y: 0 });
-
-            expect(board.getDistanceToNextElementByDirection(point, 'top', Element.RED)).toBe(16)
-          });
-
-          test('Should return 1 for 5,0 coords for RED element', () => {
-            boardString = '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '....ZZ............' +
-                '.....ZZ...........';
-
-            boardObj.layers = [boardString]
-            board = new Board(JSON.stringify(boardObj));
-
-            const point = new Point({ x: 5, y: 0 });
-
-            expect(board.getDistanceToNextElementByDirection(point, 'top', Element.RED)).toBe(1)
-          });
-
-          test('Should return size of board for 5,0 for RED element', () => {
-            boardString = '..................' +
-                '.....SS...........' +
-                '....SS............' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                '..................' +
-                'OO................';
-            boardObj.layers = [boardString]
-            board = new Board(JSON.stringify(boardObj));
-
-            const point = new Point({ x: 5, y: 0 });
-
-            expect(board.getDistanceToNextElementByDirection(point, 'top', Element.RED)).toBe(17)
-          });
-        });
-
-        describe('Down direction', () => {
-          test('Should return 16 for 8,17 coords for PURPLE element', () => {
-            boardString = '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '........T.........' +
-                          '.......TTT........';
-
-            boardObj.layers = [boardString]
-            board = new Board(JSON.stringify(boardObj));
-
-            const point = new Point({ x: 8, y: 17 });
-
-            expect(board.getDistanceToNextElementByDirection(point, 'bottom', Element.PURPLE)).toBe(16)
-          });
-
-          test('Should return 1 for 8,2 coords for PURPLE element', () => {
-            boardString = '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '........T.........' +
-                          '.......TTT........';
-
-            boardObj.layers = [boardString]
-            board = new Board(JSON.stringify(boardObj));
-
-            const point = new Point({ x: 8, y: 2 });
-
-            expect(board.getDistanceToNextElementByDirection(point, 'bottom', Element.PURPLE)).toBe(1)
-          });
-
-          test('Should return size of board for 8,17 for PURPLE element', () => {
-            boardString = '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '..................' +
-                          '........I.........' +
-                          '........I.........' +
-                          '........I.........' +
-                          '........I.........';
-            boardObj.layers = [boardString]
-            board = new Board(JSON.stringify(boardObj));
-
-            const point = new Point({ x: 8, y: 17 });
-
-            expect(board.getDistanceToNextElementByDirection(point, 'bottom', Element.PURPLE)).toBe(17)
-          });
-        });
-      })
-    })
+    assertEquals(0, board.getDistanceToNextElementByDirection(
+        new Point(0, 0), 'down', Element.BLUE))
 }

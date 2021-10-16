@@ -89,6 +89,7 @@ var _init = function(index, dx, dy, name, isAction){
         toString : toString,
         getIndex : getIndex,
         withAct: withAct,
+        isDirection : true,
         isAction: isAction
     };
 };
@@ -103,14 +104,16 @@ var Direction = module.exports = {
 
 Direction.values = function() {
     var result = [];
-    for (var key in Direstion) {
-        result.push(Direstion[key]);
+    for (var key in this) {
+        if (!!this[key].isDirection) {
+            result.push(this[key]);
+        }
     }
     return result;
 };
 
 Direction.valueOf = function(indexOrName) {
-    var directions = Direction.values();
+    var directions = this.values();
     for (var i in directions) {
         var direction = directions[i];
         if (direction.getIndex() == indexOrName || direction.toString() == indexOrName) {

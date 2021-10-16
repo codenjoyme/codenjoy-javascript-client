@@ -22,9 +22,9 @@ const TetrisBoard = module.exports = function(boardString) {
 
     const toString = function() {
         return `currentFigure: ${ currentFigureType } at ${ currentFigurePoint.toString() }
-    futureFigures: ${ futureFigures }
-    board: ${ boardAsString() }
-    `
+                futureFigures: ${ futureFigures }
+                board: ${ boardAsString() }
+                `
     }
 
     const boardAsString = function() {
@@ -69,14 +69,16 @@ const TetrisBoard = module.exports = function(boardString) {
         return result;
     };
 
-    // Is any element at specified coordinates except Element.NONE
+    // Is any element at specified coordinates
     // args [Point] point of position
-    // return [Boolean] if any element at position except Element.NONE
-    const isAnyOfAt = function(point) {
-        if (point.isOutOf(size)) return false;
-
-        for (let element of Element.values()) {
-            if (element === Element.NONE) continue;
+    // args [Array] elements
+    // return [Boolean] if any element at position
+    const isAnyOfAt = function(point, elements) {
+        if (point.isOutOf(size)) {
+            return false;
+        }
+        for (var index in elements) {
+            var element = elements[index];
             if (isAt(point, element)) {
                 return true;
             }
@@ -89,10 +91,10 @@ const TetrisBoard = module.exports = function(boardString) {
     // args [String] element of Elements which will be compare
     // return [Boolean] if any specified element around position
     const isNear = function(point, element) {
-        return  isAt(point.right(), element) ||
-            isAt(point.left(), element) ||
-            isAt(point.top(), element) ||
-            isAt(point.bottom(), element);
+        return isAt(point.moveTo(Direction.LEFT), element) ||
+            isAt(point.moveTo(Direction.RIGHT), element) ||
+            isAt(point.moveTo(Direction.UP), element) ||
+            isAt(point.moveTo(Direction.DOWN), element);
     };
 
     // Get any elements around position Except Element.None
@@ -100,10 +102,10 @@ const TetrisBoard = module.exports = function(boardString) {
     // return [Array[String]] elements around position except Element.NONE
     const getNear = function(point) {
         let res = []
-        res.push(getAt(point.top()))
-        res.push(getAt(point.right()))
-        res.push(getAt(point.bottom()))
-        res.push(getAt(point.left()))
+        res.push(getAt(point.moveTo(Direction.LEFT)))
+        res.push(getAt(point.moveTo(Direction.RIGHT)))
+        res.push(getAt(point.moveTo(Direction.UP)))
+        res.push(getAt(point.moveTo(Direction.DOWN)))
 
         return res.filter(function(el) {
             return !!el && el !== Element.NONE
@@ -116,10 +118,10 @@ const TetrisBoard = module.exports = function(boardString) {
     // return [Number] count of elements around position
     const countNear = function(point, element) {
         let count = 0;
-        if (isAt(point.top(),      element)) count++;
-        if (isAt(point.right(),   element)) count++;
-        if (isAt(point.bottom(),    element)) count++;
-        if (isAt(point.left(),    element)) count++;
+        if (isAt(point.moveTo(Direction.LEFT),  element)) count++;
+        if (isAt(point.moveTo(Direction.RIGHT), element)) count++;
+        if (isAt(point.moveTo(Direction.UP),    element)) count++;
+        if (isAt(point.moveTo(Direction.DOWN),  element)) count++;
         return count;
     };
 
@@ -143,13 +145,15 @@ const TetrisBoard = module.exports = function(boardString) {
     // args [String] element of Elements which will be compare
     // return [Number] distance to the element in specified direction or distance from point to the end of glass
     const getDistanceToNextElementByDirection = function (point, direction, element) {
-        if (!['top', 'bottom', 'left', 'right'].includes(direction)) throw new Error('Direction can be one of [top, bottom, left, right]')
+        if (!['up', 'down', 'left', 'right'].includes(direction)) throw new Error('Direction can be one of [top, bottom, left, right]')
         let distance = 1;
 
         const getDistance = (point) => {
-            const newPoint = point[direction]();
+            const newPoint = point.moveTo(Direction.valueOf(direction));
 
-            if (newPoint.isOutOf(size)) return --distance;
+            if (newPoint.isOutOf(size)) {
+                return --distance;
+            }
 
             if (isAt(newPoint, element)) {
                 return distance;
