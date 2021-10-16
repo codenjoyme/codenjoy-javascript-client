@@ -106,6 +106,8 @@ var require = function(name) {
         return Point;
     } else if (name == 'games') {
         return Games;
+    } else if (name == 'board') {
+        return Board;
     } else if (name == 'util') {
         return {
             // thanks to http://stackoverflow.com/a/4673436

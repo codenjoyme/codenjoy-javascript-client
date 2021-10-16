@@ -1,4 +1,5 @@
 var Stuff = module.exports = {
+
     random : function(n){
         return Math.floor(Math.random()*n);
     },
@@ -10,6 +11,16 @@ var Stuff = module.exports = {
             result.push(element.toString());
         }
         return "[" + result + "]";
+    },
+
+    format : function() {
+        var util = require("util");
+
+        var template = arguments[0];
+        var params = Array.prototype.slice.call(arguments, 1);
+        params = params.map(it => Array.isArray(it) ? Stuff.printArray(it) : it.toString())
+        params.unshift(template);
+        return util.format.apply(null, params);
     },
 
     clean : function(string) {

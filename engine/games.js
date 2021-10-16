@@ -37,7 +37,7 @@ var Games = module.exports = {
                 }
             }
             // element module can be a function that returns an object or object
-            return Element = (typeof module == 'function') ? module() : module;
+            return (typeof module == 'function') ? module() : module;
         } else if (name == 'board') {
             // case node
             var module = require('../games/' + this.gameName + '/board.js');
@@ -64,34 +64,34 @@ var Games = module.exports = {
                 }
             }
             // board module is a function that can parse string board
-            return Board = module;
+            return module;
         } else if (name == 'direction') {
             // case node
             var module = require('../games/' + this.gameName + '/direction.js');
             if (typeof module == 'undefined') {
                 // case browser stub
                 if (this.gameName == 'mollymage') {
-                    module= MollyMageDirection();
+                    module = MollyMageDirection();
                 } else if (this.gameName == 'tetris') {
-                    module= TetrisDirection();
+                    module = TetrisDirection();
                 } else if (this.gameName == 'a2048') {
-                    module= A2048Direction();
+                    module = A2048Direction();
                 } else if (this.gameName == 'battlecity') {
-                    module= BattlecityDirection();
+                    module = BattlecityDirection();
                 } else if (this.gameName == 'excitebike') {
-                    module= ExcitebikeDirection();
+                    module = ExcitebikeDirection();
                 } else if (this.gameName == 'icancode') {
-                    module= ICanCodeDirection();
+                    module = ICanCodeDirection();
                 } else if (this.gameName == 'minesweeper') {
-                    module= MinesweeperDirection();
+                    module = MinesweeperDirection();
                 } else if (this.gameName == 'snake') {
-                    module= SnakeDirection();
+                    module = SnakeDirection();
                 } else if (this.gameName == 'snakebattle') {
-                    module= SnakeBattleDirection();
+                    module = SnakeBattleDirection();
                 }
             }
             // direction module can be a function that returns an object or object
-            return Direction = (typeof module == 'function') ? module() : module;
+            return (typeof module == 'function') ? module() : module;
         } else if (name == 'test') {
             // case node
             var module = require('../games/' + this.gameName + '/test.js');
@@ -118,7 +118,7 @@ var Games = module.exports = {
                 }
             }
             // test module is a function that will run in tests/test.js
-            return Test = module;
+            return module;
         }
     }
 };

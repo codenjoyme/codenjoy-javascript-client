@@ -21,7 +21,10 @@
  */
 
 var Solver = require('../solver.js');
+
 var Games = require('./games.js');
+Games.init(Solver.game);
+
 var WSocket = require('ws');
 var Board = Games.require('./board.js');
 var Stuff = require('./stuff.js');

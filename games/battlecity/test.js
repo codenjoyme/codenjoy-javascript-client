@@ -52,7 +52,7 @@ var BattlecityTest = module.exports = function(){
 
     assertEquals(Element.WALL, board.getAt(2, 2));
     assertEquals(Element.TANK_UP, board.getAt(1, 9));
-    assertEquals(Element.BATTLE_WALL, board.getAt(3, -1));
+    assertEquals(null, board.getAt(3, -1));
 
     assertEquals(
         "☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼\n" +

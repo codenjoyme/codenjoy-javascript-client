@@ -1,6 +1,7 @@
-var Point = require('./point.js');
-
 var LengthToXY = module.exports = function(boardSize) {
+
+    var Point = require('./point.js');
+
     function inversionY(y) {
         return boardSize - 1 - y;
     }
@@ -25,4 +26,4 @@ var LengthToXY = module.exports = function(boardSize) {
             return yy*boardSize + xx;
         }
     };
-};
+}
