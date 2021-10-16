@@ -124,7 +124,6 @@ var require = function(name) {
     } else if (name == 'ws') {
         return function(uri) {
             var socket = new WebSocket(uri);
-            var isSend = true;
             return {
                 'on' : function(name, callback) {
                     if (name == 'open') {
