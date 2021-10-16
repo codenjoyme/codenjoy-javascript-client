@@ -21,8 +21,13 @@
  */
 
 var Games = require('../engine/games.js');
-Games.init('battlecity');
-var Test = Games.require('./test.js');
+var all = ['a2048', 'battlecity', 'excitebike', 'icancode', 'snake', 'tetris'];
+for (var index in all) {
+    var game = all[index];
 
-Test();
-console.log('[All tests passed SUCCESSFULLY]');
+    Games.init(game);
+    var Test = Games.require('./test.js');
+    Test();
+
+    console.log('[All "' + game + '" tests passed SUCCESSFULLY]');
+}
