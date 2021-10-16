@@ -20,6 +20,10 @@ var BattlecityBoard = module.exports = function(board){
         return result[0];
     }
 
+    board.isGameOver = function() {
+        return board.getMe() == null;
+    }
+
     board.getEnemies = function() {
         var result = [];
         result = result.concat(board.findAll(Element.AI_TANK_UP));
@@ -39,16 +43,8 @@ var BattlecityBoard = module.exports = function(board){
         return result;
     }
 
-    board.isGameOver = function() {
-        return board.getMe() == null;
-    }
-
     board.isBulletAt = function(x, y) {
-        if (new Point(x, y).isOutOf(board.size())) {
-            return false;
-        }
-
-        return board.getAt(x, y) == Element.BULLET;
+        return board.isAt(x, y, Element.BULLET);
     }
 
     board.getBarriers = function() {
@@ -72,6 +68,14 @@ var BattlecityBoard = module.exports = function(board){
         return board.sort(result);
     }
 
+    board.isBarrierAt = function(x, y) {
+        if (new Point(x, y).isOutOf(board.size())) {
+            return true;
+        }
+
+        return board.contains(board.getBarriers(), new Point(x, y));
+    }
+
     board.toString = function() {
         return Stuff.format("Board:\n%s\n" +
             "My tank at: %s\n" +
@@ -82,14 +86,6 @@ var BattlecityBoard = module.exports = function(board){
             board.getEnemies(),
             board.getBullets()
         );
-    }
-
-    board.isBarrierAt = function(x, y) {
-        if (new Point(x, y).isOutOf(board.size())) {
-            return true;
-        }
-
-        return board.contains(board.getBarriers(), new Point(x, y));
     }
 
     return board;
