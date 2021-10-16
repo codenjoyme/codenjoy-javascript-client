@@ -1,6 +1,7 @@
 var ICanCodeElement = module.exports = function() {
 
-    var Direction = require('./../../engine/direction.js');
+    var Games = require('./../../engine/games.js');
+    var Direction = Games.require('./direction.js');
 
     var elements = [];
     var elementsTypes = [];
@@ -134,4 +135,4 @@ var ICanCodeElement = module.exports = function() {
             return element.type == 'WALL';
         }
     };
-}();
+}
