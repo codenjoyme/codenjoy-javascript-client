@@ -40,5 +40,14 @@ var Stuff = module.exports = {
         }
         console.log('Got ' + name + ' from Solver: ' + value);
         return value;
+    },
+
+    log : function(string) {
+        console.log(string);
+        var browser = (browser !== undefined);
+        if (browser) {
+            printLogOnTextArea(string);
+        }
     }
+
 }

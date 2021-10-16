@@ -28,13 +28,6 @@ var Stuff = require('./stuff.js');
 
 var browser = (browser !== undefined);
 
-var log = function(string) {
-    console.log(string);
-    if (browser) {
-        printLogOnTextArea(string);
-    }
-};
-
 var processBoard = function(boardString) {
     var board = new Board(boardString);
     if (browser) {
@@ -45,8 +38,8 @@ var processBoard = function(boardString) {
     var answer = Solver.get(board).toString();
     logMessage += "Answer: " + answer + "\n";
     logMessage += "-----------------------------------\n";
-    
-    log(logMessage);
+
+    Stuff.log(logMessage);
 
     return answer;
 };
@@ -71,14 +64,14 @@ function getUrl() {
 function connect() {
     var url = getWSUrl(getUrl());
     var socket = new WSocket(url);
-    log('Opening...');
+    Stuff.log('Opening...');
 
     socket.on('open', function() {
-        log('Web socket client opened ' + url);
+        Stuff.log('Web socket client opened ' + url);
     });
 
     socket.on('close', function() {
-        log('Web socket client closed');
+        Stuff.log('Web socket client closed');
 
         if (!browser) {
             setTimeout(function() {
