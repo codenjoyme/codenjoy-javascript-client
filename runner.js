@@ -70,6 +70,10 @@ function connect() {
         Stuff.log('Web socket client opened ' + url);
     });
 
+    socket.on('error', function() {
+        Stuff.log('Web socket client error');
+    });
+
     socket.on('close', function() {
         Stuff.log('Web socket client closed');
 
