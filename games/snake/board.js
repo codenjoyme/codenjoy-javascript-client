@@ -121,7 +121,7 @@ var SnakeBoard = module.exports = function(board){
             "Stone at: %s\n",
             boardAsString(),
             getMyHead(),
-            getMyBody(),
+            Stuff.printArray(getMyBody()),
             Stuff.printArray(getApple()),
             Stuff.printArray(getStone())
         );
