@@ -20,7 +20,7 @@
  * #L%
  */
 
-var Solver = require('./solver.js');
+var Solver = require('../solver.js');
 var Games = require('./games.js');
 var WSocket = require('ws');
 var Board = Games.require('./board.js');

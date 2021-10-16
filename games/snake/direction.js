@@ -1,6 +1,6 @@
 var SnakeDirection = module.exports = function() {
 
-    var Direction = require('./../../direction.js');
+    var Direction = require('./../../engine/direction.js');
 
     // move numbers
     Direction.LEFT = Direction._init(1, -1, 0, 'left');

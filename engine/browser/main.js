@@ -19,7 +19,9 @@
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  * #L%
  */
- var checkVisibility = function(checkbox, component) {
+var Stuff = require("../stuff.js");
+
+var checkVisibility = function(checkbox, component) {
     $(checkbox).change(function() {
         if ($(this).is(":checked")) {
             $(component).css('visibility', 'visible');
@@ -36,10 +38,14 @@ var apply = function(isConnect) {
          ws = connect();
 
          ws.on('open', function() {
+            Stuff.log('Web socket client opened ');
+
             $('#client-connect').prop('checked', true);
          });
 
          ws.on('close', function() {
+            Stuff.log('Web socket client closed');
+
             $('#client-connect').prop('checked', false);
          });
     } else {

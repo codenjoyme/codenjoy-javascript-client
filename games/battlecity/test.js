@@ -1,8 +1,8 @@
 var BattlecityTest = module.exports = function(){
 
-    var Games = require('./../../games.js');
+    var Games = require('./../../engine/games.js');
     var Direction = Games.require('./direction.js');
-    var Point = require('./../../point.js');
+    var Point = require('./../../engine/point.js');
     var Board = Games.require('./board.js');
     var Element = Games.require('./elements.js');
 

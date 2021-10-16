@@ -20,7 +20,7 @@
  * #L%
  */
 
-var Games = require('./games.js');
+var Games = require('../games.js');
 var Element = Games.require('./elements.js');
 
 alphabetElements = function() {

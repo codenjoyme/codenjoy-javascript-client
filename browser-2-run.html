@@ -22,7 +22,7 @@
 <html>
     <head>
         <meta charset="utf8">
-        <script src="jquery-3.1.0.js"></script>
+        <script src="engine/browser/jquery-3.1.0.js"></script>
         <script>
             if (typeof module == 'undefined') {
                 module = {};
@@ -33,13 +33,13 @@
         <script src="browser-0-settings.js"></script>
         -->
 
-        <script src="stuff.js"></script>
-        <script src="node-stub.js"></script>
-        <script src="games.js"></script>
+        <script src="engine/stuff.js"></script>
+        <script src="engine/browser/node-stub.js"></script>
+        <script src="engine/games.js"></script>
 
-        <script src="direction.js"></script>
-        <script src="lxy.js"></script>
-        <script src="point.js"></script>
+        <script src="engine/direction.js"></script>
+        <script src="engine/lxy.js"></script>
+        <script src="engine/point.js"></script>
 
         <script src="games/mollymage/direction.js"></script>
         <script src="games/mollymage/elements.js"></script>
@@ -78,9 +78,9 @@
         <script src="games/snakebattle/board.js"></script>
 
         <script src="solver.js"></script>
-        <script src="main.js"></script>
-        <script src="runner.js"></script>
-        <script src="canvases.js"></script>
+        <script src="engine/browser/main.js"></script>
+        <script src="engine/runner.js"></script>
+        <script src="engine/browser/canvases.js"></script>
 
         <script>
             $(document).ready(function() {

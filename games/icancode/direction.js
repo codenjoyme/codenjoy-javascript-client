@@ -1,6 +1,6 @@
 var ICanCodeDirection = module.exports = function() {
 
-    var Direction = require('./../../direction.js');
+    var Direction = require('./../../engine/direction.js');
 
     Direction.UP = Direction._init(3, 0, 1, 'UP');
     Direction.DOWN = Direction._init(4, 0, -1, 'DOWN');

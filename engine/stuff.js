@@ -17,12 +17,14 @@ var Stuff = module.exports = {
             // case node
             return string.replace('.js', '')
                         .replace('.', '')
+                        .replace('engine', '')
                         .replace('/', '');
 
         } else {
             // case browser stub
             return string.replaceAll('.js', '')
                         .replaceAll('.', '')
+                        .replace('engine', '')
                         .replaceAll('/', '');
 
         }
@@ -44,8 +46,7 @@ var Stuff = module.exports = {
 
     log : function(string) {
         console.log(string);
-        var browser = (browser !== undefined);
-        if (browser) {
+        if (typeof browser !== 'undefined') {
             printLogOnTextArea(string);
         }
     }

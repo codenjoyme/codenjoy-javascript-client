@@ -13,28 +13,7 @@
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
-d
-  You should have received a copy of the GNU General Public
-  License along with this program.  If not, see
-  <http://www.gnu.org/licenses/gpl-3.0.html>.
-  #L%
-  -->
-<!--
-  #%L
-  Codenjoy - it's a dojo-like platform from developers to developers.
-  %%
-  Copyright (C) 2018 Codenjoy
-  %%
-  This program is free software: you can redistribute it and/or modify
-  it under the terms of the GNU General Public License as
-  published by the Free Software Foundation, either version 3 of the
-  License, or (at your option) any later version.
-  
-  This program is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU General Public License for more details.
-  
+
   You should have received a copy of the GNU General Public
   License along with this program.  If not, see
   <http://www.gnu.org/licenses/gpl-3.0.html>.
@@ -43,19 +22,19 @@ d
 <html>
     <head>
         <meta charset="utf8">
-        <script src="jquery-3.1.0.js"></script>
+        <script src="engine/browser/jquery-3.1.0.js"></script>
         <script>
             if (typeof module == 'undefined') {
                 module = {};
             }
         </script>
-        <script src="stuff.js"></script>
-        <script src="node-stub.js"></script>
-        <script src="games.js"></script>
+        <script src="engine/stuff.js"></script>
+        <script src="engine/browser/node-stub.js"></script>
+        <script src="engine/games.js"></script>
 
-        <script src="direction.js"></script>
-        <script src="lxy.js"></script>
-        <script src="point.js"></script>
+        <script src="engine/direction.js"></script>
+        <script src="engine/lxy.js"></script>
+        <script src="engine/point.js"></script>
 
         <script src="games/mollymage/direction.js"></script>
         <script src="games/mollymage/elements.js"></script>
@@ -100,7 +79,7 @@ d
         <script src="games/snakebattle/board.js"></script>
 
         <script src="solver.js"></script>
-        <script src="test.js"></script>
+        <script src="tests/test.js"></script>
     </head>
     <body>
     </body>

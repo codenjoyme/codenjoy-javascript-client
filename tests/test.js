@@ -20,7 +20,7 @@
  * #L%
  */
 
-var Games = require('./games.js');
+var Games = require('../engine/games.js');
 Games.init('battlecity');
 var Test = Games.require('./test.js');
 

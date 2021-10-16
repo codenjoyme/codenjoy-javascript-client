@@ -1,6 +1,6 @@
 var ICanCodeElement = module.exports = function() {
 
-    var Direction = require('./../../direction.js');
+    var Direction = require('./../../engine/direction.js');
 
     var elements = [];
     var elementsTypes = [];

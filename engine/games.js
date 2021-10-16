@@ -13,7 +13,7 @@ var Games = module.exports = {
 
         if (name == 'elements') {
             // case node
-            var module = require('./games/' + this.gameName + '/elements.js');
+            var module = require('../games/' + this.gameName + '/elements.js');
             if (typeof module != 'undefined') {
                 return Element = module;
             }
@@ -40,7 +40,7 @@ var Games = module.exports = {
             }
         } else if (name == 'board') {
             // case node
-            var module = require('./games/' + this.gameName + '/board.js');
+            var module = require('../games/' + this.gameName + '/board.js');
             if (typeof module != 'undefined') {
                 return Board = module;
             }
@@ -67,7 +67,7 @@ var Games = module.exports = {
             }
         } else if (name == 'direction') {
             // case node
-            var module = require('./games/' + this.gameName + '/direction.js');
+            var module = require('../games/' + this.gameName + '/direction.js');
             if (typeof module != 'undefined') {
                 return module();
             }
@@ -94,7 +94,7 @@ var Games = module.exports = {
             }
         } else if (name == 'test') {
             // case node
-            var module = require('./games/' + this.gameName + '/test.js');
+            var module = require('../games/' + this.gameName + '/test.js');
             if (typeof module != 'undefined') {
                 return module;
             }

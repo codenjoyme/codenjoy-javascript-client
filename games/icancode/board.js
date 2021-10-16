@@ -1,12 +1,12 @@
 var ICanCodeBoard = module.exports = function(boardString){
 
-    var Games = require('./../../games.js');
+    var Games = require('./../../engine/games.js');
     var Direction = Games.require('./direction.js');
-    var Point = require('./../../point.js');
+    var Point = require('./../../engine/point.js');
     var util = require('util');
-    var Stuff = require('./../../stuff.js');
+    var Stuff = require('./../../engine/stuff.js');
     var Element = Games.require('./elements.js');
-    var LengthToXY = require('./../../lxy.js');
+    var LengthToXY = require('./../../engine/lxy.js');
 
     var LAYER1 = 0;
     var LAYER2 = 1;
