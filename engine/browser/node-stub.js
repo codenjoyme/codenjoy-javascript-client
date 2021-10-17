@@ -108,6 +108,8 @@ var require = function(name) {
         return Games;
     } else if (name == 'board') {
         return Board;
+    } else if (name == 'runner') {
+        return Runner;
     } else if (name == 'util') {
         return {
             // thanks to http://stackoverflow.com/a/4673436

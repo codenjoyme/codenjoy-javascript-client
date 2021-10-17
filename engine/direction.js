@@ -78,19 +78,19 @@ var _init = function(index, dx, dy, name, isAction){
     }
 
     return {
-        changeX : changeX,
-        changeY : changeY,
-        change : change,
-        inverted : inverted,
-        clockwise : clockwise,
-        contrClockwise : contrClockwise,
-        mirrorTopBottom : mirrorTopBottom,
-        mirrorBottomTop : mirrorBottomTop,
-        toString : toString,
-        getIndex : getIndex,
-        withAct: withAct,
+        changeX,
+        changeY,
+        change,
+        inverted,
+        clockwise,
+        contrClockwise,
+        mirrorTopBottom,
+        mirrorBottomTop,
+        toString,
+        getIndex,
+        withAct,
         isDirection : true,
-        isAction: isAction
+        isAction
     };
 };
 

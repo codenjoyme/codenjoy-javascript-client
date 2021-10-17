@@ -20,6 +20,9 @@
  * #L%
  */
 var Stuff = require("../stuff.js");
+var Runner = require("../runner.js");
+
+var runner = new Runner();
 
 var checkVisibility = function(checkbox, component) {
     $(checkbox).change(function() {
@@ -35,7 +38,7 @@ var ws = null;
 
 var apply = function(isConnect) {
     if (isConnect) {
-         ws = connect();
+         ws = runner.connect();
 
          ws.on('open', function() {
             Stuff.log('Web socket client opened ');

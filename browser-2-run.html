@@ -83,14 +83,14 @@
         <script src="games/snakebattle/board.js"></script>
 
         <script src="solver.js"></script>
-        <script src="engine/browser/main.js"></script>
         <script src="engine/runner.js"></script>
+        <script src="engine/browser/main.js"></script>
         <script src="engine/browser/canvases.js"></script>
 
         <script>
             $(document).ready(function() {
                 $('#game-to-run').val(Games.gameName);
-                $('#board-url').val(getUrl());
+                $('#board-url').val(Runner().getUrl());
             });
         </script>
         <style>

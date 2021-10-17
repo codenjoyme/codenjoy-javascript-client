@@ -20,87 +20,87 @@
  * #L%
  */
 
-var Solver = require('../solver.js');
+var Runner = module.exports = function() {
 
-var Games = require('./games.js');
-Games.init(Solver.game);
+    var Solver = require('../solver.js');
+    var Games = require('./games.js');
+    Games.init(Solver.game);
+    var WSocket = require('ws');
+    var Board = Games.require('./board.js');
+    var Stuff = require('./stuff.js');
 
-var WSocket = require('ws');
-var Board = Games.require('./board.js');
-var Stuff = require('./stuff.js');
+    var processBoard = function(boardString) {
+        var board = new Board(boardString);
+        if (browser) {
+            printBoardOnTextArea(board.boardAsString());
+        }
 
-var browser = (browser !== undefined);
+        var logMessage = board + "\n\n";
+        var answer = Solver.get(board).toString();
+        logMessage += "Answer: " + answer + "\n";
+        logMessage += "-----------------------------------\n";
 
-var processBoard = function(boardString) {
-    var board = new Board(boardString);
-    if (browser) {
-        printBoardOnTextArea(board.boardAsString());
+        Stuff.log(logMessage);
+
+        return answer;
+    };
+
+    var parseBoard = function(message) {
+        var pattern = new RegExp(/^board=(.*)$/);
+        var parameters = message.match(pattern);
+        var board = parameters[1];
+        return board;
     }
 
-    var logMessage = board + "\n\n";
-    var answer = Solver.get(board).toString();
-    logMessage += "Answer: " + answer + "\n";
-    logMessage += "-----------------------------------\n";
+    var getWSUrl = function(url) {
+        return url.replace("http", "ws")
+            .replace("board/player/", "ws?user=")
+            .replace("?code=", "&code=");
+    }
 
-    Stuff.log(logMessage);
+    var getUrl = function() {
+        return Stuff.parameter('url', 1, Solver.url);
+    }
 
-    return answer;
-};
+    var connect = function() {
+        var url = getWSUrl(getUrl());
+        var socket = new WSocket(url);
+        Stuff.log('Opening...');
 
-var parseBoard = function(message) {
-    var pattern = new RegExp(/^board=(.*)$/);
-    var parameters = message.match(pattern);
-    var board = parameters[1];
-    return board;
+        socket.on('open', function() {
+            Stuff.log('Web socket client opened ' + url);
+        });
+
+        socket.on('error', function() {
+            Stuff.log('Web socket client error');
+        });
+
+        socket.on('close', function() {
+            Stuff.log('Web socket client closed');
+
+            if (!browser) {
+                setTimeout(function(){
+                    connect();
+                }, 5000);
+            }
+        });
+
+        socket.on('message', function (message) {
+            var board = parseBoard(message);
+            var answer = processBoard(board);
+            socket.send(answer);
+        });
+
+        return socket;
+    }
+
+    return {
+        connect,
+        getUrl
+    };
 }
 
-function getWSUrl(url) {
-    return url.replace("http", "ws")
-              .replace("board/player/", "ws?user=")
-              .replace("?code=", "&code=");
-}
-
-function getUrl() {
-    return Stuff.parameter('url', 1, Solver.url);
-}
-
-function connect() {
-    var url = getWSUrl(getUrl());
-    var socket = new WSocket(url);
-    Stuff.log('Opening...');
-
-    socket.on('open', function() {
-        Stuff.log('Web socket client opened ' + url);
-    });
-
-    socket.on('error', function() {
-        Stuff.log('Web socket client error');
-    });
-
-    socket.on('close', function() {
-        Stuff.log('Web socket client closed');
-
-        if (!browser) {
-            setTimeout(function() {
-                connect();
-            }, 5000);
-        }
-    });
-
-    socket.on('message', function(message) {
-        var board = parseBoard(message);
-        var answer = processBoard(board);
-        socket.send(answer);
-    });
-
-    return socket;
-}
-
+var browser = (browser !== undefined);
 if (!browser) {
-    connect();
+    new Runner().connect();
 }
-
-
-
-
-
