@@ -139,6 +139,30 @@ var copyUrl = function() {
     $('#board-url').val(Runner().getUrl());
 }
 
+var setupTextareaFont = function() {
+    if (navigator.userAgent.indexOf('Chrome') == -1) {
+        // firefox
+        $('canvas').css({
+            width : '543px',
+            height : '553px'
+        });
+        $('#board').css({
+            'left': '9px',
+            'top': '6px'
+        });
+    } else {
+        // chrome
+        $('canvas').css({
+            width : '543px',
+            height : '530px'
+        });
+        $('#board').css({
+            'left': '9px',
+            'top': '6px'
+        });
+    }
+}
+
 $(document).ready(function() {
     checkVisibility('#show-graphic', '#board-canvas');
     checkVisibility('#show-text', '#board');
@@ -154,5 +178,6 @@ $(document).ready(function() {
     $("body").keydown(onKeyDown);
 
     copyUrl();
+    setupTextareaFont();
 });
 
