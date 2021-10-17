@@ -129,7 +129,7 @@ var joystickEnableDisable = function() {
     } else {
         sendSockets = true;
         if (isServerConnected()) {
-            ws.send(runner.processBoard(runner.parseBoard(boardData)));
+            ws.send(''); // any data
         }
     }
 }
