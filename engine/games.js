@@ -18,6 +18,8 @@ var Games = module.exports = {
                 // case browser stub
                 if (this.gameName == 'mollymage') {
                     module = MollyMageElement;
+                } else if (this.gameName == 'clifford') {
+                    module = CliffordElement;
                 } else if (this.gameName == 'tetris') {
                     module = TetrisElement;
                 } else if (this.gameName == 'a2048') {
@@ -45,6 +47,8 @@ var Games = module.exports = {
                 // case browser stub
                 if (this.gameName == 'mollymage') {
                     module = MollyMageBoard;
+                } else if (this.gameName == 'clifford') {
+                    module = CliffordBoard;
                 } else if (this.gameName == 'tetris') {
                     module = TetrisBoard;
                 } else if (this.gameName == 'a2048') {
@@ -71,23 +75,25 @@ var Games = module.exports = {
             if (typeof module == 'undefined') {
                 // case browser stub
                 if (this.gameName == 'mollymage') {
-                    module = MollyMageDirection();
+                    module = MollyMageDirection;
+                } else if (this.gameName == 'clifford') {
+                    module = CliffordDirection;
                 } else if (this.gameName == 'tetris') {
-                    module = TetrisDirection();
+                    module = TetrisDirection;
                 } else if (this.gameName == 'a2048') {
-                    module = A2048Direction();
+                    module = A2048Direction;
                 } else if (this.gameName == 'battlecity') {
-                    module = BattlecityDirection();
+                    module = BattlecityDirection;
                 } else if (this.gameName == 'excitebike') {
-                    module = ExcitebikeDirection();
+                    module = ExcitebikeDirection;
                 } else if (this.gameName == 'icancode') {
-                    module = ICanCodeDirection();
+                    module = ICanCodeDirection;
                 } else if (this.gameName == 'minesweeper') {
-                    module = MinesweeperDirection();
+                    module = MinesweeperDirection;
                 } else if (this.gameName == 'snake') {
-                    module = SnakeDirection();
+                    module = SnakeDirection;
                 } else if (this.gameName == 'snakebattle') {
-                    module = SnakeBattleDirection();
+                    module = SnakeBattleDirection;
                 }
             }
             // direction module can be a function that returns an object or object
@@ -99,6 +105,8 @@ var Games = module.exports = {
                 // case browser stub
                 if (this.gameName == 'mollymage') {
                     module = MollyMageTest;
+                } else if (this.gameName == 'clifford') {
+                    module = CliffordTest;
                 } else if (this.gameName == 'tetris') {
                     module = TetrisTest;
                 } else if (this.gameName == 'a2048') {
