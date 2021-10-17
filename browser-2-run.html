@@ -87,12 +87,6 @@
         <script src="engine/browser/main.js"></script>
         <script src="engine/browser/canvases.js"></script>
 
-        <script>
-            $(document).ready(function() {
-                $('#game-to-run').val(Games.gameName);
-                $('#board-url').val(Runner().getUrl());
-            });
-        </script>
         <style>
             #board {
                 overflow: hidden;
@@ -102,6 +96,7 @@
                 border: none;
                 position: absolute;
                 mix-blend-mode: overlay;
+                font-family: monospace;
 
                 line-height: 0.61em;
                 font-size: 39.3px;

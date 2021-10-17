@@ -134,6 +134,11 @@ var joystickEnableDisable = function() {
     }
 }
 
+var copyUrl = function() {
+    $('#game-to-run').val(Games.gameName);
+    $('#board-url').val(Runner().getUrl());
+}
+
 $(document).ready(function() {
     checkVisibility('#show-graphic', '#board-canvas');
     checkVisibility('#show-text', '#board');
@@ -147,5 +152,7 @@ $(document).ready(function() {
     $('#joystick').change(joystickEnableDisable);
 
     $("body").keydown(onKeyDown);
+
+    copyUrl();
 });
 
