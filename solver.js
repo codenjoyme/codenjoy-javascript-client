@@ -3,7 +3,7 @@ var Solver = module.exports = {
     /**
      * Choose game.
      */
-    game: 'mollymage',
+    game: 'clifford',
 
     /**
      * Paste here board page url from browser (board page) after registration
@@ -13,13 +13,15 @@ var Solver = module.exports = {
     /**
      * @return next hero action
      */
-    get: function (board) {
+    get: function (stringBoard) {
         var Games = require('./engine/games.js');
         var Point = require('./engine/point.js');
         var Direction = Games.require('./direction.js');
         var Element = Games.require('./elements.js');
         var Board = Games.require('./board.js');
         var Stuff = require('./engine/stuff.js');
+
+        var board = new Board(stringBoard);
 
         // TODO your code here
 
