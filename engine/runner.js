@@ -96,7 +96,9 @@ var Runner = module.exports = function() {
 
     return {
         connect,
-        getUrl
+        getUrl,
+        processBoard,
+        parseBoard
     };
 }
 
