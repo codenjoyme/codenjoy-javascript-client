@@ -3,7 +3,7 @@ var Solver = module.exports = {
     /**
      * Choose game.
      */
-    game: 'clifford',
+    game: 'mollymage',
 
     /**
      * Paste here board page url from browser (board page) after registration

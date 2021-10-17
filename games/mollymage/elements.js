@@ -29,15 +29,15 @@ var MollyMageElement = module.exports = {
 /// enemy players heroes
 
     // This is what enemy heroes looks like.
-    "ENEMY_HERO": '♡',
+    "ENEMY_HERO": 'ö',
 
     // This is if enemy hero is sitting on own potion.
-    "ENEMY_POTION_HERO": '♤',
+    "ENEMY_POTION_HERO": 'Ö',
 
     // Enemy hero corpse (it will disappear shortly,
     // right on the next move).
     // If you've done it you'll get score points.
-    "ENEMY_DEAD_HERO": '♧',
+    "ENEMY_DEAD_HERO": 'ø',
 
 /// the potions
     // After Molly set the potion, the timer starts (5 ticks).
