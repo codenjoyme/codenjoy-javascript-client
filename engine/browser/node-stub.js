@@ -21,6 +21,7 @@
  */
 var browser = true;
 var module = {};
+var canvases = null;
 
 var getSize = function(data) {
     if (!!data.layers) {
@@ -42,9 +43,8 @@ var chunk = function(str, n) {
 };
 
 var printBoardOnTextArea = function(data) {
-    if (typeof(onBoardData) != 'undefined' && !!onBoardData) {
-        onBoardData(data);
-    }
+    canvases = (canvases == null) ? new Canvases() : canvases;
+    canvases.drawData(data);
 
     var textarea = document.getElementById('board');
     if (!textarea) return;
