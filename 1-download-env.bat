@@ -1,13 +1,9 @@
-if "%JAVA_CLIENT_HOME%"=="" (
-    call 0-settings.bat
-)
+call 0-settings.bat
 
 echo off
-echo [44;93m
-echo        +-------------------------------------+
-echo        !         Installing Node.js          !
-echo        +-------------------------------------+
-echo [0m
+echo        [44;93m+-----------------------------------+[0m
+echo        [44;93m!         Installing Node.js        ![0m
+echo        [44;93m+-----------------------------------+[0m
 echo on
 
 cd %ROOT%
@@ -22,6 +18,10 @@ call :ask
 goto :eof
 
 :ask
-    echo Press any key to continue
+    echo off
+    echo        [44;93m+---------------------------------+[0m
+    echo        [44;93m!    Press any key to continue    ![0m
+    echo        [44;93m+---------------------------------+[0m
+    echo on
     pause >nul
 goto :eof
