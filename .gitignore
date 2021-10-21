@@ -1,4 +1,7 @@
-node_modules
-.node
+node_modules/
+.node/
 .tools/*.zip
 package-lock.json
+
+# macOS
+.DS_Store
