@@ -11,7 +11,7 @@ chcp %CODE_PAGE%
 set TOOLS=%ROOT%\.tools
 set ARCH=%TOOLS%\7z\7za.exe
 
-rem Set to true if you want to ignore jdk and maven installed on the system
+rem Set to true if you want to ignore node installed on the system
 if "%INSTALL_LOCALLY%"=="" ( set INSTALL_LOCALLY=true)
 
 if "%INSTALL_LOCALLY%"=="true" ( set NODE_HOME=)
