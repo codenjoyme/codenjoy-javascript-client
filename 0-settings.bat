@@ -1,3 +1,7 @@
+echo off
+call lib.bat :color Setup variables...
+echo on
+
 if "%GAME_TO_RUN%"=="" ( set GAME_TO_RUN=mollymage)
 if "%BOARD_URL%"==""   ( set BOARD_URL=http://127.0.0.1:8080/codenjoy-contest/board/player/0?code=000000000000)
 
@@ -19,10 +23,10 @@ if "%NODE_HOME%"=="" ( set NODE_HOME=%ROOT%\.node)
 set NPM=%NODE_HOME%\npm
 
 echo off
-echo        [44;93mNODE_HOME=%NODE_HOME%[0m
+call lib.bat :color NODE_HOME=%NODE_HOME%
 echo on
 
-set ARCH_NODE=https://nodejs.org/dist/v14.17.0/node-v14.17.0-win-x64.zip
-set ARCH_NODE_FOLDER=node-v14.17.0-win-x64
+set ARCH_URL=https://nodejs.org/dist/v14.17.0/node-v14.17.0-win-x64.zip
+set ARCH_FOLDER=node-v14.17.0-win-x64
 
 set JAVASCRIPT_CLIENT_HOME=%ROOT%
