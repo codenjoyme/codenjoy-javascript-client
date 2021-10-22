@@ -11,7 +11,7 @@ if "%INSTALL_LOCALLY%"=="" ( goto :skip )
 IF EXIST %TOOLS%\..\node_modules (
     rd /S /Q %TOOLS%\..\node_modules
 )
-call lib.bat :install node
+call lib.bat :install node %ARCH_URL% %ARCH_FOLDER%
 call lib.bat :print_color %NPM% -v
 
 call lib.bat :ask
