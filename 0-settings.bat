@@ -1,5 +1,5 @@
 echo off
-call lib.bat :color Setup variables...
+call lib :color Setup variables...
 echo on
 
 if "%GAME_TO_RUN%"=="" ( set GAME_TO_RUN=mollymage)
@@ -23,7 +23,7 @@ if "%NODE_HOME%"=="" ( set NODE_HOME=%ROOT%\.node)
 set NPM=%NODE_HOME%\npm
 
 echo off
-call lib.bat :color NODE_HOME=%NODE_HOME%
+call lib :color NODE_HOME=%NODE_HOME%
 echo on
 
 set ARCH_URL=https://nodejs.org/dist/v14.17.0/node-v14.17.0-win-x64.zip
