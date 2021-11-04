@@ -64,7 +64,7 @@ var Runner = module.exports = function() {
 
     var connect = function() {
         var url = getWSUrl(getUrl());
-        var socket = new WSocket(url);
+        var socket = new WSocket(url, null, { rejectUnauthorized: false });
         Stuff.log('Opening...');
 
         socket.on('open', function() {
