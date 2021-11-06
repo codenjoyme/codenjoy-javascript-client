@@ -33,90 +33,60 @@ var CliffordBoard = module.exports = function(board){
     board.getMe = function() {
         var result = [];
         result = result.concat(board.findAll(Element.HERO_DIE));
-        result = result.concat(board.findAll(Element.HERO_CRACK_LEFT));
-        result = result.concat(board.findAll(Element.HERO_CRACK_RIGHT));
-        result = result.concat(board.findAll(Element.HERO_FALL_RIGHT));
-        result = result.concat(board.findAll(Element.HERO_FALL_LEFT));
         result = result.concat(board.findAll(Element.HERO_LADDER));
         result = result.concat(board.findAll(Element.HERO_LEFT));
         result = result.concat(board.findAll(Element.HERO_RIGHT));
-        result = result.concat(board.findAll(Element.HERO_PIPE_LEFT));
-        result = result.concat(board.findAll(Element.HERO_PIPE_RIGHT));
-        result = result.concat(board.findAll(Element.HERO_PIT_LEFT));
-        result = result.concat(board.findAll(Element.HERO_PIT_RIGHT));
+        result = result.concat(board.findAll(Element.HERO_FALL));
+        result = result.concat(board.findAll(Element.HERO_PIPE));
+        result = result.concat(board.findAll(Element.HERO_PIT));
         // mask
         result = result.concat(board.findAll(Element.HERO_MASK_DIE));
-        result = result.concat(board.findAll(Element.HERO_MASK_CRACK_LEFT));
-        result = result.concat(board.findAll(Element.HERO_MASK_CRACK_RIGHT));
-        result = result.concat(board.findAll(Element.HERO_MASK_FALL_RIGHT));
-        result = result.concat(board.findAll(Element.HERO_MASK_FALL_LEFT));
         result = result.concat(board.findAll(Element.HERO_MASK_LADDER));
         result = result.concat(board.findAll(Element.HERO_MASK_LEFT));
         result = result.concat(board.findAll(Element.HERO_MASK_RIGHT));
-        result = result.concat(board.findAll(Element.HERO_MASK_PIPE_LEFT));
-        result = result.concat(board.findAll(Element.HERO_MASK_PIPE_RIGHT));
-        result = result.concat(board.findAll(Element.HERO_MASK_PIT_LEFT));
-        result = result.concat(board.findAll(Element.HERO_MASK_PIT_RIGHT));
+        result = result.concat(board.findAll(Element.HERO_MASK_FALL));
+        result = result.concat(board.findAll(Element.HERO_MASK_PIPE));
+        result = result.concat(board.findAll(Element.HERO_MASK_PIT));
         return result[0];
     }
 
     board.getOtherHeroes = function() {
         var result = [];
         result = result.concat(board.findAll(Element.OTHER_HERO_DIE));
-        result = result.concat(board.findAll(Element.OTHER_HERO_CRACK_LEFT));
-        result = result.concat(board.findAll(Element.OTHER_HERO_CRACK_RIGHT));
-        result = result.concat(board.findAll(Element.OTHER_HERO_FALL_RIGHT));
-        result = result.concat(board.findAll(Element.OTHER_HERO_FALL_LEFT));
         result = result.concat(board.findAll(Element.OTHER_HERO_LADDER));
         result = result.concat(board.findAll(Element.OTHER_HERO_LEFT));
         result = result.concat(board.findAll(Element.OTHER_HERO_RIGHT));
-        result = result.concat(board.findAll(Element.OTHER_HERO_PIPE_LEFT));
-        result = result.concat(board.findAll(Element.OTHER_HERO_PIPE_RIGHT));
-        result = result.concat(board.findAll(Element.OTHER_HERO_PIT_LEFT));
-        result = result.concat(board.findAll(Element.OTHER_HERO_PIT_RIGHT));
+        result = result.concat(board.findAll(Element.OTHER_HERO_FALL));
+        result = result.concat(board.findAll(Element.OTHER_HERO_PIPE));
+        result = result.concat(board.findAll(Element.OTHER_HERO_PIT));
         // mask
         result = result.concat(board.findAll(Element.OTHER_HERO_MASK_DIE));
-        result = result.concat(board.findAll(Element.OTHER_HERO_MASK_CRACK_LEFT));
-        result = result.concat(board.findAll(Element.OTHER_HERO_MASK_CRACK_RIGHT));
-        result = result.concat(board.findAll(Element.OTHER_HERO_MASK_FALL_RIGHT));
-        result = result.concat(board.findAll(Element.OTHER_HERO_MASK_FALL_LEFT));
         result = result.concat(board.findAll(Element.OTHER_HERO_MASK_LADDER));
         result = result.concat(board.findAll(Element.OTHER_HERO_MASK_LEFT));
         result = result.concat(board.findAll(Element.OTHER_HERO_MASK_RIGHT));
-        result = result.concat(board.findAll(Element.OTHER_HERO_MASK_PIPE_LEFT));
-        result = result.concat(board.findAll(Element.OTHER_HERO_MASK_PIPE_RIGHT));
-        result = result.concat(board.findAll(Element.OTHER_HERO_MASK_PIT_LEFT));
-        result = result.concat(board.findAll(Element.OTHER_HERO_MASK_PIT_RIGHT));
+        result = result.concat(board.findAll(Element.OTHER_HERO_MASK_FALL));
+        result = result.concat(board.findAll(Element.OTHER_HERO_MASK_PIPE));
+        result = result.concat(board.findAll(Element.OTHER_HERO_MASK_PIT));
         return result;
     }
 
     board.getEnemyHeroes = function() {
         var result = [];
         result = result.concat(board.findAll(Element.ENEMY_HERO_DIE));
-        result = result.concat(board.findAll(Element.ENEMY_HERO_CRACK_LEFT));
-        result = result.concat(board.findAll(Element.ENEMY_HERO_CRACK_RIGHT));
-        result = result.concat(board.findAll(Element.ENEMY_HERO_FALL_RIGHT));
-        result = result.concat(board.findAll(Element.ENEMY_HERO_FALL_LEFT));
         result = result.concat(board.findAll(Element.ENEMY_HERO_LADDER));
         result = result.concat(board.findAll(Element.ENEMY_HERO_LEFT));
         result = result.concat(board.findAll(Element.ENEMY_HERO_RIGHT));
-        result = result.concat(board.findAll(Element.ENEMY_HERO_PIPE_LEFT));
-        result = result.concat(board.findAll(Element.ENEMY_HERO_PIPE_RIGHT));
-        result = result.concat(board.findAll(Element.ENEMY_HERO_PIT_LEFT));
-        result = result.concat(board.findAll(Element.ENEMY_HERO_PIT_RIGHT));
+        result = result.concat(board.findAll(Element.ENEMY_HERO_FALL));
+        result = result.concat(board.findAll(Element.ENEMY_HERO_PIPE));
+        result = result.concat(board.findAll(Element.ENEMY_HERO_PIT));
         // mask
         result = result.concat(board.findAll(Element.ENEMY_HERO_MASK_DIE));
-        result = result.concat(board.findAll(Element.ENEMY_HERO_MASK_CRACK_LEFT));
-        result = result.concat(board.findAll(Element.ENEMY_HERO_MASK_CRACK_RIGHT));
-        result = result.concat(board.findAll(Element.ENEMY_HERO_MASK_FALL_RIGHT));
-        result = result.concat(board.findAll(Element.ENEMY_HERO_MASK_FALL_LEFT));
         result = result.concat(board.findAll(Element.ENEMY_HERO_MASK_LADDER));
         result = result.concat(board.findAll(Element.ENEMY_HERO_MASK_LEFT));
         result = result.concat(board.findAll(Element.ENEMY_HERO_MASK_RIGHT));
-        result = result.concat(board.findAll(Element.ENEMY_HERO_MASK_PIPE_LEFT));
-        result = result.concat(board.findAll(Element.ENEMY_HERO_MASK_PIPE_RIGHT));
-        result = result.concat(board.findAll(Element.ENEMY_HERO_MASK_PIT_LEFT));
-        result = result.concat(board.findAll(Element.ENEMY_HERO_MASK_PIT_RIGHT));
+        result = result.concat(board.findAll(Element.ENEMY_HERO_MASK_FALL));
+        result = result.concat(board.findAll(Element.ENEMY_HERO_MASK_PIPE));
+        result = result.concat(board.findAll(Element.ENEMY_HERO_MASK_PIT));
         return result;
     }
 
@@ -125,12 +95,9 @@ var CliffordBoard = module.exports = function(board){
         result = result.concat(board.findAll(Element.ROBBER_LADDER));
         result = result.concat(board.findAll(Element.ROBBER_LEFT));
         result = result.concat(board.findAll(Element.ROBBER_RIGHT));
-        result = result.concat(board.findAll(Element.ROBBER_FALL_LEFT));
-        result = result.concat(board.findAll(Element.ROBBER_FALL_RIGHT));
-        result = result.concat(board.findAll(Element.ROBBER_PIPE_LEFT));
-        result = result.concat(board.findAll(Element.ROBBER_PIPE_RIGHT));
-        result = result.concat(board.findAll(Element.ROBBER_PIT_LEFT));
-        result = result.concat(board.findAll(Element.ROBBER_PIT_RIGHT));
+        result = result.concat(board.findAll(Element.ROBBER_FALL));
+        result = result.concat(board.findAll(Element.ROBBER_PIPE));
+        result = result.concat(board.findAll(Element.ROBBER_PIT));
         return result;
     }
 
@@ -170,14 +137,12 @@ var CliffordBoard = module.exports = function(board){
     board.getPipes = function() {
         var result = [];
         result = result.concat(board.findAll(Element.PIPE));
-        result = result.concat(board.findAll(Element.HERO_PIPE_LEFT));
-        result = result.concat(board.findAll(Element.HERO_PIPE_RIGHT));
-        result = result.concat(board.findAll(Element.HERO_MASK_PIPE_LEFT));
-        result = result.concat(board.findAll(Element.HERO_MASK_PIPE_RIGHT));
-        result = result.concat(board.findAll(Element.OTHER_HERO_MASK_PIPE_LEFT));
-        result = result.concat(board.findAll(Element.OTHER_HERO_MASK_PIPE_RIGHT));
-        result = result.concat(board.findAll(Element.ENEMY_HERO_MASK_PIPE_LEFT));
-        result = result.concat(board.findAll(Element.ENEMY_HERO_MASK_PIPE_RIGHT));
+        result = result.concat(board.findAll(Element.HERO_PIPE));
+        result = result.concat(board.findAll(Element.HERO_MASK_PIPE));
+        result = result.concat(board.findAll(Element.OTHER_HERO_PIPE));
+        result = result.concat(board.findAll(Element.OTHER_HERO_MASK_PIPE));
+        result = result.concat(board.findAll(Element.ENEMY_HERO_PIPE));
+        result = result.concat(board.findAll(Element.ENEMY_HERO_MASK_PIPE));
         return result;
     }
 

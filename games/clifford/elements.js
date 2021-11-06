@@ -43,74 +43,56 @@ var CliffordElement = module.exports = {
 
     // твой детектив
     HERO_DIE : 'Ѡ',                // переживает процесс умирания
-    HERO_CRACK_LEFT : 'Я',         // простреливает слева от себя
-    HERO_CRACK_RIGHT : 'R',        // простреливает справа от себя
     HERO_LADDER : 'Y',             // находится на лестнице
     HERO_LEFT : '◄',               // бежит влево
     HERO_RIGHT : '►',              // бежит вправо
     HERO_FALL : ']',               // падает
-    HERO_PIPE_LEFT : '{',          // ползёт по трубе влево
-    HERO_PIPE_RIGHT : '}',         // ползёт по трубе вправо
+    HERO_PIPE : '{',               // ползёт по трубе
     HERO_PIT : '⍃',                // в яме
 
     // твой детектив под маскировкой
     HERO_MASK_DIE : 'x',           // переживает процесс умирания
-    HERO_MASK_CRACK_LEFT : '⊰',    // простреливает слева от себя
-    HERO_MASK_CRACK_RIGHT : '⊱',   // простреливает справа от себя
     HERO_MASK_LADDER : '⍬',        // находится на лестнице
     HERO_MASK_LEFT : '⊲',          // бежит влево
     HERO_MASK_RIGHT : '⊳',         // бежит вправо
     HERO_MASK_FALL : '⊅',          // падает
-    HERO_MASK_PIPE_LEFT : '⋜',     // ползёт по трубе влево
-    HERO_MASK_PIPE_RIGHT : '⋝',    // ползёт по трубе вправо
+    HERO_MASK_PIPE : '⋜',          // ползёт по трубе
     HERO_MASK_PIT : 'ᐊ',           // в яме
 
     // детективы других игроков
     OTHER_HERO_DIE : 'Z',          // переживает процесс умирания
-    OTHER_HERO_CRACK_LEFT : '⌋',   // простреливает слева от себя
-    OTHER_HERO_CRACK_RIGHT : '⌊',  // простреливает справа от себя
     OTHER_HERO_LADDER : 'U',       // находится на лестнице
     OTHER_HERO_LEFT : ')',         // бежит влево
     OTHER_HERO_RIGHT : '(',        // бежит вправо
     OTHER_HERO_FALL : '⊐',         // падает
-    OTHER_HERO_PIPE_LEFT : 'Э',    // ползёт по трубе влево
-    OTHER_HERO_PIPE_RIGHT : 'Є',   // ползёт по трубе вправо
+    OTHER_HERO_PIPE : 'Э',         // ползёт по трубе
     OTHER_HERO_PIT : 'ᗉ',          // в яме
 
     // детективы других игроков под маскировкой
     OTHER_HERO_MASK_DIE : '⋈',         // переживает процесс умирания
-    OTHER_HERO_MASK_CRACK_LEFT : '⋰',  // простреливает слева от себя
-    OTHER_HERO_MASK_CRACK_RIGHT : '⋱', // простреливает справа от себя
-    OTHER_HERO_MASK_LEFT : '⋊',        // находится на лестнице
-    OTHER_HERO_MASK_RIGHT : '⋉',       // бежит влево
+    OTHER_HERO_MASK_LADDER : '⋕',        // находится на лестнице
+    OTHER_HERO_MASK_LEFT : '⋊',       // бежит влево
+    OTHER_HERO_MASK_RIGHT : '⋉',       // бежит вправо
     OTHER_HERO_MASK_FALL : '⋣',        // падает
-    OTHER_HERO_MASK_LADDER : '⋕',      // бежит вправо
-    OTHER_HERO_MASK_PIPE_LEFT : '⊣',   // ползёт по трубе влево
-    OTHER_HERO_MASK_PIPE_RIGHT : '⊢',  // ползёт по трубе вправо
+    OTHER_HERO_MASK_PIPE : '⊣',        // ползёт по трубе
     OTHER_HERO_MASK_PIT : 'ᗏ',          // в яме
 
     // вражеские детективы других игроков
     ENEMY_HERO_DIE : 'Ž',          // переживает процесс умирания
-    ENEMY_HERO_CRACK_LEFT : '⟧',   // простреливает слева от себя
-    ENEMY_HERO_CRACK_RIGHT : '⟦',  // простреливает справа от себя
     ENEMY_HERO_LADDER : 'Ǔ',       // находится на лестнице
     ENEMY_HERO_LEFT : '❫',         // бежит влево
     ENEMY_HERO_RIGHT : '❪',        // бежит вправо
     ENEMY_HERO_FALL : '⋥',         // падает
-    ENEMY_HERO_PIPE_LEFT : 'Ǯ',    // ползёт по трубе влево
-    ENEMY_HERO_PIPE_RIGHT : 'Ě',   // ползёт по трубе вправо
+    ENEMY_HERO_PIPE : 'Ǯ',         // ползёт по трубе
     ENEMY_HERO_PIT : '⇇',          // в яме
 
     // вражеские детективы других игроков под маскировкой
     ENEMY_HERO_MASK_DIE : '⧓',         // переживает процесс умирания
-    ENEMY_HERO_MASK_CRACK_LEFT : '⇢',  // простреливает слева от себя
-    ENEMY_HERO_MASK_CRACK_RIGHT : '⇠', // простреливает справа от себя
-    ENEMY_HERO_MASK_LEFT : '⧒',        // находится на лестнице
-    ENEMY_HERO_MASK_RIGHT : '⧑',       // бежит влево
-    ENEMY_HERO_MASK_LADDER : '≠',      // бежит вправо
+    ENEMY_HERO_MASK_LADDER: '≠',        // находится на лестнице
+    ENEMY_HERO_MASK_LEFT : '⧒',       // бежит влево
+    ENEMY_HERO_MASK_RIGHT : '⧑',      // бежит вправо
     ENEMY_HERO_MASK_FALL : '⌫',        // падает
-    ENEMY_HERO_MASK_PIPE_LEFT : '❵',   // ползёт по трубе влево
-    ENEMY_HERO_MASK_PIPE_RIGHT : '❴',  // ползёт по трубе вправо
+    ENEMY_HERO_MASK_PIPE : '❵',        // ползёт по трубе
     ENEMY_HERO_MASK_PIT : '⬱',         // в яме
 
     // боты-воры
@@ -118,17 +100,18 @@ var CliffordElement = module.exports = {
     ROBBER_LEFT : '«',          // бежит влево
     ROBBER_RIGHT : '»',         // бежит вправо
     ROBBER_FALL : '‹',          // падает
-    ROBBER_PIPE_LEFT : '<',     // ползёт по трубе влево
-    ROBBER_PIPE_RIGHT : '>',    // ползёт по трубе вправо
+    ROBBER_PIPE : '<',          // ползёт по трубе
     ROBBER_PIT : '⍇',           // в яме
 
     // ворота/ключи
     OPENED_DOOR_GOLD : '⍙',     // золотые, открытые
     OPENED_DOOR_SILVER : '⍚',   // серебряные, открытые
     OPENED_DOOR_BRONZE : '⍜',   // бронзовые, открытые
+
     CLOSED_DOOR_GOLD : '⍍',     // золотые, закрытые
     CLOSED_DOOR_SILVER : '⌺',   // серебряные, закрытые
     CLOSED_DOOR_BRONZE : '⌼',   // бронзовые, закрытые
+
     KEY_GOLD : '✦',             // золотой ключ
     KEY_SILVER : '✼',           // серебряный ключ
     KEY_BRONZE : '⍟',           // бронзовый ключ
