@@ -20,37 +20,53 @@
  * #L%
  */
 
-var TetrisElement = module.exports = {
+var SudokuElement = module.exports = {
 
-        // I figure. Blue color.
+        // Отгадай, что тут за цифра.
 
-    BLUE : 'I',
+    NONE : ' ',
 
-        // J figure. Cyan color.
+        // Граница, проигнорируй ее - она не учитывается в координатах.
 
-    CYAN : 'J',
+    BORDER : '☼',
 
-        // L figure. Orange color.
+        // Если число не отображается на поле.
 
-    ORANGE : 'L',
+    HIDDEN : '*',
 
-        // O figure. Yellow color.
+        // Цифра 1.
 
-    YELLOW : 'O',
+    ONE : '1',
 
-        // S figure. Green color.
+        // Цифра 2.
 
-    GREEN : 'S',
+    TWO : '2',
 
-        // T figure. Purple color.
+        // Цифра 3.
 
-    PURPLE : 'T',
+    THREE : '3',
 
-        // Z figure. Red color.
+        // Цифра 4.
 
-    RED : 'Z',
+    FOUR : '4',
 
-        // Empty space.
+        // Цифра 5.
 
-    NONE : '.'
+    FIVE : '5',
+
+        // Цифра 6.
+
+    SIX : '6',
+
+        // Цифра 7.
+
+    SEVEN : '7',
+
+        // Цифра 8.
+
+    EIGHT : '8',
+
+        // Цифра 9.
+
+    NINE : '9'
 }

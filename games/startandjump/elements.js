@@ -20,37 +20,25 @@
  * #L%
  */
 
-var TetrisElement = module.exports = {
+var StartandjumpElement = module.exports = {
 
-        // I figure. Blue color.
+        // Пустое поле.
 
-    BLUE : 'I',
+    NONE : ' ',
 
-        // J figure. Cyan color.
+        // Стена через которую нельзя пройти.
 
-    CYAN : 'J',
+    WALL : '#',
 
-        // L figure. Orange color.
+        // Платформа на которую можно запрыгнуть.
 
-    ORANGE : 'L',
+    PLATFORM : '=',
 
-        // O figure. Yellow color.
+        // Твой герой.
 
-    YELLOW : 'O',
+    HERO : '☺',
 
-        // S figure. Green color.
+        // Твой погиб.
 
-    GREEN : 'S',
-
-        // T figure. Purple color.
-
-    PURPLE : 'T',
-
-        // Z figure. Red color.
-
-    RED : 'Z',
-
-        // Empty space.
-
-    NONE : '.'
+    BLACK_HERO : '☻'
 }
