@@ -77,7 +77,7 @@ var SnakeBattleBoard = module.exports = function(board){
     };
 
     // TODO:BATTLE исправить метод на аналогичный для snakebattle
-    var isMyHeroDead = function () {
+    var isGameOver = function () {
         return board.indexOf(Element.DEAD_HERO) != -1;
     };
 
@@ -247,7 +247,7 @@ var SnakeBattleBoard = module.exports = function(board){
         size: boardSize,
         getHero: getHero,
         getOtherHeroes: getOtherHeroes,
-        isMyHeroDead: isMyHeroDead,
+        isGameOver: isGameOver,
         isAt: isAt,
         boardAsString: boardAsString,
         getBarriers: getBarriers,
