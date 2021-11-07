@@ -52,6 +52,7 @@ var SampleBoard = module.exports = function(board){
 
     board.getBarriers = function() {
         var all = board.getWalls();
+        all = all.concat(board.getBombs());
         all = all.concat(board.getOtherHeroes());
         return board.removeDuplicates(all);
     };
