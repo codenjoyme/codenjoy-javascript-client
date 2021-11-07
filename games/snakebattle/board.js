@@ -223,6 +223,10 @@ var SnakeBattleBoard = module.exports = function(board){
     };
 
     var isBarrierAt = function (x, y) {
+        if (new Point(x, y).isOutOf(size)) {
+            return true;
+        }
+
         return contains(getBarriers(), new Point(x, y));
     };
 

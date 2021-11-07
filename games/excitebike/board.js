@@ -305,6 +305,7 @@ var ExcitebikeBoard = module.exports = function(board){
         if (new Point(x, y).isOutOf(size)) {
             return true;
         }
+
         return contains(getBarriers(), new Point(x, y));
     };
 

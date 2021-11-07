@@ -221,6 +221,10 @@ var ICanCodeBoard = module.exports = function(boardString){
     };
 
     var isBarrierAt = function (x, y) {
+        if (new Point(x, y).isOutOf(size)) {
+            return true;
+        }
+
         if (!barriersMap) {
             getBarriers();
         }

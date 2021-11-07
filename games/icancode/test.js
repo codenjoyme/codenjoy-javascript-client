@@ -356,6 +356,18 @@ var ICanCodeTest = module.exports = function(){
     assertEquals(true,
         board.isBarrierAt(4, 7));
 
+    assertEquals(true,
+        board.isBarrierAt(-1, 2));
+
+    assertEquals(true,
+        board.isBarrierAt(2, -1));
+
+    assertEquals(true,
+        board.isBarrierAt(100, 2));
+
+    assertEquals(true,
+        board.isBarrierAt(2, 100));
+
     // countNear    
 
     assertEquals(1,
