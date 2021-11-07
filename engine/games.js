@@ -54,6 +54,8 @@ var Games = module.exports = {
                     module = ICanCodeElement;
                 } else if (this.gameName == 'minesweeper') {
                     module = MinesweeperElement;
+                } else if (this.gameName == 'sample') {
+                    module = SampleElement;
                 } else if (this.gameName == 'snake') {
                     module = SnakeElement;
                 } else if (this.gameName == 'snakebattle') {
@@ -83,6 +85,8 @@ var Games = module.exports = {
                     module = ICanCodeBoard;
                 } else if (this.gameName == 'minesweeper') {
                     module = MinesweeperBoard;
+                } else if (this.gameName == 'sample') {
+                    module = SampleBoard;
                 } else if (this.gameName == 'snake') {
                     module = SnakeBoard;
                 } else if (this.gameName == 'snakebattle') {
@@ -112,6 +116,8 @@ var Games = module.exports = {
                     module = ICanCodeDirection;
                 } else if (this.gameName == 'minesweeper') {
                     module = MinesweeperDirection;
+                } else if (this.gameName == 'sample') {
+                    module = SampleDirection;
                 } else if (this.gameName == 'snake') {
                     module = SnakeDirection;
                 } else if (this.gameName == 'snakebattle') {
@@ -141,6 +147,8 @@ var Games = module.exports = {
                     module = ICanCodeTest;
                 } else if (this.gameName == 'minesweeper') {
                     module = MinesweeperTest;
+                } else if (this.gameName == 'sample') {
+                    module = SampleTest;
                 } else if (this.gameName == 'snake') {
                     module = SnakeTest;
                 } else if (this.gameName == 'snakebattle') {
