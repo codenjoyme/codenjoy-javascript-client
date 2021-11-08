@@ -40,7 +40,35 @@ var chunk = function(str, n) {
     }
 
     return ret
-};
+}
+
+var setupTextareaFont = function(size) {
+    var calc = function(s) {
+        return ((s/23)*size) + 'px';
+    }
+
+    if (navigator.userAgent.indexOf('Chrome') == -1) {
+        // firefox
+        $('canvas').css({
+            width: calc(543),
+            height: calc(553)
+        });
+        $('#board').css({
+            'left': '9px',
+            'top': '6px'
+        });
+    } else {
+        // chrome
+        $('canvas').css({
+            width: calc(543),
+            height: calc(543)
+        });
+        $('#board').css({
+            'left': '9px',
+            'top': '6px'
+        });
+    }
+}
 
 var printBoardOnTextArea = function(data) {
     canvases = (canvases == null) ? new Canvases() : canvases;
@@ -51,6 +79,8 @@ var printBoardOnTextArea = function(data) {
     var size = getSize(data);
     textarea.cols = size;
     textarea.rows = size;
+
+    setupTextareaFont(size);
 
     if (!!data.layers) {
         data = chunk(data.layers[0], size).join('\n');

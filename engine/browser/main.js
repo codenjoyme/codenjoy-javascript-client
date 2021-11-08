@@ -40,24 +40,24 @@ var Main = module.exports = function() {
 
     var apply = function(isConnect) {
         if (isConnect) {
-             ws = runner.connect();
+            ws = runner.connect();
 
-             ws.on('open', function() {
+            ws.on('open', function() {
                 Stuff.log('Web socket client opened ');
 
                 $('#client-connect').prop('checked', true);
-             });
+            });
 
-             ws.on('close', function() {
+            ws.on('close', function() {
                 Stuff.log('Web socket client closed');
 
                 $('#client-connect').prop('checked', false);
-             });
+            });
         } else {
-             if (!!ws) {
+            if (!!ws) {
                 ws.close();
                 ws = null;
-             }
+            }
         }
     }
 
@@ -141,30 +141,6 @@ var Main = module.exports = function() {
         $('#board-url').val(Runner().getUrl());
     }
 
-    var setupTextareaFont = function() {
-        if (navigator.userAgent.indexOf('Chrome') == -1) {
-            // firefox
-            $('canvas').css({
-                width : '543px',
-                height : '553px'
-            });
-            $('#board').css({
-                'left': '9px',
-                'top': '6px'
-            });
-        } else {
-            // chrome
-            $('canvas').css({
-                width : '543px',
-                height : '530px'
-            });
-            $('#board').css({
-                'left': '9px',
-                'top': '6px'
-            });
-        }
-    }
-
     $(document).ready(function() {
         checkVisibility('#show-graphic', '#board-canvas');
         checkVisibility('#show-text', '#board');
@@ -180,7 +156,6 @@ var Main = module.exports = function() {
         $("body").keydown(onKeyDown);
 
         copyUrl();
-        setupTextareaFont();
     });
 }
 
