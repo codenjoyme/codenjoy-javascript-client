@@ -88,7 +88,7 @@ var sendSockets = true;
 var boardData = false;
 
 var require = function(name) {
-    if (name.startsWith('./games/')) {
+    if (name.indexOf('/games/') != -1) {
         return;
     }
 

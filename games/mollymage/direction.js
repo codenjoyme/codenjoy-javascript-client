@@ -20,7 +20,7 @@
  * #L%
  */
 
-var MollyMageDirection = module.exports = function() {
+var MollymageDirection = module.exports = function() {
 
     var Direction = require('./../../engine/direction.js');
 

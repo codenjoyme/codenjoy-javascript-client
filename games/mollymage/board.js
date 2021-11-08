@@ -20,7 +20,7 @@
  * #L%
  */
 
-var MollyMageBoard = module.exports = function(board){
+var MollymageBoard = module.exports = function(board){
 
     var Board = require('./../../engine/board.js');
     var Games = require('./../../engine/games.js');
@@ -125,7 +125,7 @@ var MollyMageBoard = module.exports = function(board){
         var result2 = [];
         for (var index in result) {
             var blast = result[index];
-            if (blast.isOutOf(size) || board.contains(board.getWalls(), blast)) {
+            if (blast.isOutOf(board.size) || board.contains(board.getWalls(), blast)) {
                 continue;
             }
             result2.push(blast);

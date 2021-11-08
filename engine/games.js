@@ -39,7 +39,7 @@ var Games = module.exports = {
             if (typeof module == 'undefined') {
                 // case browser stub
                 if (this.gameName == 'mollymage') {
-                    module = MollyMageElement;
+                    module = MollymageElement;
                 } else if (this.gameName == 'clifford') {
                     module = CliffordElement;
                 } else if (this.gameName == 'tetris') {
@@ -70,7 +70,7 @@ var Games = module.exports = {
             if (typeof module == 'undefined') {
                 // case browser stub
                 if (this.gameName == 'mollymage') {
-                    module = MollyMageBoard;
+                    module = MollymageBoard;
                 } else if (this.gameName == 'clifford') {
                     module = CliffordBoard;
                 } else if (this.gameName == 'tetris') {
@@ -101,7 +101,7 @@ var Games = module.exports = {
             if (typeof module == 'undefined') {
                 // case browser stub
                 if (this.gameName == 'mollymage') {
-                    module = MollyMageDirection;
+                    module = MollymageDirection;
                 } else if (this.gameName == 'clifford') {
                     module = CliffordDirection;
                 } else if (this.gameName == 'tetris') {
@@ -132,7 +132,7 @@ var Games = module.exports = {
             if (typeof module == 'undefined') {
                 // case browser stub
                 if (this.gameName == 'mollymage') {
-                    module = MollyMageTest;
+                    module = MollymageTest;
                 } else if (this.gameName == 'clifford') {
                     module = CliffordTest;
                 } else if (this.gameName == 'tetris') {
