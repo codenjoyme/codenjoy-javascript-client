@@ -22,7 +22,7 @@
 
 var StartandjumpElement = module.exports = {
 
-        // Пустое поле.
+        // Пустое место – по которому может двигаться герой.
 
     NONE : ' ',
 

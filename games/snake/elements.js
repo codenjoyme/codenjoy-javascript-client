@@ -22,26 +22,77 @@
 
 var SnakeElement = module.exports = {
 
-    BAD_APPLE: '☻',
-    GOOD_APPLE: '☺',
+        // Stone.
 
-    BREAK: '☼',
+    BAD_APPLE : '☻',
 
-    HEAD_DOWN: '▼',
-    HEAD_LEFT: '◄',
-    HEAD_RIGHT: '►',
-    HEAD_UP: '▲',
+        // Having eaten it, you shorten it in length. If it is not long
+        // enough, you die.
 
-    TAIL_END_DOWN: '╙',
-    TAIL_END_LEFT: '╘',
-    TAIL_END_UP: '╓',
-    TAIL_END_RIGHT: '╕',
-    TAIL_HORIZONTAL: '═',
-    TAIL_VERTICAL: '║',
-    TAIL_LEFT_DOWN: '╗',
-    TAIL_LEFT_UP: '╝',
-    TAIL_RIGHT_DOWN: '╔',
-    TAIL_RIGHT_UP: '╚',
+    GOOD_APPLE : '☺',
 
-    NONE: ' '
-};
+        // An obstacle that cannot be passed. It is also the border of
+        // the field.
+
+    BREAK : '☼',
+
+        // An empty place in the field where the snake can go.
+
+    NONE : ' ',
+
+        // Snake head is pointing down.
+
+    HEAD_DOWN : '▼',
+
+        // Snake head is pointing left.
+
+    HEAD_LEFT : '◄',
+
+        // Snake head is pointing right.
+
+    HEAD_RIGHT : '►',
+
+        // Snake head is pointing up.
+
+    HEAD_UP : '▲',
+
+        // Horizontal part of the body.
+
+    TAIL_HORIZONTAL : '═',
+
+        // Vertical part of the body.
+
+    TAIL_VERTICAL : '║',
+
+        // Turning the snake body from left to down.
+
+    TAIL_LEFT_DOWN : '╗',
+
+        // Turning the snake body from left to up.
+
+    TAIL_LEFT_UP : '╝',
+
+        // Turning the snake body from right to down.
+
+    TAIL_RIGHT_DOWN : '╔',
+
+        // Turning the snake body from right to up.
+
+    TAIL_RIGHT_UP : '╚',
+
+        // Down tail.
+
+    TAIL_END_DOWN : '╙',
+
+        // Left tail.
+
+    TAIL_END_LEFT : '╘',
+
+        // Up tail.
+
+    TAIL_END_UP : '╓',
+
+        // Right tail.
+
+    TAIL_END_RIGHT : '╕'
+}

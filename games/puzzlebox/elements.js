@@ -20,37 +20,33 @@
  * #L%
  */
 
-var SampleElement = module.exports = {
+var PuzzleboxElement = module.exports = {
 
-        // Empty place where the hero can go.
+        // Пустое место – по которому может двигаться герой.
 
     NONE : ' ',
 
-        // Wall you cant walk through.
+        // Стена через которую герою пройти нельзя.
 
     WALL : '☼',
 
-        // Your hero.
+        // Твой герой.
 
     HERO : '☺',
 
-        // Heroes of other players.
+        // Коробка, которую можно передвинуть.
 
-    OTHER_HERO : '☻',
+    BOX : '#',
 
-        // Your hero died. His body will disappear in the next tick.
+        // Коробка, которую ты передвигаешь в данный момент.
 
-    DEAD_HERO : 'X',
+    CURBOX : '1',
 
-        // Another player's hero died.
+        // Место куда нужно доставить коробку.
 
-    OTHER_DEAD_HERO : 'Y',
+    FILEDBOX : '@',
 
-        // Gold. It must be picked up.
+        // Место для коробки в котором уже находится оная.
 
-    GOLD : '$',
-
-        // Bomb planted by the hero. You can blow up on it.
-
-    BOMB : 'x'
+    TARGET : '0'
 }

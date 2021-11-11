@@ -20,37 +20,33 @@
  * #L%
  */
 
-var SampleElement = module.exports = {
+var RubicscubeElement = module.exports = {
 
-        // Empty place where the hero can go.
+        // Пустое место на поле, не обращай на него внимания.
 
     NONE : ' ',
 
-        // Wall you cant walk through.
+        // Красная грань.
 
-    WALL : '☼',
+    RED : 'R',
 
-        // Your hero.
+        // Зеленая грань.
 
-    HERO : '☺',
+    GREEN : 'G',
 
-        // Heroes of other players.
+        // Синяя грань.
 
-    OTHER_HERO : '☻',
+    BLUE : 'B',
 
-        // Your hero died. His body will disappear in the next tick.
+        // Белая грань.
 
-    DEAD_HERO : 'X',
+    WHITE : 'W',
 
-        // Another player's hero died.
+        // Желтая грань.
 
-    OTHER_DEAD_HERO : 'Y',
+    YELLOW : 'Y',
 
-        // Gold. It must be picked up.
+        // Оранжевая грань.
 
-    GOLD : '$',
-
-        // Bomb planted by the hero. You can blow up on it.
-
-    BOMB : 'x'
+    ORANGE : 'O'
 }

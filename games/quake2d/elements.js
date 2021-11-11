@@ -20,37 +20,49 @@
  * #L%
  */
 
-var SampleElement = module.exports = {
+var Quake2dElement = module.exports = {
 
-        // Empty place where the hero can go.
+        // Пустое место – по которому может двигаться герой.
 
     NONE : ' ',
 
-        // Wall you cant walk through.
+        // Стена, через которую нельзя пройти.
 
     WALL : '☼',
 
-        // Your hero.
+        // Твой герой
 
     HERO : '☺',
 
-        // Heroes of other players.
+        // Герои других игроков.
 
     OTHER_HERO : '☻',
 
-        // Your hero died. His body will disappear in the next tick.
+        // Твой герой погиб.
 
     DEAD_HERO : 'X',
 
-        // Another player's hero died.
+        // Герои других игроков под модификаторами.
 
-    OTHER_DEAD_HERO : 'Y',
+    SUPER_OTHER_HERO : 'Š',
 
-        // Gold. It must be picked up.
+        // Пуля, ее надо стралять ).
 
-    GOLD : '$',
+    BULLET : '*',
 
-        // Bomb planted by the hero. You can blow up on it.
+        // Модификатор. Дополнительная защита.
 
-    BOMB : 'x'
+    SUPER_DEFENCE : '#',
+
+        // Модификатор. Дополнительная защита.
+
+    HEALTH_PACKAGE : '+',
+
+        // Модификатор. Дополнительная атака.
+
+    SUPER_WEAPON : '~',
+
+        // Робот.
+
+    ROBOT : '!'
 }
