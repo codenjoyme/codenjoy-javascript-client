@@ -20,7 +20,7 @@
  * #L%
  */
 
-var LunoletElement = module.exports = {
+var SampletextElement = module.exports = {
 
         // There are no elements for this game.
 
