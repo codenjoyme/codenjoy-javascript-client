@@ -20,7 +20,7 @@
  * #L%
  */
 
-var MollymageElement = module.exports = {
+var MollyMageElement = module.exports = {
 
         // After Molly set the potion, the timer starts (5 ticks).
 

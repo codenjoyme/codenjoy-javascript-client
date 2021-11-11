@@ -20,7 +20,7 @@
  * #L%
  */
 
-var BattlecityElement = module.exports = {
+var BattleCityElement = module.exports = {
 
         // An empty space where a tank can move.
 
