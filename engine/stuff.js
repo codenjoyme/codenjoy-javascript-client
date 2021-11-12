@@ -49,32 +49,31 @@ var Stuff = module.exports = {
         if (typeof string.replaceAll == 'undefined') {
             // case node
             return string.replace('.js', '')
-                        .replace('.', '')
-                        .replace('engine', '')
-                        .replace('/', '');
+              .replace('.', '')
+              .replace('engine', '')
+              .replace('/', '');
 
         } else {
             // case browser stub
             return string.replaceAll('.js', '')
-                        .replaceAll('.', '')
-                        .replace('engine', '')
-                        .replaceAll('/', '');
+              .replaceAll('.', '')
+              .replace('engine', '')
+              .replaceAll('/', '');
 
         }
     },
 
-    parameter : function(name, index, value) {
+    parameter : function(name, index) {
         if (typeof process != 'undefined' && typeof process.argv != 'undefined') {
             var env = process.argv.slice(2);
-            if (env != '') {
+
+            if (env.length) {
                 var value = env[index];
                 console.log('Got ' + name + ' from Environment: ' + value);
 
                 return value;
             }
         }
-        console.log('Got ' + name + ' from Solver: ' + value);
-        return value;
     },
 
     log : function(string) {

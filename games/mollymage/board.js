@@ -20,7 +20,7 @@
  * #L%
  */
 
-var MollymageBoard = module.exports = function(board){
+var MollyMageBoard = module.exports = function(board){
 
     var Board = require('./../../engine/board.js');
     var Games = require('./../../engine/games.js');
@@ -143,25 +143,25 @@ var MollymageBoard = module.exports = function(board){
 
     board.toString = function() {
         return Stuff.format("%s\n" +
-            "Hero at: %s\n" +
-            "Other heroes at: %s\n" +
-            "Enemy heroes at: %s\n" +
-            "Ghosts at: %s\n" +
-            "Treasure boxes at: %s\n" +
-            "Potions at: %s\n" +
-            "Blasts: %s\n" +
-            "Expected blasts at: %s\n" +
-            "Perks at: %s",
-            board.boardAsString(),
-            board.getHero(),
-            board.getOtherHeroes(),
-            board.getEnemyHeroes(),
-            board.getGhosts(),
-            board.getTreasureBoxes(),
-            board.getPotions(),
-            board.getBlasts(),
-            board.getFutureBlasts(),
-            board.getPerks()
+          "Hero at: %s\n" +
+          "Other heroes at: %s\n" +
+          "Enemy heroes at: %s\n" +
+          "Ghosts at: %s\n" +
+          "Treasure boxes at: %s\n" +
+          "Potions at: %s\n" +
+          "Blasts: %s\n" +
+          "Expected blasts at: %s\n" +
+          "Perks at: %s",
+          board.boardAsString(),
+          board.getHero(),
+          board.getOtherHeroes(),
+          board.getEnemyHeroes(),
+          board.getGhosts(),
+          board.getTreasureBoxes(),
+          board.getPotions(),
+          board.getBlasts(),
+          board.getFutureBlasts(),
+          board.getPerks()
         );
     };
 

@@ -20,7 +20,7 @@
  * #L%
  */
 
-var BattlecityDirection = module.exports = function() {
+var BattleCityDirection = module.exports = function() {
 
     var Direction = require('./../../engine/direction.js');
 

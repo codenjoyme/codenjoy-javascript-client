@@ -22,11 +22,11 @@
 
 var Runner = module.exports = function() {
 
-    var Solver = require('../solver.js');
     var Games = require('./games.js');
-    Games.init(Solver.game);
+    Games.init();
     var WSocket = require('ws');
     var Board = Games.require('./board.js');
+    var Solver = Games.require('./solver.js');
     var Stuff = require('./stuff.js');
 
     var processBoard = function(boardString) {
@@ -36,7 +36,7 @@ var Runner = module.exports = function() {
         }
 
         var logMessage = board + "\n\n";
-        var answer = Solver.get(board).toString();
+        var answer = Solver(board).toString();
         logMessage += "Answer: " + answer + "\n";
         logMessage += "-----------------------------------\n";
 
@@ -48,18 +48,17 @@ var Runner = module.exports = function() {
     var parseBoard = function(message) {
         var pattern = new RegExp(/^board=(.*)$/);
         var parameters = message.match(pattern);
-        var board = parameters[1];
-        return board;
+        return parameters[1];
     }
 
     var getWSUrl = function(url) {
         return url.replace("http", "ws")
-            .replace("board/player/", "ws?user=")
-            .replace("?code=", "&code=");
+          .replace("board/player/", "ws?user=")
+          .replace("?code=", "&code=");
     }
 
     var getUrl = function() {
-        return Stuff.parameter('url', 1, Solver.url);
+        return Stuff.parameter('url', 1);
     }
 
     var connect = function() {
