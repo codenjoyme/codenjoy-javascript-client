@@ -21,7 +21,7 @@
  */
 
 
-var BattleCitySolver = module.exports =  function (board) {
+var BattlecitySolver = module.exports =  function (board) {
   /**
    * @return next hero action
    */

@@ -21,7 +21,7 @@
  */
 
 
-var SnakeBattleSolver = module.exports =  function (board) {
+var SnakebattleSolver = module.exports =  function (board) {
   /**
    * @return next hero action
    */

@@ -2,9 +2,9 @@ This project represents a basic javascript websocket client for the codenjoy pla
 It allows you to easily and quickly join the game, developing your unique algorithm, having a configured infrastructure.
 
 # What do you need to get started?
-To get started, you should define the desired game and enter a value in `Games.init('<gamename>')`. \
+To get started, you should define the desired game and enter a value in `GAME_TO_RUN` variable of `runner.js` script. \
 The second important thing is the connection token to the server. After successful authorization on the site, you must copy the url
-and enter a value in `url` variable of `solver.js` script. \
+and enter a value in `BOARD_URL` variable of `runner.js` script. \
 This is enough to connect and participate in the competition.
 
 # How to run it?
@@ -13,21 +13,23 @@ You can pass the game type and token connection to the server as command-line ar
 Game parameters passed by arguments at startup have a higher priority than those defined in the code.
 
 ### For JavaScript with browser:
+- update `browser-0-settings.js` with `GAME_TO_RUN='<gamename>'` and `BOARD_URL='<url>'`
 - write bot
-- run 'run-client.html'
-- for testing run 'run-test.html'
+- run `browser-2-run.html`
+- for testing run `browser-3-test.html`
 
 ### For JavaScript with node.js:
 - install Node.js from http://nodejs.org/
 - update Path System variable - add node.js root folder
+- update `0-settings.bat` with `GAME_TO_RUN='<gamename>'` and `BOARD_URL='<url>'`
 - write bot
-- run 'run-client.bat' or 'npm start' command
-- another way to change server url - run 'run-client.bat "http://codenjoy.com:80/codenjoy-contest/board/player/3edq63tw0bq4w4iem7nb?code=1234567890123456789"'
-- for testing run 'run-test.bat' or 'npm test' command
+- run `1-download-env.bat`, `2-build.bat` and `3-run.bat` or `npm start` command
+- another way to change server url - run `3-run.bat "http://codenjoy.com:80/codenjoy-contest/board/player/3edq63tw0bq4w4iem7nb?code=1234567890123456789"`
+- for testing run `4-test.bat` or `npm test` command
 
 # How does it work?
 The elements on the map are defined in `games/<gamename>/elements.js`. They determine the meaning of a particular symbol.
-The two important components of the game are the `games/<gamename>/board.js` game board and the `solver.js` solver.
+The two important components of the game are the `games/<gamename>/board.js` game board and the `games/<gamename>/solver.js` solver.
 
 Every second the server sends a string representation of the current state of the board, which is parsed by a script.
 Then the server expects a string representation of your bot's action that is computed by executing `Solver.get(board)`.

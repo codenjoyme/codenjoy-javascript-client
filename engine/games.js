@@ -40,12 +40,8 @@ var Games = module.exports = {
 
     gameName : '',
 
-    init : function() {
-        this.gameName = Stuff.parameter('game', 0);
-    },
-
-    initForTest: function (game) {
-        this.gameName = game;
+    init : function(game) {
+        this.gameName = Stuff.parameter('game', 0, game);
     },
 
     'require': function(name) {
@@ -57,7 +53,7 @@ var Games = module.exports = {
             if (typeof module == 'undefined') {
                 // case browser stub
                 if (this.gameName === this.games.mollyMage) {
-                    module = MollyMageElement;
+                    module = MollymageElement;
                 } else if (this.gameName === this.games.clifford) {
                     module = CliffordElement;
                 } else if (this.gameName === this.games.tetris) {
@@ -65,11 +61,11 @@ var Games = module.exports = {
                 } else if (this.gameName === this.games["2048"]) {
                     module = A2048Element;
                 } else if (this.gameName === this.games.battleCity) {
-                    module = BattleCityElement;
+                    module = BattlecityElement;
                 } else if (this.gameName === this.games.excitebike) {
                     module = ExcitebikeElement;
                 } else if (this.gameName === this.games.iCanCode) {
-                    module = ICanCodeElement;
+                    module = IcancodeElement;
                 } else if (this.gameName === this.games.minesweeper) {
                     module = MinesweeperElement;
                 } else if (this.gameName === this.games.sample) {
@@ -77,7 +73,7 @@ var Games = module.exports = {
                 } else if (this.gameName === this.games.snake) {
                     module = SnakeElement;
                 } else if (this.gameName === this.games.snakeBattle) {
-                    module = SnakeBattleElement;
+                    module = SnakebattleElement;
                 }
             }
             // element module can be a function that returns an object or object
@@ -88,7 +84,7 @@ var Games = module.exports = {
             if (typeof module == 'undefined') {
                 // case browser stub
                 if (this.gameName === this.games.mollyMage) {
-                    module = MollyMageBoard;
+                    module = MollymageBoard;
                 } else if (this.gameName === this.games.clifford) {
                     module = CliffordBoard;
                 } else if (this.gameName === this.games.tetris) {
@@ -96,11 +92,11 @@ var Games = module.exports = {
                 } else if (this.gameName === this.games["2048"]) {
                     module = A2048Board;
                 } else if (this.gameName === this.games.battleCity) {
-                    module = BattleCityBoard;
+                    module = BattlecityBoard;
                 } else if (this.gameName === this.games.excitebike) {
                     module = ExcitebikeBoard;
                 } else if (this.gameName === this.games.iCanCode) {
-                    module = ICanCodeBoard;
+                    module = IcancodeBoard;
                 } else if (this.gameName === this.games.minesweeper) {
                     module = MinesweeperBoard;
                 } else if (this.gameName === this.games.sample) {
@@ -108,7 +104,7 @@ var Games = module.exports = {
                 } else if (this.gameName === this.games.snake) {
                     module = SnakeBoard;
                 } else if (this.gameName === this.games.snakeBattle) {
-                    module = SnakeBattleBoard;
+                    module = SnakebattleBoard;
                 }
             }
             // board module is a function that can parse string board
@@ -119,7 +115,7 @@ var Games = module.exports = {
             if (typeof module == 'undefined') {
                 // case browser stub
                 if (this.gameName === this.games.mollyMage) {
-                    module = MollyMageDirection;
+                    module = MollymageDirection;
                 } else if (this.gameName === this.games.clifford) {
                     module = CliffordDirection;
                 } else if (this.gameName === this.games.tetris) {
@@ -127,11 +123,11 @@ var Games = module.exports = {
                 } else if (this.gameName === this.games["2048"]) {
                     module = A2048Direction;
                 } else if (this.gameName === this.games.battleCity) {
-                    module = BattleCityDirection;
+                    module = BattlecityDirection;
                 } else if (this.gameName === this.games.excitebike) {
                     module = ExcitebikeDirection;
                 } else if (this.gameName === this.games.iCanCode) {
-                    module = ICanCodeDirection;
+                    module = IcancodeDirection;
                 } else if (this.gameName === this.games.minesweeper) {
                     module = MinesweeperDirection;
                 } else if (this.gameName === this.games.sample) {
@@ -139,7 +135,7 @@ var Games = module.exports = {
                 } else if (this.gameName === this.games.snake) {
                     module = SnakeDirection;
                 } else if (this.gameName === this.games.snakeBattle) {
-                    module = SnakeBattleDirection;
+                    module = SnakebattleDirection;
                 }
             }
             // direction module can be a function that returns an object or object
@@ -150,7 +146,7 @@ var Games = module.exports = {
             if (typeof module == 'undefined') {
                 // case browser stub
                 if (this.gameName === this.games.mollyMage) {
-                    module = MollyMageTest;
+                    module = MollymageTest;
                 } else if (this.gameName === this.games.clifford) {
                     module = CliffordTest;
                 } else if (this.gameName === this.games.tetris) {
@@ -158,11 +154,11 @@ var Games = module.exports = {
                 } else if (this.gameName === this.games["2048"]) {
                     module = A2048Test;
                 } else if (this.gameName === this.games.battleCity) {
-                    module = BattleCityTest;
+                    module = BattlecityTest;
                 } else if (this.gameName === this.games.excitebike) {
                     module = ExcitebikeTest;
                 } else if (this.gameName === this.games.iCanCode) {
-                    module = ICanCodeTest;
+                    module = IcancodeTest;
                 } else if (this.gameName === this.games.minesweeper) {
                     module = MinesweeperTest;
                 } else if (this.gameName === this.games.sample) {
@@ -170,7 +166,7 @@ var Games = module.exports = {
                 } else if (this.gameName === this.games.snake) {
                     module = SnakeTest;
                 } else if (this.gameName === this.games.snakeBattle) {
-                    module = SnakeBattleTest;
+                    module = SnakebattleTest;
                 }
             }
             // test module is a function that will run in tests/test.js
@@ -181,7 +177,7 @@ var Games = module.exports = {
             if (typeof module == 'undefined') {
                 // case browser stub
                 if (this.gameName === this.games.mollyMage) {
-                    module = MollyMageSolver;
+                    module = MollymageSolver;
                 } else if (this.gameName === this.games.clifford) {
                     module = CliffordSolver;
                 } else if (this.gameName === this.games.tetris) {
@@ -189,11 +185,11 @@ var Games = module.exports = {
                 } else if (this.gameName === this.games["2048"]) {
                     module = A2048Solver;
                 } else if (this.gameName === this.games.battleCity) {
-                    module = BattleCitySolver;
+                    module = BattlecitySolver;
                 } else if (this.gameName === this.games.excitebike) {
                     module = ExcitebikeSolver;
                 } else if (this.gameName === this.games.iCanCode) {
-                    module = ICanCodeSolver;
+                    module = IcancodeSolver;
                 } else if (this.gameName === this.games.minesweeper) {
                     module = MinesweeperSolver;
                 } else if (this.gameName === this.games.sample) {
@@ -201,7 +197,7 @@ var Games = module.exports = {
                 } else if (this.gameName === this.games.snake) {
                     module = SnakeSolver;
                 } else if (this.gameName === this.games.snakeBattle) {
-                    module = SnakeBattleSolver;
+                    module = SnakebattleSolver;
                 }
             }
             // solver module is a function that will return next hero action

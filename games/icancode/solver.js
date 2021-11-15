@@ -21,7 +21,7 @@
  */
 
 
-var ICanCodeSolver = module.exports =  function (board) {
+var IcancodeSolver = module.exports =  function (board) {
   /**
    * @return next hero action
    */

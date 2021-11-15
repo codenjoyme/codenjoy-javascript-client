@@ -63,17 +63,20 @@ var Stuff = module.exports = {
         }
     },
 
-    parameter : function(name, index) {
+    parameter : function(name, index, value) {
         if (typeof process != 'undefined' && typeof process.argv != 'undefined') {
             var env = process.argv.slice(2);
 
             if (env.length) {
-                var value = env[index];
-                console.log('Got ' + name + ' from Environment: ' + value);
+                var envValue = env[index];
+                console.log('Got ' + name + ' from Environment: ' + envValue);
 
-                return value;
+                return envValue;
             }
         }
+        console.log('Got ' + name + ' from Solver: ' + value);
+
+        return value;
     },
 
     log : function(string) {

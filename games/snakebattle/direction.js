@@ -20,7 +20,7 @@
  * #L%
  */
 
-var SnakeBattleDirection = module.exports = function() {
+var SnakebattleDirection = module.exports = function() {
 
     var Direction = require('./../../engine/direction.js');
 
