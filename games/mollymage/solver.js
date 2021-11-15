@@ -21,7 +21,7 @@
  */
 
 
-var MollymageSolver = module.exports =  {
+var MollymageSolver = module.exports = {
   get: function (board) {
     /**
      * @return next hero action
@@ -37,4 +37,4 @@ var MollymageSolver = module.exports =  {
 
     return Direction.DOWN;
   },
-}
+};
