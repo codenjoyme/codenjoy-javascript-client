@@ -35,6 +35,6 @@ var MollymageSolver = module.exports = {
 
     // TODO your code here
 
-    return Direction.DOWN;
+    return Direction.ACT;
   },
 };
