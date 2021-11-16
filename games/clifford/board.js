@@ -30,7 +30,7 @@ var CliffordBoard = module.exports = function(board){
 
     var board = new Board(board);
 
-    board.getMe = function() {
+    board.getHero = function() {
         var result = [];
         result = result.concat(board.findAll(Element.HERO_DIE));
         result = result.concat(board.findAll(Element.HERO_LADDER));
@@ -198,7 +198,7 @@ var CliffordBoard = module.exports = function(board){
             "Mask potions at: %s\n" +
             "Keys at: %s\n",
             board.boardAsString(),
-            board.getMe(),
+            board.getHero(),
             board.getOtherHeroes(),
             board.getEnemyHeroes(),
             board.getRobbers(),

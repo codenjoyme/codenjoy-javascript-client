@@ -70,7 +70,7 @@ var CliffordTest = module.exports = function(){
     );
 
     assertEquals("30", board.size());
-    assertEquals("[1,28]", board.getMe());
+    assertEquals("[1,28]", board.getHero());
 
     assertEquals("[21,9],[26,21],[19,25],[2,26]", board.getOtherHeroes());
     assertEquals("", board.getEnemyHeroes());
