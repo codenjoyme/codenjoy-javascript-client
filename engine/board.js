@@ -67,6 +67,20 @@ var Board = module.exports = function(board) {
         return getAt(x, y) == element;
     }
 
+    // TODO test me
+    var isAtMany = function(x, y, elements) {
+        if (new Point(x, y).isOutOf(size)) {
+            return false;
+        }
+        var element = getAt(x, y);
+        for (var el of elements){
+            if (element == el){
+                return true;
+            }
+        }
+        return false;
+    }
+
     var getAt = function(x, y) {
         if (new Point(x, y).isOutOf(size)) {
             return null;
@@ -134,6 +148,7 @@ var Board = module.exports = function(board) {
         sort,
         removeDuplicates,
         isAt,
+        isAtMany,
         getAt,
         boardAsString,
         findAll,

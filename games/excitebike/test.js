@@ -54,14 +54,16 @@ var ExcitebikeTest = module.exports = function(){
 
     assertEquals("[0,1]", board.getMe());
 
-    assertEquals("[0,3],[1,3],[2,3],[5,3],[4,3],[3,3],[6,3],[7,3],[8,3],[9,3],[1,2],[2,2],[6,2],[3,2],[5,2],[4,2],[7,2],[0,2]", board.getOtherHeroes());
+    assertEquals("[0,3],[1,3],[2,3],[5,3],[4,3],[3,3],[6,3],[7,3],[8,3]," +
+        "[9,3],[1,2],[2,2],[6,2],[3,2],[5,2],[4,2],[7,2],[0,2]", board.getOtherHeroes());
 
 
     assertEquals("[0,0],[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0],[9,0]," +
-        "[0,2],[7,2],[4,2],[5,2],[3,2],[6,2],[2,2],[1,2],[9,3],[8,3],[7,3],[6,3" +
-        "],[3,3],[4,3],[5,3],[2,3],[1,3],[0,3],[4,4],[0,6],[4,6]", board.getBarriers());
+        "[0,2],[1,2],[2,2],[3,2],[4,2],[5,2],[6,2],[7,2],[0,3],[1,3],[2,3]," +
+        "[3,3],[4,3],[5,3],[6,3],[7,3],[8,3],[9,3],[4,4],[0,6],[4,6]", board.getBarriers());
 
-    assertEquals("[9,0],[8,0],[7,0],[6,0],[5,0],[4,0],[3,0],[2,0],[1,0],[0,0],[4,6],[0,6]", board.getFences());
+    assertEquals("[0,0],[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0]," +
+        "[9,0],[0,6],[4,6]", board.getFences());
 
     assertEquals("[0,4]", board.getAccelerators());
 
@@ -130,7 +132,7 @@ var ExcitebikeTest = module.exports = function(){
         "Me at: [0,1]\n" +
         "Enemy bikes at: [[0,3],[1,3],[2,3],[5,3],[4,3],[3,3],[6,3],[7,3],[8,3],[9,3],[1,2],[2,2],[6,2],[3,2],[5,2],[4,2],[7,2],[0,2]]\n" +
         "Accelerators at: [[0,4]]\n" +
-        "Fences at: [[9,0],[8,0],[7,0],[6,0],[5,0],[4,0],[3,0],[2,0],[1,0],[0,0],[4,6],[0,6]]\n" +
+        "Fences at: [[0,0],[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0],[9,0],[0,6],[4,6]]\n" +
         "Inhibitors at: [[1,4]]\n" +
         "Line Up Changers at: [[2,4]]\n" +
         "Line Down Changers at: [[3,4]]\n" +
@@ -168,8 +170,8 @@ var ExcitebikeTest = module.exports = function(){
             Element.BIKE));
 
 
-    assertEquals("[9,0],[8,0],[7,0],[6,0],[5,0],[4,0],[3,0],[2,0],[1,0],[0,0],[4,6],[0,6]",
-        board.findAll(Element.FENCE));
+    assertEquals("[0,0],[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0],[9,0]," +
+        "[0,6],[4,6]", board.findAll(Element.FENCE));
 
     assertEquals("",
         board.findAll(Element.BIKE_FALLEN));
@@ -187,7 +189,7 @@ var ExcitebikeTest = module.exports = function(){
     assertEquals(2,
         board.countNear(1, 0, Element.FENCE));
 
-    assertEquals(0,
+    assertEquals(1,
         board.countNear(1, 0, Element.BIKE));
 
     assertEquals(true, board.checkNearMe(Direction.DOWN, [Element.ACCELERATOR, Element.FENCE]));
