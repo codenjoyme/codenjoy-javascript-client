@@ -21,18 +21,20 @@
  */
 
 
-var SnakeSolver = module.exports =  function (board) {
-  /**
-   * @return next hero action
-   */
+var SnakeSolver = module.exports = {
+  get: function (board) {
+    /**
+     * @return next hero action
+     */
 
-  var Games = require('./../../engine/games.js');
-  var Point = require('./../../engine/point.js');
-  var Direction = Games.require('./direction.js');
-  var Element = Games.require('./elements.js');
-  var Stuff = require('./../../engine/stuff.js');
+    var Games = require('./../../engine/games.js');
+    var Point = require('./../../engine/point.js');
+    var Direction = Games.require('./direction.js');
+    var Element = Games.require('./elements.js');
+    var Stuff = require('./../../engine/stuff.js');
 
-  // TODO your code here
+    // TODO your code here
 
-  return Direction.RIGHT;
+    return Direction.DOWN;
+  },
 };

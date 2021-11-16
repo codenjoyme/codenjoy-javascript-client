@@ -20,7 +20,7 @@
  * #L%
  */
 
-var BattleCityTest = module.exports = function(){
+var BattlecityTest = module.exports = function(){
 
     var Games = require('./../../engine/games.js');
     var Direction = Games.require('./direction.js');

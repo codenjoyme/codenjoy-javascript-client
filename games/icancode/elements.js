@@ -20,7 +20,7 @@
  * #L%
  */
 
-var ICanCodeElement = module.exports = function() {
+var IcancodeElement = module.exports = function() {
 
     var Games = require('./../../engine/games.js');
     var Direction = Games.require('./direction.js');

@@ -20,7 +20,7 @@
  * #L%
  */
 
-var MollyMageBoard = module.exports = function(board){
+var MollymageBoard = module.exports = function(board){
 
     var Board = require('./../../engine/board.js');
     var Games = require('./../../engine/games.js');

@@ -21,9 +21,13 @@
  */
 
 var Runner = module.exports = function() {
+    // set game name and url
+    var GAME_TO_RUN = 'mollymage';
+    var BOARD_URL = 'http://127.0.0.1:8080/codenjoy-contest/board/player/0?code=000000000000';
 
     var Games = require('./games.js');
-    Games.init();
+    Games.init(GAME_TO_RUN);
+
     var WSocket = require('ws');
     var Board = Games.require('./board.js');
     var Solver = Games.require('./solver.js');
@@ -36,7 +40,7 @@ var Runner = module.exports = function() {
         }
 
         var logMessage = board + "\n\n";
-        var answer = Solver(board).toString();
+        var answer = Solver.get(board).toString();
         logMessage += "Answer: " + answer + "\n";
         logMessage += "-----------------------------------\n";
 
@@ -58,7 +62,7 @@ var Runner = module.exports = function() {
     }
 
     var getUrl = function() {
-        return Stuff.parameter('url', 1);
+        return Stuff.parameter('url', 1, BOARD_URL);
     }
 
     var connect = function() {

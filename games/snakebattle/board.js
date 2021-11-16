@@ -20,7 +20,7 @@
  * #L%
  */
 
-var SnakeBattleBoard = module.exports = function(board){
+var SnakebattleBoard = module.exports = function(board){
 
     var Games = require('./../../engine/games.js');
     var Direction = Games.require('./direction.js');

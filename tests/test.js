@@ -25,7 +25,7 @@ var all = ['a2048', 'battlecity', 'excitebike', 'icancode', 'sample', 'snake', '
 for (var index in all) {
     var game = all[index];
 
-    Games.initForTest(game);
+    Games.init(game);
     var Test = Games.require('./test.js');
     Test();
 

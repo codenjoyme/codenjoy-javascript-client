@@ -21,22 +21,20 @@
  */
 
 
-var MollyMageSolver = module.exports =  function (board) {
-  /**
-   * @return next hero action
-   */
+var MollymageSolver = module.exports = {
+  get: function (board) {
+    /**
+     * @return next hero action
+     */
 
-  var Games = require('./../../engine/games.js');
+    var Games = require('./../../engine/games.js');
     var Point = require('./../../engine/point.js');
     var Direction = Games.require('./direction.js');
     var Element = Games.require('./elements.js');
     var Stuff = require('./../../engine/stuff.js');
 
     // TODO your code here
-    if (board.isBarrierAt(board.getHero().x + 1, board.getHero().y + 1)) {
-      console.log(board.getHero().x + 1, board.getHero().y + 1);
-      return Direction.UP;
-    }
 
-    return Direction.RIGHT;
+    return Direction.DOWN;
+  },
 };

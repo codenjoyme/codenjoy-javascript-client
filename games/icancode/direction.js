@@ -20,7 +20,7 @@
  * #L%
  */
 
-var ICanCodeDirection = module.exports = function() {
+var IcancodeDirection = module.exports = function() {
 
     var Direction = require('./../../engine/direction.js');
 
