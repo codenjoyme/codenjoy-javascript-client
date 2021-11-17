@@ -20,8 +20,8 @@
  * #L%
  */
 
-var GAME_TO_RUN='clifford'
-var BOARD_URL='https://dojorena.io/codenjoy-contest/board/player/dojorena5?code=953820862434373766'
+var GAME_TO_RUN='mollymage'
+var BOARD_URL='http://127.0.0.1:8080/codenjoy-contest/board/player/0?code=000000000000'
 
 // this is only for npm api emulation in browser
 var process = {
