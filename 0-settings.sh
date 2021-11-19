@@ -15,7 +15,7 @@ eval_echo "[[ \"$SKIP_TESTS\" == \"\" ]]  && SKIP_TESTS=true"
 eval_echo "TOOLS=$ROOT/.tools"
 eval_echo "ARCH=tar"
 
-# Set to true if you want to ignore jdk and maven installation on the system
+# Set to true if you want to ignore node installation on the system
 eval_echo "[[ \"$INSTALL_LOCALLY\" == \"\" ]] && INSTALL_LOCALLY=true"
 
 eval_echo "[[ \"$INSTALL_LOCALLY\" == "true" ]] && export NODE_HOME="
