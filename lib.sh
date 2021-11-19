@@ -69,6 +69,8 @@ install() {
       eval_echo_color $COLOR3 "DEST_FILE=$1.tar.xz"
     elif [[ "$URL" == *.tar.gz ]]; then
       eval_echo_color $COLOR3 "DEST_FILE=$1.tar.gz"
+    elif [[ "$URL" == *.tgz ]]; then
+      eval_echo_color $COLOR3 "DEST_FILE=$1.tgz"
     fi
 
     if test -f "$TOOLS/$DEST_FILE"; then
