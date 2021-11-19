@@ -18,8 +18,8 @@ eval_echo "ARCH=tar"
 # Set to true if you want to ignore jdk and maven installation on the system
 eval_echo "[[ \"$INSTALL_LOCALLY\" == \"\" ]] && INSTALL_LOCALLY=true"
 
-eval_echo "[[ \"$INSTALL_LOCALLY\" == "true" ]] && NODE_HOME="
-eval_echo "[[ \"$NODE_HOME\" == \"\" ]]  && NODE_HOME=$ROOT/.node/bin"
+eval_echo "[[ \"$INSTALL_LOCALLY\" == "true" ]] && export NODE_HOME="
+eval_echo "[[ \"$NODE_HOME\" == \"\" ]]  && export NODE_HOME=$ROOT/.node/bin"
 
 eval_echo "NPM=$NODE_HOME/npm"
 eval_echo "export PATH=\"$NODE_HOME:$PATH\""
