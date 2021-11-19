@@ -16,14 +16,17 @@ eval_echo "TOOLS=$ROOT/.tools"
 eval_echo "ARCH=tar"
 
 # Set to true if you want to ignore node installation on the system
-eval_echo "[[ \"$INSTALL_LOCALLY\" == \"\" ]] && INSTALL_LOCALLY=true"
+eval_echo "[[ \"$INSTALL_LOCALLY\" == \"\" ]]   && INSTALL_LOCALLY=true"
 
 eval_echo "[[ \"$INSTALL_LOCALLY\" == "true" ]] && export NODE_HOME="
-eval_echo "[[ \"$NODE_HOME\" == \"\" ]]  && export NODE_HOME=$ROOT/.node/bin"
+
+eval_echo "[[ \"$NODE_HOME\" == \"\" ]]   && NO_NODE=true"
+eval_echo "[[ \"$NO_NODE\" == \"true\" ]] && export NODE_HOME=$ROOT/.node/bin"
+eval_echo "[[ \"$NO_NODE\" == \"true\" ]] && export PATH=$NODE_HOME:$PATH"
 
 eval_echo "NPM=$NODE_HOME/npm"
-eval_echo "export PATH=\"$NODE_HOME:$PATH\""
 
+color $COLOR4 "PATH=$PATH"
 color $COLOR4 "NODE_HOME=$NODE_HOME"
 echo
 

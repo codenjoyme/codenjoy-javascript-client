@@ -20,11 +20,14 @@ if "%INSTALL_LOCALLY%"==""     ( set INSTALL_LOCALLY=true)
 
 if "%INSTALL_LOCALLY%"=="true" ( set NODE_HOME=)
 
-if "%NODE_HOME%"=="" ( set NODE_HOME=%ROOT%\.node)
+if "%NODE_HOME%"==""   ( set NO_NODE=true)
+if "%NO_NODE%"=="true" ( set NODE_HOME=%ROOT%\.node)
+if "%NO_NODE%"=="true" ( set PATH=%NODE_HOME%\;%PATH%)
 
 set NPM=%NODE_HOME%\npm
 
 echo off
+call lib :color PATH=%PATH%
 call lib :color NODE_HOME=%NODE_HOME%
 echo on
 
