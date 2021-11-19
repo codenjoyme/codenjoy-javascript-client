@@ -20,6 +20,7 @@ if "%INSTALL_LOCALLY%"=="" ( set INSTALL_LOCALLY=true)
 
 if "%INSTALL_LOCALLY%"=="true" ( set NODE_HOME=)
 if "%NODE_HOME%"=="" ( set NODE_HOME=%ROOT%\.node)
+
 set NPM=%NODE_HOME%\npm
 
 echo off
