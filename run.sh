@@ -55,13 +55,17 @@ sep() {
     color $CL_COMMAND "---------------------------------------------------------------------------------------"
 }
 
+build_args=""
 read_env() {
     for entry in $(cat $ROOT/.env)
     do
         if [[ ! $entry == \#* ]]
         then
             export $entry
-            color $CL_INFO "$entry"
+            
+            build_args+=" --build-arg $entry"
+            
+            color $CL_INFO "$entry"          
         fi
     done
 }
@@ -108,8 +112,8 @@ echo
 
 color $CL_HEADER "Building client..."
 echo
-
-    eval_echo "DOCKER_BUILDKIT=1 docker build -t client-server -f Dockerfile ./ --build-arg SERVER_URL=$BOARD_URL --build-arg GAME_TO_RUN=$GAME_TO_RUN"
+       
+    eval_echo "DOCKER_BUILDKIT=1 docker build -t client-server -f Dockerfile ./ $build_args"
 
 color $CL_HEADER "Starting client..."
 echo
