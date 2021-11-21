@@ -46,7 +46,7 @@ call run :init_colors
     goto :eof
 
 :version
-    call run :print_color %NPM% -v
+    call run :eval_echo_color ‘%NPM% -v‘
     goto :eof
 
 :build
