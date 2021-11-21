@@ -4,7 +4,7 @@ It allows you to easily and quickly join the game, developing your unique algori
 # What do you need to get started?
 To get started, you should define the desired game and enter a value in `GAME_TO_RUN` variable of `runner.js` script. \
 The second important thing is the connection token to the server. After successful authorization on the site, you must copy the url
-and enter a value in `BOARD_URL` variable of `runner.js` script. \
+and enter a value in `SERVER_URL` variable of `runner.js` script. \
 This is enough to connect and participate in the competition.
 
 # How to run it?
@@ -13,7 +13,7 @@ You can pass the game type and token connection to the server as command-line ar
 Game parameters passed by arguments at startup have a higher priority than those defined in the code.
 
 ### For JavaScript with browser:
-- update `browser-0-settings.js` with `GAME_TO_RUN='<gamename>'` and `BOARD_URL='<url>'`
+- update `browser-0-settings.js` with `GAME_TO_RUN='<gamename>'` and `SERVER_URL='<url>'`
 - write bot
 - run `browser-2-run.html`
 - for testing run `browser-3-test.html`
@@ -21,7 +21,7 @@ Game parameters passed by arguments at startup have a higher priority than those
 ### For JavaScript with node.js:
 - install Node.js from http://nodejs.org/
 - update Path System variable - add node.js root folder
-- update `0-settings.bat` with `GAME_TO_RUN='<gamename>'` and `BOARD_URL='<url>'`
+- update `0-settings.bat` with `GAME_TO_RUN='<gamename>'` and `SERVER_URL='<url>'`
 - write bot
 - run `1-download-env.bat`, `2-build.bat` and `3-run.bat` or `npm start` command
 - another way to change server url - run `3-run.bat "http://127.0.0.1:8080/codenjoy-contest/board/player/0?code=000000000000"`

@@ -23,7 +23,7 @@
 var Runner = module.exports = function() {
     // set game name and url
     var GAME_TO_RUN = 'mollymage';
-    var BOARD_URL = 'http://127.0.0.1:8080/codenjoy-contest/board/player/0?code=000000000000';
+    var SERVER_URL  = 'http://127.0.0.1:8080/codenjoy-contest/board/player/0?code=000000000000';
 
     var Games = require('./games.js');
     Games.init(GAME_TO_RUN);
@@ -62,7 +62,7 @@ var Runner = module.exports = function() {
     }
 
     var getUrl = function() {
-        return Stuff.parameter('url', 1, BOARD_URL);
+        return Stuff.parameter('url', 1, SERVER_URL);
     }
 
     var connect = function() {
