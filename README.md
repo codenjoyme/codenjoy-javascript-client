@@ -21,11 +21,10 @@ Game parameters passed by arguments at startup have a higher priority than those
 ### For JavaScript with node.js:
 - install Node.js from http://nodejs.org/
 - update Path System variable - add node.js root folder
-- update `0-settings.bat` with `GAME_TO_RUN='<gamename>'` and `SERVER_URL='<url>'`
+- update `.env` with `GAME_TO_RUN=<gamename>` and `SERVER_URL=<url>`
 - write bot
-- run `1-download-env.bat`, `2-build.bat` and `3-run.bat` or `npm start` command
-- another way to change server url - run `3-run.bat "http://127.0.0.1:8080/codenjoy-contest/board/player/0?code=000000000000"`
-- for testing run `4-test.bat` or `npm test` command
+- run `run.bat` or `npm start` or `run.sh` command
+- for testing run `run.bat` or `npm test` command
 
 # How does it work?
 The elements on the map are defined in `games/<gamename>/elements.js`. They determine the meaning of a particular symbol.
