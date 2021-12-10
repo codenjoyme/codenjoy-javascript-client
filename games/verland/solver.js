@@ -21,7 +21,7 @@
  */
 
 
-var CliffordSolver = module.exports = {
+var VerlandSolver = module.exports = {
   get: function (board) {
     /**
      * @return next hero action
