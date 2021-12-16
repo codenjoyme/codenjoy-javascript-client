@@ -36,6 +36,7 @@ var Games = module.exports = {
         sample: 'sample',
         snake: 'snake',
         snakeBattle: 'snakebattle',
+        verland: 'verland',
     },
 
     gameName : '',
@@ -74,6 +75,8 @@ var Games = module.exports = {
                     module = SnakeElement;
                 } else if (this.gameName === this.games.snakeBattle) {
                     module = SnakebattleElement;
+                } else if (this.gameName === this.games.verland) {
+                    module = VerlandElement;
                 }
             }
             // element module can be a function that returns an object or object
@@ -105,6 +108,8 @@ var Games = module.exports = {
                     module = SnakeBoard;
                 } else if (this.gameName === this.games.snakeBattle) {
                     module = SnakebattleBoard;
+                } else if (this.gameName === this.games.verland) {
+                    module = VerlandBoard;
                 }
             }
             // board module is a function that can parse string board
@@ -136,6 +141,8 @@ var Games = module.exports = {
                     module = SnakeDirection;
                 } else if (this.gameName === this.games.snakeBattle) {
                     module = SnakebattleDirection;
+                } else if (this.gameName === this.games.verland) {
+                    module = VerlandDirection;
                 }
             }
             // direction module can be a function that returns an object or object
@@ -167,6 +174,8 @@ var Games = module.exports = {
                     module = SnakeTest;
                 } else if (this.gameName === this.games.snakeBattle) {
                     module = SnakebattleTest;
+                } else if (this.gameName === this.games.verland) {
+                    module = VerlandTest;
                 }
             }
             // test module is a function that will run in tests/test.js
@@ -198,6 +207,8 @@ var Games = module.exports = {
                     module = SnakeSolver;
                 } else if (this.gameName === this.games.snakeBattle) {
                     module = SnakebattleSolver;
+                } else if (this.gameName === this.games.verland) {
+                    module = VerlandSolver;
                 }
             }
             // solver module is a function that will return next hero action
