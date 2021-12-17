@@ -96,33 +96,33 @@ var VerlandElement = module.exports = {
 
         // Вокруг этой зоны было зафиксировано одно заражение.
 
-    ONE_CONTAGION : '1',
+    CONTAGION_ONE : '1',
 
         // Вокруг этой зоны было зафиксировано два заражения.
 
-    TWO_CONTAGIONS : '2',
+    CONTAGION_TWO : '2',
 
         // Вокруг этой зоны было зафиксировано три заражения.
 
-    THREE_CONTAGIONS : '3',
+    CONTAGION_THREE : '3',
 
         // Вокруг этой зоны было зафиксировано четыре заражения.
 
-    FOUR_CONTAGIONS : '4',
+    CONTAGION_FOUR : '4',
 
         // Вокруг этой зоны было зафиксировано пять заражений.
 
-    FIVE_CONTAGIONS : '5',
+    CONTAGION_FIVE : '5',
 
         // Вокруг этой зоны было зафиксировано шесть заражений.
 
-    SIX_CONTAGIONS : '6',
+    CONTAGION_SIX : '6',
 
         // Вокруг этой зоны было зафиксировано семь заражений.
 
-    SEVEN_CONTAGIONS : '7',
+    CONTAGION_SEVEN : '7',
 
         // Вокруг этой зоны было зафиксировано восемь заражений.
 
-    EIGHT_CONTAGIONS : '8'
+    CONTAGION_EIGHT : '8'
 }

@@ -80,14 +80,14 @@ var VerlandBoard = module.exports = function(board){
     board.countContagions = function(x,y) {
         var infectionMarkers = [
             Element.CLEAR,
-            Element.ONE_CONTAGION,
-            Element.TWO_CONTAGIONS,
-            Element.THREE_CONTAGIONS,
-            Element.FOUR_CONTAGIONS,
-            Element.FIVE_CONTAGIONS,
-            Element.SIX_CONTAGIONS,
-            Element.SEVEN_CONTAGIONS,
-            Element.EIGHT_CONTAGIONS,
+            Element.CONTAGION_ONE,
+            Element.CONTAGION_TWO,
+            Element.CONTAGION_THREE,
+            Element.CONTAGION_FOUR,
+            Element.CONTAGION_FIVE,
+            Element.CONTAGION_SIX,
+            Element.CONTAGION_SEVEN,
+            Element.CONTAGION_EIGHT,
         ];
 
         return board.isAtMany(x,y, infectionMarkers) ? board.getAt(x,y) : 0;
