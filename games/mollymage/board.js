@@ -108,7 +108,7 @@ var MollymageBoard = module.exports = function(board){
     };
 
     board.getBlasts = function() {
-        return board.findAll(Element.BOOM);
+        return board.findAll(Element.BLAST);
     };
 
     board.getFutureBlasts = function() {
