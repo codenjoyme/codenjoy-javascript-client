@@ -1,6 +1,9 @@
 @echo off
 
-call run :init_colors
+if "%RUN%"=="" set RUN=%CD%\run
+if "%STUFF%"=="" set STUFF=%CD%\stuff
+
+call %RUN% :init_colors
 
 :check_run_mode
     if "%*"=="" (       
@@ -12,8 +15,8 @@ call run :init_colors
 
 :run_executable
     rem run stuff.bat as executable script
-    call run :color ‘%CL_INFO%‘ ‘This is not executable script. Please use 'run.bat' only.‘
-    call run :ask   
+    call %RUN% :color ‘%CL_INFO%‘ ‘This is not executable script. Please use 'run.bat' only.‘
+    call %RUN% :ask   
     goto :eof
 
 :run_library
@@ -31,8 +34,8 @@ call run :init_colors
     set NPM=%NODE_HOME%\npm
 
     echo Language environment variables
-    call run :color ‘%CL_INFO%‘ ‘PATH=%PATH%‘
-    call run :color ‘%CL_INFO%‘ ‘NODE_HOME=%NODE_HOME%‘
+    call %RUN% :color ‘%CL_INFO%‘ ‘PATH=%PATH%‘
+    call %RUN% :color ‘%CL_INFO%‘ ‘NODE_HOME=%NODE_HOME%‘
 
     set ARCH_URL=https://nodejs.org/dist/v14.17.0/node-v14.17.0-win-x64.zip
     set ARCH_FOLDER=node-v14.17.0-win-x64
@@ -40,24 +43,24 @@ call run :init_colors
 
 :install
     if exist %TOOLS%\..\node_modules (
-        call run :eval_echo ‘rd /S /Q %TOOLS%\..\node_modules‘
+        call %RUN% :eval_echo ‘rd /S /Q %TOOLS%\..\node_modules‘
     )
-    call run :install node %ARCH_URL% %ARCH_FOLDER%
+    call %RUN% :install node %ARCH_URL% %ARCH_FOLDER%
     goto :eof
 
 :version
-    call run :eval_echo_color ‘%NPM% -v‘
+    call %RUN% :eval_echo_color ‘%NPM% -v‘
     goto :eof
 
 :build
-    call run :eval_echo ‘%NPM% install‘
+    call %RUN% :eval_echo ‘%NPM% install‘
     goto :eof
 
 :test    
-    call run :eval_echo ‘%NPM% test‘
+    call %RUN% :eval_echo ‘%NPM% test‘
     echo.
     goto :eof
 
 :run
-    call run :eval_echo ‘%NPM% start %GAME_TO_RUN% %SERVER_URL%‘
+    call %RUN% :eval_echo ‘%NPM% start %GAME_TO_RUN% %SERVER_URL%‘
     goto :eof
