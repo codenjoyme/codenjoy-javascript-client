@@ -32,7 +32,6 @@ var Games = module.exports = {
         battleCity: 'battlecity',
         excitebike: 'excitebike',
         iCanCode: 'icancode',
-        minesweeper: 'minesweeper',
         sample: 'sample',
         snake: 'snake',
         snakeBattle: 'snakebattle',
@@ -67,8 +66,6 @@ var Games = module.exports = {
                     module = ExcitebikeElement;
                 } else if (this.gameName === this.games.iCanCode) {
                     module = IcancodeElement;
-                } else if (this.gameName === this.games.minesweeper) {
-                    module = MinesweeperElement;
                 } else if (this.gameName === this.games.sample) {
                     module = SampleElement;
                 } else if (this.gameName === this.games.snake) {
@@ -100,8 +97,6 @@ var Games = module.exports = {
                     module = ExcitebikeBoard;
                 } else if (this.gameName === this.games.iCanCode) {
                     module = IcancodeBoard;
-                } else if (this.gameName === this.games.minesweeper) {
-                    module = MinesweeperBoard;
                 } else if (this.gameName === this.games.sample) {
                     module = SampleBoard;
                 } else if (this.gameName === this.games.snake) {
@@ -133,8 +128,6 @@ var Games = module.exports = {
                     module = ExcitebikeDirection;
                 } else if (this.gameName === this.games.iCanCode) {
                     module = IcancodeDirection;
-                } else if (this.gameName === this.games.minesweeper) {
-                    module = MinesweeperDirection;
                 } else if (this.gameName === this.games.sample) {
                     module = SampleDirection;
                 } else if (this.gameName === this.games.snake) {
@@ -166,8 +159,6 @@ var Games = module.exports = {
                     module = ExcitebikeTest;
                 } else if (this.gameName === this.games.iCanCode) {
                     module = IcancodeTest;
-                } else if (this.gameName === this.games.minesweeper) {
-                    module = MinesweeperTest;
                 } else if (this.gameName === this.games.sample) {
                     module = SampleTest;
                 } else if (this.gameName === this.games.snake) {
@@ -199,8 +190,6 @@ var Games = module.exports = {
                     module = ExcitebikeSolver;
                 } else if (this.gameName === this.games.iCanCode) {
                     module = IcancodeSolver;
-                } else if (this.gameName === this.games.minesweeper) {
-                    module = MinesweeperSolver;
                 } else if (this.gameName === this.games.sample) {
                     module = SampleSolver;
                 } else if (this.gameName === this.games.snake) {
