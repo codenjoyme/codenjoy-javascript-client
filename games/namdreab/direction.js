@@ -20,7 +20,7 @@
  * #L%
  */
 
-var SnakeDirection = module.exports = function() {
+var NamdreabDirection = module.exports = function() {
 
     var Direction = require('./../../engine/direction.js');
 

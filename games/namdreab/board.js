@@ -20,7 +20,7 @@
  * #L%
  */
 
-var SnakebattleBoard = module.exports = function(board){
+var NamdreabBoard = module.exports = function(board){
 
     var Games = require('./../../engine/games.js');
     var Direction = Games.require('./direction.js');
@@ -58,7 +58,7 @@ var SnakebattleBoard = module.exports = function(board){
     var size = boardSize();
     var xyl = new LengthToXY(size);
 
-    // TODO:BATTLE исправить метод на аналогичный для snakebattle
+    // TODO:BATTLE исправить метод на аналогичный для namdreab
     var getHero = function () {
         var result = [];
         result = result.concat(findAll(Element.HERO));
@@ -67,7 +67,7 @@ var SnakebattleBoard = module.exports = function(board){
         return result[0];
     };
 
-    // TODO:BATTLE исправить метод на аналогичный для snakebattle
+    // TODO:BATTLE исправить метод на аналогичный для namdreab
     var getOtherHeroes = function () {
         var result = [];
         result = result.concat(findAll(Element.OTHER_HERO));
@@ -76,7 +76,7 @@ var SnakebattleBoard = module.exports = function(board){
         return result;
     };
 
-    // TODO:BATTLE исправить метод на аналогичный для snakebattle
+    // TODO:BATTLE исправить метод на аналогичный для namdreab
     var isGameOver = function () {
         return board.indexOf(Element.DEAD_HERO) != -1;
     };
@@ -104,7 +104,7 @@ var SnakebattleBoard = module.exports = function(board){
         return result;
     };
 
-    // TODO:BATTLE исправить метод на аналогичный для snakebattle
+    // TODO:BATTLE исправить метод на аналогичный для namdreab
     var getBarriers = function () {
         var all = getGhosts();
         all = all.concat(getWalls());
@@ -115,7 +115,7 @@ var SnakebattleBoard = module.exports = function(board){
         return removeDuplicates(all);
     };
 
-    // TODO:BATTLE исправить метод на аналогичный для snakebattle
+    // TODO:BATTLE исправить метод на аналогичный для namdreab
     var toString = function () {
         return util.format("%s\n" +
             "Hero at: %s\n" +
@@ -135,7 +135,7 @@ var SnakebattleBoard = module.exports = function(board){
             Stuff.printArray(getFutureBlasts()));
     };
 
-    // TODO:BATTLE исправить метод на аналогичный для snakebattle
+    // TODO:BATTLE исправить метод на аналогичный для namdreab
     var getGhosts = function () {
         return findAll(Element.GHOST);
     };
@@ -151,17 +151,17 @@ var SnakebattleBoard = module.exports = function(board){
         return result;
     };
 
-    // TODO:BATTLE исправить метод на аналогичный для snakebattle
+    // TODO:BATTLE исправить метод на аналогичный для namdreab
     var getWalls = function () {
         return findAll(Element.WALL);
     };
 
-    // TODO:BATTLE исправить метод на аналогичный для snakebattle
+    // TODO:BATTLE исправить метод на аналогичный для namdreab
     var getTreasureBoxes = function () {
         return findAll(Element.TREASURE_BOX);
     };
 
-    // TODO:BATTLE исправить метод на аналогичный для snakebattle
+    // TODO:BATTLE исправить метод на аналогичный для namdreab
     var getPotions = function () {
         var result = [];
         result = result.concat(findAll(Element.POTION_TIMER_1));
@@ -174,12 +174,12 @@ var SnakebattleBoard = module.exports = function(board){
         return result;
     };
 
-    // TODO:BATTLE исправить метод на аналогичный для snakebattle
+    // TODO:BATTLE исправить метод на аналогичный для namdreab
     var getBlasts = function () {
         return findAll(Element.BLAST);
     };
 
-    // TODO:BATTLE исправить метод на аналогичный для snakebattle
+    // TODO:BATTLE исправить метод на аналогичный для namdreab
     var getFutureBlasts = function () {
         var potions = getPotions();
         var result = [];
@@ -242,7 +242,7 @@ var SnakebattleBoard = module.exports = function(board){
         return count;
     };
 
-    // TODO:BATTLE исправить метод на аналогичный для snakebattle
+    // TODO:BATTLE исправить метод на аналогичный для namdreab
     return {
         size: boardSize,
         getHero: getHero,

@@ -20,7 +20,7 @@
  * #L%
  */
 
-var BattlecityBoard = module.exports = function(board){
+var RawelbbubBoard = module.exports = function(board){
 
     var Board = require('./../../engine/board.js');
     var Games = require('./../../engine/games.js');

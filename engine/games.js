@@ -29,12 +29,12 @@ var Games = module.exports = {
         clifford: 'clifford',
         tetris: 'tetris',
         '2048': 'a2048',
-        battleCity: 'battlecity',
+        rawelbbub: 'rawelbbub',
         excitebike: 'excitebike',
-        iCanCode: 'icancode',
+        icancode: 'icancode',
         sample: 'sample',
-        snake: 'snake',
-        snakeBattle: 'snakebattle',
+        knibert: 'knibert',
+        namdreab: 'namdreab',
         verland: 'verland',
     },
 
@@ -60,18 +60,18 @@ var Games = module.exports = {
                     module = TetrisElement;
                 } else if (this.gameName === this.games["2048"]) {
                     module = A2048Element;
-                } else if (this.gameName === this.games.battleCity) {
-                    module = BattlecityElement;
+                } else if (this.gameName === this.games.rawelbbub) {
+                    module = RawelbbubElement;
                 } else if (this.gameName === this.games.excitebike) {
                     module = ExcitebikeElement;
-                } else if (this.gameName === this.games.iCanCode) {
+                } else if (this.gameName === this.games.icancode) {
                     module = IcancodeElement;
                 } else if (this.gameName === this.games.sample) {
                     module = SampleElement;
-                } else if (this.gameName === this.games.snake) {
-                    module = SnakeElement;
-                } else if (this.gameName === this.games.snakeBattle) {
-                    module = SnakebattleElement;
+                } else if (this.gameName === this.games.knibert) {
+                    module = KnibertElement;
+                } else if (this.gameName === this.games.namdreab) {
+                    module = NamdreabElement;
                 } else if (this.gameName === this.games.verland) {
                     module = VerlandElement;
                 }
@@ -91,18 +91,18 @@ var Games = module.exports = {
                     module = TetrisBoard;
                 } else if (this.gameName === this.games["2048"]) {
                     module = A2048Board;
-                } else if (this.gameName === this.games.battleCity) {
-                    module = BattlecityBoard;
+                } else if (this.gameName === this.games.rawelbbub) {
+                    module = RawelbbubBoard;
                 } else if (this.gameName === this.games.excitebike) {
                     module = ExcitebikeBoard;
-                } else if (this.gameName === this.games.iCanCode) {
+                } else if (this.gameName === this.games.icancode) {
                     module = IcancodeBoard;
                 } else if (this.gameName === this.games.sample) {
                     module = SampleBoard;
-                } else if (this.gameName === this.games.snake) {
-                    module = SnakeBoard;
-                } else if (this.gameName === this.games.snakeBattle) {
-                    module = SnakebattleBoard;
+                } else if (this.gameName === this.games.knibert) {
+                    module = KnibertBoard;
+                } else if (this.gameName === this.games.namdreab) {
+                    module = NamdreabBoard;
                 } else if (this.gameName === this.games.verland) {
                     module = VerlandBoard;
                 }
@@ -122,18 +122,18 @@ var Games = module.exports = {
                     module = TetrisDirection;
                 } else if (this.gameName === this.games["2048"]) {
                     module = A2048Direction;
-                } else if (this.gameName === this.games.battleCity) {
-                    module = BattlecityDirection;
+                } else if (this.gameName === this.games.rawelbbub) {
+                    module = RawelbbubDirection;
                 } else if (this.gameName === this.games.excitebike) {
                     module = ExcitebikeDirection;
-                } else if (this.gameName === this.games.iCanCode) {
+                } else if (this.gameName === this.games.icancode) {
                     module = IcancodeDirection;
                 } else if (this.gameName === this.games.sample) {
                     module = SampleDirection;
-                } else if (this.gameName === this.games.snake) {
-                    module = SnakeDirection;
-                } else if (this.gameName === this.games.snakeBattle) {
-                    module = SnakebattleDirection;
+                } else if (this.gameName === this.games.knibert) {
+                    module = KnibertDirection;
+                } else if (this.gameName === this.games.namdreab) {
+                    module = NamdreabDirection;
                 } else if (this.gameName === this.games.verland) {
                     module = VerlandDirection;
                 }
@@ -153,18 +153,18 @@ var Games = module.exports = {
                     module = TetrisTest;
                 } else if (this.gameName === this.games["2048"]) {
                     module = A2048Test;
-                } else if (this.gameName === this.games.battleCity) {
-                    module = BattlecityTest;
+                } else if (this.gameName === this.games.rawelbbub) {
+                    module = RawelbbubTest;
                 } else if (this.gameName === this.games.excitebike) {
                     module = ExcitebikeTest;
-                } else if (this.gameName === this.games.iCanCode) {
+                } else if (this.gameName === this.games.icancode) {
                     module = IcancodeTest;
                 } else if (this.gameName === this.games.sample) {
                     module = SampleTest;
-                } else if (this.gameName === this.games.snake) {
-                    module = SnakeTest;
-                } else if (this.gameName === this.games.snakeBattle) {
-                    module = SnakebattleTest;
+                } else if (this.gameName === this.games.knibert) {
+                    module = KnibertTest;
+                } else if (this.gameName === this.games.namdreab) {
+                    module = NamdreabTest;
                 } else if (this.gameName === this.games.verland) {
                     module = VerlandTest;
                 }
@@ -184,18 +184,18 @@ var Games = module.exports = {
                     module = TetrisSolver;
                 } else if (this.gameName === this.games["2048"]) {
                     module = A2048Solver;
-                } else if (this.gameName === this.games.battleCity) {
-                    module = BattlecitySolver;
+                } else if (this.gameName === this.games.rawelbbub) {
+                    module = RawelbbubSolver;
                 } else if (this.gameName === this.games.excitebike) {
                     module = ExcitebikeSolver;
-                } else if (this.gameName === this.games.iCanCode) {
+                } else if (this.gameName === this.games.icancode) {
                     module = IcancodeSolver;
                 } else if (this.gameName === this.games.sample) {
                     module = SampleSolver;
-                } else if (this.gameName === this.games.snake) {
-                    module = SnakeSolver;
-                } else if (this.gameName === this.games.snakeBattle) {
-                    module = SnakebattleSolver;
+                } else if (this.gameName === this.games.knibert) {
+                    module = KnibertSolver;
+                } else if (this.gameName === this.games.namdreab) {
+                    module = NamdreabSolver;
                 } else if (this.gameName === this.games.verland) {
                     module = VerlandSolver;
                 }

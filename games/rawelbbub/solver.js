@@ -21,20 +21,21 @@
  */
 
 
-var BattlecitySolver = module.exports = {
-  get: function (board) {
-    /**
-     * @return next hero action
-     */
+var RawelbbubSolver = module.exports = {
 
-    var Games = require('./../../engine/games.js');
-    var Point = require('./../../engine/point.js');
-    var Direction = Games.require('./direction.js');
-    var Element = Games.require('./elements.js');
-    var Stuff = require('./../../engine/stuff.js');
+    get: function (board) {
+        /**
+         * @return next hero action
+         */
 
-    // TODO your code here
+        var Games = require('./../../engine/games.js');
+        var Point = require('./../../engine/point.js');
+        var Direction = Games.require('./direction.js');
+        var Element = Games.require('./elements.js');
+        var Stuff = require('./../../engine/stuff.js');
 
-    return Direction.ACT;
-  },
+        // TODO your code here
+
+        return Direction.ACT;
+    }
 };

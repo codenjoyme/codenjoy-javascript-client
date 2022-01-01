@@ -20,7 +20,7 @@
  * #L%
  */
 
-var BattlecityElement = module.exports = {
+var RawelbbubElement = module.exports = {
 
         // An empty space where a tank can move.
 

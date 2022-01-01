@@ -20,7 +20,7 @@
  * #L%
  */
 
-var SnakeTest = module.exports = function(){
+var KnibertTest = module.exports = function(){
 
     var Games = require('./../../engine/games.js');
     var Direction = Games.require('./direction.js');
