@@ -22,7 +22,7 @@
 
 var RawelbbubElement = module.exports = {
 
-        // An empty space where a tank can move.
+        // An empty space where hero can move.
 
     NONE : ' ',
 
@@ -30,25 +30,25 @@ var RawelbbubElement = module.exports = {
 
     BATTLE_WALL : '☼',
 
-        // A destroyed enemy’s tank. A new appears just in a second.
+        // A destroyed hero. A new appears just in a second.
 
     BANG : 'Ѡ',
 
-        // Ice, having driven onto which the tank will begin to drift.
-        // During a skid, the tank will repeat the old commands for
-        // several ticks in a row, ignoring the current commands.
+        // Ice, having driven onto which hero will begin to drift.
+        // During a skid, hero will repeat the old commands for several
+        // ticks in a row, ignoring the current commands.
 
     ICE : '#',
 
-        // The trees hide tanks which can continue to shoot at the same
-        // time. The fired shells are also not visible under the trees.
-        // Only prizes can be seen from behind the trees.
+        // The trees hide heroes which can continue to shoot at the
+        // same time. The fired shells are also not visible under the
+        // trees. Only prizes can be seen from behind the trees.
 
     TREE : '%',
 
         // The river does not allow to pass through itself without the
         // PRIZE_WALKING_ON_WATER prize, but the shells fly freely
-        // through the water. A tank stuck in the middle of the water,
+        // through the water. Hero stuck in the middle of the water,
         // after canceling the PRIZE_WALKING_ON_WATER prize, can move 1
         // cell in the water only every N ticks.
 
@@ -138,60 +138,60 @@ var RawelbbubElement = module.exports = {
 
     BULLET : '•',
 
-        // Your tank is pointing up.
+        // Your hero is pointing up.
 
-    TANK_UP : '▲',
+    HERO_UP : '▲',
 
-        // Your tank is pointing right.
+        // Your hero is pointing right.
 
-    TANK_RIGHT : '►',
+    HERO_RIGHT : '►',
 
-        // Your tank is pointing down.
+        // Your hero is pointing down.
 
-    TANK_DOWN : '▼',
+    HERO_DOWN : '▼',
 
-        // Your tank is pointing left.
+        // Your hero is pointing left.
 
-    TANK_LEFT : '◄',
+    HERO_LEFT : '◄',
 
-        // Enemy tank is pointing up.
+        // Enemy hero is pointing up.
 
-    OTHER_TANK_UP : '˄',
+    OTHER_HERO_UP : '˄',
 
-        // Enemy tank is pointing right.
+        // Enemy hero is pointing right.
 
-    OTHER_TANK_RIGHT : '˃',
+    OTHER_HERO_RIGHT : '˃',
 
-        // Enemy tank is pointing down.
+        // Enemy hero is pointing down.
 
-    OTHER_TANK_DOWN : '˅',
+    OTHER_HERO_DOWN : '˅',
 
-        // Enemy tank is pointing left.
+        // Enemy hero is pointing left.
 
-    OTHER_TANK_LEFT : '˂',
+    OTHER_HERO_LEFT : '˂',
 
-        // AI-tank is pointing up.
+        // AI is pointing up.
 
-    AI_TANK_UP : '?',
+    AI_UP : '?',
 
-        // AI-tank is pointing right.
+        // AI is pointing right.
 
-    AI_TANK_RIGHT : '»',
+    AI_RIGHT : '»',
 
-        // AI-tank is pointing down.
+        // AI is pointing down.
 
-    AI_TANK_DOWN : '¿',
+    AI_DOWN : '¿',
 
-        // AI-tank is pointing left.
+        // AI is pointing left.
 
-    AI_TANK_LEFT : '«',
+    AI_LEFT : '«',
 
-        // AI-tank can also be a prize, then it is highlighted by this
+        // AI can also be a prize, then it is highlighted by this
         // sprite every few ticks.
 
-    AI_TANK_PRIZE : '◘',
+    AI_PRIZE : '◘',
 
-        // The dropped prize after the destruction of the prize tank
+        // The dropped prize after the destruction of the prize AI
         // flickers on the field every even tick of the game with this
         // sprite.
 
