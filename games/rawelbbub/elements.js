@@ -41,11 +41,11 @@ var RawelbbubElement = module.exports = {
 
     OIL : '#',
 
-        // The trees hide heroes which can continue to shoot at the
-        // same time. The fired shells are also not visible under the
-        // trees. Only prizes can be seen from behind the trees.
+        // Seaweed hide heroes which can continue to shoot at the same
+        // time. The fired shells are also not visible under the weed.
+        // Only prizes can be seen from behind seaweed.
 
-    TREE : '%',
+    SEAWEED : '%',
 
         // The river does not allow to pass through itself without the
         // PRIZE_WALKING_ON_WATER prize, but the shells fly freely
