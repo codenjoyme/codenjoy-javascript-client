@@ -20,109 +20,141 @@
  * #L%
  */
 
-var IcancodeElement = module.exports = {
+var IcancodeElement = module.exports = function() {
 
-    EMPTY : '-',
+    var Games = require('./../../engine/games.js');
+    var Direction = Games.require('./direction.js');
 
-    FLOOR : '.',
+    var elements = [];
+    var elementsTypes = [];
+    var elementsByChar = {};
+    var elementsByType = {};
 
-    ANGLE_IN_LEFT : '╔',
+    var el = function(char, type, direction) {
+        var result = {
+            char: char,
+            type: type,
+            direction: direction
+        };
 
-    WALL_FRONT : '═',
+        elementsByChar[char] = result;
 
-    ANGLE_IN_RIGHT : '┐',
+        if (!elementsByType[type]) {
+            elementsByType[type] = [];
+        }
 
-    WALL_RIGHT : '│',
+        elementsByType[type].push(result);
+        elements.push(result);
 
-    ANGLE_BACK_RIGHT : '┘',
+        if (elementsTypes.indexOf(type) == -1) {
+            elementsTypes.push(type);
+        }
 
-    WALL_BACK : '─',
+        return result;
+    }
 
-    ANGLE_BACK_LEFT : '└',
+    return {
+        EMPTY: el('-', 'NONE'),
+        FLOOR: el('.', 'NONE'),
 
-    WALL_LEFT : '║',
+        ANGLE_IN_LEFT: el('╔', 'WALL'),
+        WALL_FRONT: el('═', 'WALL'),
+        ANGLE_IN_RIGHT: el('┐', 'WALL'),
+        WALL_RIGHT: el('│', 'WALL'),
+        ANGLE_BACK_RIGHT: el('┘', 'WALL'),
+        WALL_BACK: el('─', 'WALL'),
+        ANGLE_BACK_LEFT: el('└', 'WALL'),
+        WALL_LEFT: el('║', 'WALL'),
+        WALL_BACK_ANGLE_LEFT: el('┌', 'WALL'),
+        WALL_BACK_ANGLE_RIGHT: el('╗', 'WALL'),
+        ANGLE_OUT_RIGHT: el('╝', 'WALL'),
+        ANGLE_OUT_LEFT: el('╚', 'WALL'),
+        SPACE: el(' ', 'WALL'),
 
-    WALL_BACK_ANGLE_LEFT : '┌',
+        LASER_MACHINE_CHARGING_LEFT: el('˂', 'LASER_MACHINE', Direction.LEFT),
+        LASER_MACHINE_CHARGING_RIGHT: el('˃', 'LASER_MACHINE', Direction.RIGHT),
+        LASER_MACHINE_CHARGING_UP: el('˄', 'LASER_MACHINE', Direction.UP),
+        LASER_MACHINE_CHARGING_DOWN: el('˅', 'LASER_MACHINE', Direction.DOWN),
 
-    WALL_BACK_ANGLE_RIGHT : '╗',
+        LASER_MACHINE_READY_LEFT: el('◄', 'LASER_MACHINE_READY', Direction.LEFT),
+        LASER_MACHINE_READY_RIGHT: el('►', 'LASER_MACHINE_READY', Direction.RIGHT),
+        LASER_MACHINE_READY_UP: el('▲', 'LASER_MACHINE_READY', Direction.UP),
+        LASER_MACHINE_READY_DOWN: el('▼', 'LASER_MACHINE_READY', Direction.DOWN),
 
-    ANGLE_OUT_RIGHT : '╝',
+        START: el('S', 'START'),
+        EXIT: el('E', 'EXIT'),
+        HOLE: el('O', 'HOLE'),
+        BOX: el('B', 'BOX'),
+        ZOMBIE_START: el('Z', 'ZOMBIE_START'),
+        GOLD: el('$', 'GOLD'),
 
-    ANGLE_OUT_LEFT : '╚',
+        ROBO: el('☺', 'MY_ROBO'),
+        ROBO_FALLING: el('o', 'MY_ROBO'),
+        ROBO_FLYING: el('*', 'MY_ROBO'),
+        ROBO_LASER: el('☻', 'MY_ROBO'),
 
-    SPACE : ' ',
+        ROBO_OTHER: el('X', 'OTHER_ROBO'),
+        ROBO_OTHER_FALLING: el('x', 'OTHER_ROBO'),
+        ROBO_OTHER_FLYING: el('^', 'OTHER_ROBO'),
+        ROBO_OTHER_LASER: el('&', 'OTHER_ROBO'),
 
-    LASER_MACHINE_CHARGING_LEFT : '˂',
+        LASER_LEFT: el('←', 'LASER_LEFT', Direction.LEFT),
+        LASER_RIGHT: el('→', 'LASER_RIGHT', Direction.RIGHT),
+        LASER_UP: el('↑', 'LASER_UP', Direction.UP),
+        LASER_DOWN: el('↓', 'LASER_DOWN', Direction.DOWN),
 
-    LASER_MACHINE_CHARGING_RIGHT : '˃',
+        FEMALE_ZOMBIE: el('♀', 'ZOMBIE'),
+        MALE_ZOMBIE: el('♂', 'ZOMBIE'),
+        ZOMBIE_DIE: el('✝', 'ZOMBIE_DIE'),
 
-    LASER_MACHINE_CHARGING_UP : '˄',
+        UNSTOPPABLE_LASER_PERK: el('l', 'UNSTOPPABLE_LASER_PERK'),
+        DEATH_RAY_PERK: el('r', 'DEATH_RAY_PERK'),
+        UNLIMITED_FIRE_PERK: el('f', 'UNLIMITED_FIRE_PERK'),
+        FIRE_PERK: el('a', 'FIRE_PERK'),
+        JUMP_PERK: el('j', 'JUMP_PERK'),
+        MOVE_BOXES_PERK: el('m', 'MOVE_BOXES_PERK'),
 
-    LASER_MACHINE_CHARGING_DOWN : '˅',
+        FOG: el('F', null),
+        BACKGROUND: el('G', null),
 
-    LASER_MACHINE_READY_LEFT : '◄',
+        getElements: function() {
+            return elements.slice(0);
+        },
 
-    LASER_MACHINE_READY_RIGHT : '►',
+        getElement: function(char) {
+            var el = elementsByChar[char];
+            if (!el) {
+                throw "Element not found for: " + char;
+            }
+            return el;
+        },
 
-    LASER_MACHINE_READY_UP : '▲',
+        getElementsTypes: function() {
+            var elements = [];
+            elementsTypes.forEach(function(e) {
+                if (Array.isArray(e)) {
+                    elements = elements.concat(e);
+                } else {
+                    elements.push(e);
+                }
+            });
 
-    LASER_MACHINE_READY_DOWN : '▼',
+            var result = [];
+            elements.forEach(function(e) {
+                if (result.indexOf(e) < 0) {
+                    result.push(e);
+                }
+            });
 
-    START : 'S',
+            return result;
+        },
 
-    EXIT : 'E',
+        getElementsOfType: function(type) {
+            return elementsByType[type];
+        },
 
-    HOLE : 'O',
-
-    BOX : 'B',
-
-    ZOMBIE_START : 'Z',
-
-    GOLD : '$',
-
-    UNSTOPPABLE_LASER_PERK : 'l',
-
-    DEATH_RAY_PERK : 'r',
-
-    UNLIMITED_FIRE_PERK : 'f',
-
-    FIRE_PERK : 'a',
-
-    JUMP_PERK : 'j',
-
-    MOVE_BOXES_PERK : 'm',
-
-    ROBO : '☺',
-
-    ROBO_FALLING : 'o',
-
-    ROBO_FLYING : '*',
-
-    ROBO_LASER : '☻',
-
-    ROBO_OTHER : 'X',
-
-    ROBO_OTHER_FALLING : 'x',
-
-    ROBO_OTHER_FLYING : '^',
-
-    ROBO_OTHER_LASER : '&',
-
-    LASER_LEFT : '←',
-
-    LASER_RIGHT : '→',
-
-    LASER_UP : '↑',
-
-    LASER_DOWN : '↓',
-
-    FEMALE_ZOMBIE : '♀',
-
-    MALE_ZOMBIE : '♂',
-
-    ZOMBIE_DIE : '✝',
-
-    FOG : 'F',
-
-    BACKGROUND : 'G'
+        isWall: function(element) {
+            return element.type == 'WALL';
+        }
+    };
 }
