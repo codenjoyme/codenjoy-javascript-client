@@ -136,9 +136,12 @@ var RawelbbubElement = module.exports = {
 
     ICEBERG_DESTROYED : ' ',
 
-        // Completely destroyed wall. Wall will recover over time.
+        // Torpedo - is a self-propelled underwater missile designed to
+        // be fired from a submarine and to explode on reaching a
+        // target. The target can be an iceberg, another submarine and
+        // other elements under water.
 
-    BULLET : '•',
+    TORPEDO : '•',
 
         // Your hero is pointing up.
 
