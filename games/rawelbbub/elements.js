@@ -26,7 +26,8 @@ var RawelbbubElement = module.exports = {
 
     WATER : ' ',
 
-        // Underwater reefs. They cannot be destroyed.
+        // Underwater reefs. They cannot be destroyed without prize
+        // PRIZE_BREAKING_BAD.
 
     REEFS : '☼',
 
@@ -55,85 +56,85 @@ var RawelbbubElement = module.exports = {
 
     FISHNET : '~',
 
-        // A wall that hasn't been shot yet. It takes 3 shots to
+        // An iceberg that hasn't been shot yet. It takes 3 shots to
         // completely destroy.
 
-    WALL : '╬',
+    ICEBERG_HUGE : '╬',
 
-        // Partially destroyed wall. For complete destruction, 2 shot
+        // Partially destroyed iceberg. For complete destruction, 2
+        // shot is required.
+
+    ICEBERG_MEDIUM_DOWN : '╩',
+
+        // Partially destroyed iceberg. For complete destruction, 2
+        // shot is required.
+
+    ICEBERG_MEDIUM_UP : '╦',
+
+        // Partially destroyed iceberg. For complete destruction, 2
+        // shot is required.
+
+    ICEBERG_MEDIUM_LEFT : '╠',
+
+        // Partially destroyed iceberg. For complete destruction, 2
+        // shot is required.
+
+    ICEBERG_MEDIUM_RIGHT : '╣',
+
+        // Almost destroyed iceberg. For complete destruction, 1 shot
         // is required.
 
-    WALL_DESTROYED_DOWN : '╩',
+    ICEBERG_SMALL_DOWN_DOWN : '╨',
 
-        // Partially destroyed wall. For complete destruction, 2 shot
+        // Almost destroyed iceberg. For complete destruction, 1 shot
         // is required.
 
-    WALL_DESTROYED_UP : '╦',
+    ICEBERG_SMALL_UP_UP : '╥',
 
-        // Partially destroyed wall. For complete destruction, 2 shot
+        // Almost destroyed iceberg. For complete destruction, 1 shot
         // is required.
 
-    WALL_DESTROYED_LEFT : '╠',
+    ICEBERG_SMALL_LEFT_LEFT : '╞',
 
-        // Partially destroyed wall. For complete destruction, 2 shot
+        // Almost destroyed iceberg. For complete destruction, 1 shot
         // is required.
 
-    WALL_DESTROYED_RIGHT : '╣',
+    ICEBERG_SMALL_RIGHT_RIGHT : '╡',
 
-        // Partially destroyed wall. For complete destruction, 1 shot
+        // Almost destroyed iceberg. For complete destruction, 1 shot
         // is required.
 
-    WALL_DESTROYED_DOWN_TWICE : '╨',
+    ICEBERG_SMALL_LEFT_RIGHT : '│',
 
-        // Partially destroyed wall. For complete destruction, 1 shot
+        // Almost destroyed iceberg. For complete destruction, 1 shot
         // is required.
 
-    WALL_DESTROYED_UP_TWICE : '╥',
+    ICEBERG_SMALL_UP_DOWN : '─',
 
-        // Partially destroyed wall. For complete destruction, 1 shot
+        // Almost destroyed iceberg. For complete destruction, 1 shot
         // is required.
 
-    WALL_DESTROYED_LEFT_TWICE : '╞',
+    ICEBERG_SMALL_UP_LEFT : '┌',
 
-        // Partially destroyed wall. For complete destruction, 1 shot
+        // Almost destroyed iceberg. For complete destruction, 1 shot
         // is required.
 
-    WALL_DESTROYED_RIGHT_TWICE : '╡',
+    ICEBERG_SMALL_UP_RIGHT : '┐',
 
-        // Partially destroyed wall. For complete destruction, 1 shot
+        // Almost destroyed iceberg. For complete destruction, 1 shot
         // is required.
 
-    WALL_DESTROYED_LEFT_RIGHT : '│',
+    ICEBERG_SMALL_DOWN_LEFT : '└',
 
-        // Partially destroyed wall. For complete destruction, 1 shot
+        // Almost destroyed iceberg. For complete destruction, 1 shot
         // is required.
 
-    WALL_DESTROYED_UP_DOWN : '─',
+    ICEBERG_SMALL_DOWN_RIGHT : '┘',
 
-        // Partially destroyed wall. For complete destruction, 1 shot
-        // is required.
+        // Completely destroyed iceberg. No different from WATER. A new
+        // one will appear at this place soon.
 
-    WALL_DESTROYED_UP_LEFT : '┌',
-
-        // Partially destroyed wall. For complete destruction, 1 shot
-        // is required.
-
-    WALL_DESTROYED_RIGHT_UP : '┐',
-
-        // Partially destroyed wall. For complete destruction, 1 shot
-        // is required.
-
-    WALL_DESTROYED_DOWN_LEFT : '└',
-
-        // Partially destroyed wall. For complete destruction, 1 shot
-        // is required.
-
-    WALL_DESTROYED_DOWN_RIGHT : '┘',
-
-        // Partially destroyed wall. For complete destruction, 2 shot
-        // is required.
-
-    WALL_DESTROYED : ' ',
+    ICEBERG_DESTROYED : ' ',
 
         // Completely destroyed wall. Wall will recover over time.
 
@@ -202,11 +203,11 @@ var RawelbbubElement = module.exports = {
 
     PRIZE_IMMORTALITY : '1',
 
-        // A prize that allows you to temporarily destroy any walls
-        // with 1 shot, even indestructible ones (but not the border of
-        // the field).
+        // A prize that allows you to temporarily destroy any icebergs
+        // and underwater reefs (but not the border of the field) with
+        // 1 shot.
 
-    PRIZE_BREAKING_WALLS : '2',
+    PRIZE_BREAKING_BAD : '2',
 
         // A prize that allows the hero to temporarily walk on fishnet.
 
