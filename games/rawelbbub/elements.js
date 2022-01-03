@@ -47,13 +47,13 @@ var RawelbbubElement = module.exports = {
 
     SEAWEED : '%',
 
-        // The river does not allow to pass through itself without the
-        // PRIZE_WALKING_ON_WATER prize, but the shells fly freely
-        // through the water. Hero stuck in the middle of the water,
-        // after canceling the PRIZE_WALKING_ON_WATER prize, can move 1
-        // cell in the water only every N ticks.
+        // Fishnet does not allow to pass through itself without the
+        // PRIZE_WALKING_ON_FISHNET prize, but the shells fly freely
+        // through the water. Hero stuck in the middle of the fishnet,
+        // after canceling the PRIZE_WALKING_ON_FISHNET prize, can move
+        // 1 cell in the fishnet only every N ticks.
 
-    RIVER : '~',
+    FISHNET : '~',
 
         // A wall that hasn't been shot yet. It takes 3 shots to
         // completely destroy.
@@ -208,12 +208,12 @@ var RawelbbubElement = module.exports = {
 
     PRIZE_BREAKING_WALLS : '2',
 
-        // A prize that allows the hero to temporarily walk on water.
+        // A prize that allows the hero to temporarily walk on fishnet.
 
-    PRIZE_WALKING_ON_WATER : '3',
+    PRIZE_WALKING_ON_FISHNET : '3',
 
         // A prize that allows the hero to temporarily see all enemies
-        // under the trees and their bullets.
+        // and their bullets under the seaweed.
 
     PRIZE_VISIBILITY : '4',
 
