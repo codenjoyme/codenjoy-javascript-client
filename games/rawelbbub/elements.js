@@ -22,7 +22,8 @@
 
 var RawelbbubElement = module.exports = {
 
-        // An empty space where hero can move.
+        // An empty space where hero can move. If there was an iceberg
+        // in this place before, it can grow again
 
     WATER : ' ',
 
@@ -64,7 +65,12 @@ var RawelbbubElement = module.exports = {
         // Partially destroyed iceberg. For complete destruction, 2
         // shot is required.
 
-    ICEBERG_MEDIUM_DOWN : '╩',
+    ICEBERG_MEDIUM_LEFT : '╠',
+
+        // Partially destroyed iceberg. For complete destruction, 2
+        // shot is required.
+
+    ICEBERG_MEDIUM_RIGHT : '╣',
 
         // Partially destroyed iceberg. For complete destruction, 2
         // shot is required.
@@ -74,22 +80,7 @@ var RawelbbubElement = module.exports = {
         // Partially destroyed iceberg. For complete destruction, 2
         // shot is required.
 
-    ICEBERG_MEDIUM_LEFT : '╠',
-
-        // Partially destroyed iceberg. For complete destruction, 2
-        // shot is required.
-
-    ICEBERG_MEDIUM_RIGHT : '╣',
-
-        // Almost destroyed iceberg. For complete destruction, 1 shot
-        // is required.
-
-    ICEBERG_SMALL_DOWN_DOWN : '╨',
-
-        // Almost destroyed iceberg. For complete destruction, 1 shot
-        // is required.
-
-    ICEBERG_SMALL_UP_UP : '╥',
+    ICEBERG_MEDIUM_DOWN : '╩',
 
         // Almost destroyed iceberg. For complete destruction, 1 shot
         // is required.
@@ -100,6 +91,16 @@ var RawelbbubElement = module.exports = {
         // is required.
 
     ICEBERG_SMALL_RIGHT_RIGHT : '╡',
+
+        // Almost destroyed iceberg. For complete destruction, 1 shot
+        // is required.
+
+    ICEBERG_SMALL_UP_UP : '╥',
+
+        // Almost destroyed iceberg. For complete destruction, 1 shot
+        // is required.
+
+    ICEBERG_SMALL_DOWN_DOWN : '╨',
 
         // Almost destroyed iceberg. For complete destruction, 1 shot
         // is required.
@@ -131,65 +132,72 @@ var RawelbbubElement = module.exports = {
 
     ICEBERG_SMALL_DOWN_RIGHT : '┘',
 
-        // Completely destroyed iceberg. No different from WATER. A new
-        // one will appear at this place soon.
-
-    ICEBERG_DESTROYED : ' ',
-
         // Torpedo - is a self-propelled underwater missile designed to
         // be fired from a submarine and to explode on reaching a
         // target. The target can be an iceberg, another submarine and
-        // other elements under water.
+        // other elements under water. This torpedo moves to the left.
 
-    TORPEDO : '•',
+    TORPEDO_LEFT : '•',
 
-        // Your hero is pointing up.
+        // This torpedo moves to the right.
 
-    HERO_UP : '▲',
+    TORPEDO_RIGHT : '¤',
 
-        // Your hero is pointing right.
+        // This torpedo moves to the up.
 
-    HERO_RIGHT : '►',
+    TORPEDO_UP : 'ø',
 
-        // Your hero is pointing down.
+        // This torpedo moves to the down.
 
-    HERO_DOWN : '▼',
+    TORPEDO_DOWN : '×',
 
         // Your hero is pointing left.
 
     HERO_LEFT : '◄',
 
-        // Enemy hero is pointing up.
+        // Your hero is pointing right.
 
-    OTHER_HERO_UP : '˄',
+    HERO_RIGHT : '►',
 
-        // Enemy hero is pointing right.
+        // Your hero is pointing up.
 
-    OTHER_HERO_RIGHT : '˃',
+    HERO_UP : '▲',
 
-        // Enemy hero is pointing down.
+        // Your hero is pointing down.
 
-    OTHER_HERO_DOWN : '˅',
+    HERO_DOWN : '▼',
 
         // Enemy hero is pointing left.
 
     OTHER_HERO_LEFT : '˂',
 
-        // AI is pointing up.
+        // Enemy hero is pointing right.
 
-    AI_UP : '?',
+    OTHER_HERO_RIGHT : '˃',
+
+        // Enemy hero is pointing up.
+
+    OTHER_HERO_UP : '˄',
+
+        // Enemy hero is pointing down.
+
+    OTHER_HERO_DOWN : '˅',
+
+        // AI is pointing left.
+
+    AI_LEFT : '«',
 
         // AI is pointing right.
 
     AI_RIGHT : '»',
 
+        // AI is pointing up.
+
+    AI_UP : '?',
+
         // AI is pointing down.
 
     AI_DOWN : '¿',
-
-        // AI is pointing left.
-
-    AI_LEFT : '«',
 
         // AI can also be a prize, then it is highlighted by this
         // sprite every few ticks.
