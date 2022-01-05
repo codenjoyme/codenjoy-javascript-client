@@ -199,10 +199,21 @@ var RawelbbubElement = module.exports = {
 
     AI_DOWN : '¿',
 
-        // AI can also be a prize, then it is highlighted by this
-        // sprite every few ticks.
+        // AI with prize is pointing left.
 
-    AI_PRIZE : '◘',
+    AI_PRIZE_LEFT : '{',
+
+        // AI with prize is pointing right.
+
+    AI_PRIZE_RIGHT : '}',
+
+        // AI with prize is pointing up.
+
+    AI_PRIZE_UP : 'î',
+
+        // AI with prize is pointing down.
+
+    AI_PRIZE_DOWN : 'w',
 
         // The dropped prize after the destruction of the prize AI
         // flickers on the field every even tick of the game with this
