@@ -215,6 +215,46 @@ var RawelbbubElement = module.exports = {
 
     AI_PRIZE_DOWN : 'w',
 
+        // This torpedo moves to the left.
+
+    TORPEDO_SIDE_LEFT : 't',
+
+        // This torpedo moves to the right.
+
+    TORPEDO_SIDE_RIGHT : 'T',
+
+        // Your hero is pointing left.
+
+    HERO_SIDE_LEFT : 'h',
+
+        // Your hero is pointing right.
+
+    HERO_SIDE_RIGHT : 'H',
+
+        // Enemy hero is pointing left.
+
+    OTHER_HERO_SIDE_LEFT : 'o',
+
+        // Enemy hero is pointing right.
+
+    OTHER_HERO_SIDE_RIGHT : 'O',
+
+        // AI is pointing left.
+
+    AI_SIDE_LEFT : 'a',
+
+        // AI is pointing right.
+
+    AI_SIDE_RIGHT : 'A',
+
+        // AI with prize is pointing left.
+
+    AI_PRIZE_SIDE_LEFT : 'p',
+
+        // AI with prize is pointing right.
+
+    AI_PRIZE_SIDE_RIGHT : 'P',
+
         // The dropped prize after the destruction of the prize AI
         // flickers on the field every even tick of the game with this
         // sprite.
