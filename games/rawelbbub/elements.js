@@ -167,21 +167,37 @@ var RawelbbubElement = module.exports = {
 
     HERO_DOWN : '▼',
 
-        // Enemy hero is pointing left.
+        // Other hero is pointing left.
 
     OTHER_HERO_LEFT : '˂',
 
-        // Enemy hero is pointing right.
+        // Other hero is pointing right.
 
     OTHER_HERO_RIGHT : '˃',
 
-        // Enemy hero is pointing up.
+        // Other hero is pointing up.
 
     OTHER_HERO_UP : '˄',
 
-        // Enemy hero is pointing down.
+        // Other hero is pointing down.
 
     OTHER_HERO_DOWN : '˅',
+
+        // Enemy hero is pointing left.
+
+    ENEMY_HERO_LEFT : 'Ð',
+
+        // Enemy hero is pointing right.
+
+    ENEMY_HERO_RIGHT : '£',
+
+        // Enemy hero is pointing up.
+
+    ENEMY_HERO_UP : 'Ô',
+
+        // Enemy hero is pointing down.
+
+    ENEMY_HERO_DOWN : 'Ç',
 
         // AI is pointing left.
 
@@ -231,13 +247,21 @@ var RawelbbubElement = module.exports = {
 
     HERO_SIDE_RIGHT : 'H',
 
-        // Enemy hero is pointing left.
+        // Other hero is pointing left.
 
     OTHER_HERO_SIDE_LEFT : 'o',
 
-        // Enemy hero is pointing right.
+        // Other hero is pointing right.
 
     OTHER_HERO_SIDE_RIGHT : 'O',
+
+        // Enemy hero is pointing left.
+
+    ENEMY_HERO_SIDE_LEFT : 'e',
+
+        // Enemy hero is pointing right.
+
+    ENEMY_HERO_SIDE_RIGHT : 'E',
 
         // AI is pointing left.
 

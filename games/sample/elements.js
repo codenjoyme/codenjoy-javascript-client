@@ -34,17 +34,25 @@ var SampleElement = module.exports = {
 
     HERO : '☺',
 
-        // Heroes of other players.
-
-    OTHER_HERO : '☻',
-
         // Your hero died. His body will disappear in the next tick.
 
     DEAD_HERO : 'X',
 
+        // Heroes of other players.
+
+    OTHER_HERO : '☻',
+
         // Another player's hero died.
 
     OTHER_DEAD_HERO : 'Y',
+
+        // Heroes of other players in other team.
+
+    ENEMY_HERO : '♥',
+
+        // Player's Hero from the other team who died.
+
+    ENEMY_DEAD_HERO : 'Z',
 
         // Gold. It must be picked up.
 
