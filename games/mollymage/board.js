@@ -33,30 +33,30 @@ var MollymageBoard = module.exports = function(board){
     board.getHero = function() {
         var result = [];
         result = result.concat(board.findAll(Element.HERO));
-        result = result.concat(board.findAll(Element.POTION_HERO));
-        result = result.concat(board.findAll(Element.DEAD_HERO));
+        result = result.concat(board.findAll(Element.HERO_POTION));
+        result = result.concat(board.findAll(Element.HERO_DEAD));
         return result[0];
     };
 
     board.getOtherHeroes = function() {
         var result = [];
         result = result.concat(board.findAll(Element.OTHER_HERO));
-        result = result.concat(board.findAll(Element.OTHER_POTION_HERO));
-        result = result.concat(board.findAll(Element.OTHER_DEAD_HERO));
+        result = result.concat(board.findAll(Element.OTHER_HERO_POTION));
+        result = result.concat(board.findAll(Element.OTHER_HERO_DEAD));
         return result;
     };
 
     board.getEnemyHeroes = function() {
         var result = [];
         result = result.concat(board.findAll(Element.ENEMY_HERO));
-        result = result.concat(board.findAll(Element.ENEMY_POTION_HERO));
-        result = result.concat(board.findAll(Element.ENEMY_DEAD_HERO));
+        result = result.concat(board.findAll(Element.ENEMY_HERO_POTION));
+        result = result.concat(board.findAll(Element.ENEMY_HERO_DEAD));
         return result;
     };
 
     board.isGameOver = function() {
         var result = [];
-        result = result.concat(board.findAll(Element.DEAD_HERO));
+        result = result.concat(board.findAll(Element.HERO_DEAD));
         return result.length > 0;
     };
 
@@ -90,9 +90,9 @@ var MollymageBoard = module.exports = function(board){
         result = result.concat(board.findAll(Element.POTION_TIMER_3));
         result = result.concat(board.findAll(Element.POTION_TIMER_4));
         result = result.concat(board.findAll(Element.POTION_TIMER_5));
-        result = result.concat(board.findAll(Element.POTION_HERO));
-        result = result.concat(board.findAll(Element.OTHER_POTION_HERO));
-        result = result.concat(board.findAll(Element.ENEMY_POTION_HERO));
+        result = result.concat(board.findAll(Element.HERO_POTION));
+        result = result.concat(board.findAll(Element.OTHER_HERO_POTION));
+        result = result.concat(board.findAll(Element.ENEMY_HERO_POTION));
         return result;
     };
 

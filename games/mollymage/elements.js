@@ -59,7 +59,7 @@ var MollymageElement = module.exports = {
         // disappear on next move. If it's you did it - you'll get
         // score points. Perhaps a prize will appear.
 
-    OPENING_TREASURE_BOX : 'H',
+    TREASURE_BOX_OPENING : 'H',
 
         // This guys runs over the board randomly and gets in the way
         // all the time. If it will touch Molly - she will die. You'd
@@ -70,7 +70,7 @@ var MollymageElement = module.exports = {
 
         // This is ghost corpse.
 
-    DEAD_GHOST : 'x',
+    GHOST_DEAD : 'x',
 
         // Temporarily increase potion radius blast. Applicable only to
         // new potions.
@@ -114,13 +114,13 @@ var MollymageElement = module.exports = {
 
         // This is if your Molly is sitting on own potion.
 
-    POTION_HERO : '☻',
+    HERO_POTION : '☻',
 
         // Oops, your Molly is dead (don't worry, she will appear
         // somewhere in next move). You're getting penalty points for
         // each death.
 
-    DEAD_HERO : 'Ѡ',
+    HERO_DEAD : 'Ѡ',
 
         // This is what other heroes looks like.
 
@@ -128,12 +128,12 @@ var MollymageElement = module.exports = {
 
         // This is if other hero is sitting on own potion.
 
-    OTHER_POTION_HERO : '♠',
+    OTHER_HERO_POTION : '♠',
 
         // Other hero corpse (it will disappear shortly, right on the
         // next move). If you've done it you'll get score points.
 
-    OTHER_DEAD_HERO : '♣',
+    OTHER_HERO_DEAD : '♣',
 
         // This is what enemy heroes looks like.
 
@@ -141,10 +141,10 @@ var MollymageElement = module.exports = {
 
         // This is if enemy hero is sitting on own potion.
 
-    ENEMY_POTION_HERO : 'Ö',
+    ENEMY_HERO_POTION : 'Ö',
 
         // Enemy hero corpse (it will disappear shortly, right on the
         // next move). If you've done it you'll get score points.
 
-    ENEMY_DEAD_HERO : 'ø'
+    ENEMY_HERO_DEAD : 'ø'
 }
