@@ -33,20 +33,20 @@ var SampleBoard = module.exports = function(board){
     board.getHero = function() {
         var result = [];
         result = result.concat(board.findAll(Element.HERO));
-        result = result.concat(board.findAll(Element.DEAD_HERO));
+        result = result.concat(board.findAll(Element.HERO_DEAD));
         return result[0];
     };
 
     board.getOtherHeroes = function() {
         var result = [];
         result = result.concat(board.findAll(Element.OTHER_HERO));
-        result = result.concat(board.findAll(Element.OTHER_DEAD_HERO));
+        result = result.concat(board.findAll(Element.OTHER_HERO_DEAD));
         return result;
     };
 
     board.isGameOver = function() {
         var result = [];
-        result = result.concat(board.findAll(Element.DEAD_HERO));
+        result = result.concat(board.findAll(Element.HERO_DEAD));
         return result.length > 0;
     };
 

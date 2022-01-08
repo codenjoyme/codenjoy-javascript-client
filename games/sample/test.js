@@ -61,8 +61,8 @@ var SampleTest = module.exports = function(){
     assertEquals(true, board.isAt(0, 0, Element.WALL));
     assertEquals(false, board.isAt(3, 2, Element.WALL));
     assertEquals(true, board.isAt(2, 3, Element.OTHER_HERO));
-    assertEquals(true, board.isAt(6, 7, Element.OTHER_DEAD_HERO));
-    assertEquals(false, board.isAt(6, 7, Element.DEAD_HERO));
+    assertEquals(true, board.isAt(6, 7, Element.OTHER_HERO_DEAD));
+    assertEquals(false, board.isAt(6, 7, Element.HERO_DEAD));
 
     assertEquals(false, board.isAt(3, board.size(), Element.WALL));
     assertEquals(true, board.isAt(3, board.size() - 1, Element.WALL));
@@ -130,7 +130,7 @@ var SampleTest = module.exports = function(){
         board.findAll(Element.HERO));
 
     assertEquals("",
-        board.findAll(Element.DEAD_HERO));
+        board.findAll(Element.HERO_DEAD));
 
     assertEquals("[0,0],[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0]," +
         "[0,1],[8,1],[0,2],[8,2],[0,3],[8,3],[0,4],[8,4],[0,5],[8,5],[0,6]," +
@@ -145,16 +145,16 @@ var SampleTest = module.exports = function(){
         board.findAll(Element.NONE));
 
     assertEquals("[6,7]",
-        board.findAll(Element.OTHER_DEAD_HERO));
+        board.findAll(Element.OTHER_HERO_DEAD));
 
     assertEquals("",
-        board.findAll(Element.DEAD_HERO));
+        board.findAll(Element.HERO_DEAD));
 
     assertEquals(true,
         board.isAnyOfAt(6, 7,
             [Element.HERO,
-            Element.OTHER_DEAD_HERO,
-            Element.DEAD_HERO]));
+            Element.OTHER_HERO_DEAD,
+            Element.HERO_DEAD]));
 
     assertEquals(true,
         board.isAnyOfAt(3, 7,

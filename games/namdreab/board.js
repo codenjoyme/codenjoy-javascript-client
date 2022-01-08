@@ -62,7 +62,7 @@ var NamdreabBoard = module.exports = function(board){
     var getHero = function () {
         var result = [];
         result = result.concat(findAll(Element.HERO));
-        result = result.concat(findAll(Element.POTION_HERO));
+        result = result.concat(findAll(Element.HERO_POTION));
         result = result.concat(findAll(Element.DEAD_HERO));
         return result[0];
     };
@@ -71,14 +71,14 @@ var NamdreabBoard = module.exports = function(board){
     var getOtherHeroes = function () {
         var result = [];
         result = result.concat(findAll(Element.OTHER_HERO));
-        result = result.concat(findAll(Element.OTHER_POTION_HERO));
-        result = result.concat(findAll(Element.OTHER_DEAD_HERO));
+        result = result.concat(findAll(Element.OTHER_HERO_POTION));
+        result = result.concat(findAll(Element.OTHER_HERO_DEAD));
         return result;
     };
 
     // TODO:BATTLE исправить метод на аналогичный для namdreab
     var isGameOver = function () {
-        return board.indexOf(Element.DEAD_HERO) != -1;
+        return board.indexOf(Element.HERO_DEAD) != -1;
     };
 
     var isAt = function (x, y, element) {
@@ -169,8 +169,8 @@ var NamdreabBoard = module.exports = function(board){
         result = result.concat(findAll(Element.POTION_TIMER_3));
         result = result.concat(findAll(Element.POTION_TIMER_4));
         result = result.concat(findAll(Element.POTION_TIMER_5));
-        result = result.concat(findAll(Element.POTION_HERO));
-        result = result.concat(findAll(Element.OTHER_POTION_HERO));
+        result = result.concat(findAll(Element.HERO_POTION));
+        result = result.concat(findAll(Element.OTHER_HERO_POTION));
         return result;
     };
 
