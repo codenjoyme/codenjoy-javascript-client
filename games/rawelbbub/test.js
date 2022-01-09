@@ -56,7 +56,7 @@ var RawelbbubTest = module.exports = function(){
 
     assertEquals("15", board.size());
 
-    assertEquals("[1,9]", board.getMe());
+    assertEquals("[1,9]", board.getHero());
 
     assertEquals(true, board.isBarrierAt(2, 2));
     assertEquals(true, board.isBarrierAt(-1, 2));
@@ -64,16 +64,16 @@ var RawelbbubTest = module.exports = function(){
 
     assertEquals(false, board.isGameOver());
 
-    assertEquals(true, board.isAt(2, 2, Element.WALL));
-    assertEquals(false, board.isAt(3, 2, Element.WALL));
-    assertEquals(true, board.isAt(1, 9, Element.TANK_UP));
-    assertEquals(false, board.isAt(1, 9, Element.TANK_DOWN));
+    assertEquals(true, board.isAt(2, 2, Element.ICEBERG_HUGE));
+    assertEquals(false, board.isAt(3, 2, Element.ICEBERG_HUGE));
+    assertEquals(true, board.isAt(1, 9, Element.HERO_UP));
+    assertEquals(false, board.isAt(1, 9, Element.HERO_DOWN));
 
-    assertEquals(false, board.isAt(3, board.size(), Element.BATTLE_WALL));
-    assertEquals(true, board.isAt(3, board.size() - 1, Element.BATTLE_WALL));
+    assertEquals(false, board.isAt(3, board.size(), Element.REEFS));
+    assertEquals(true, board.isAt(3, board.size() - 1, Element.REEFS));
 
-    assertEquals(Element.WALL, board.getAt(2, 2));
-    assertEquals(Element.TANK_UP, board.getAt(1, 9));
+    assertEquals(Element.ICEBERG_HUGE, board.getAt(2, 2));
+    assertEquals(Element.HERO_UP, board.getAt(1, 9));
     assertEquals(null, board.getAt(3, -1));
 
     assertEquals(
@@ -110,9 +110,9 @@ var RawelbbubTest = module.exports = function(){
         "☼     ╬ ╬     ☼\n" +
         "☼☼☼☼☼☼☼☼☼☼☼☼☼☼☼\n" +
         "\n" +
-        "My tank at: [1,9]\n" +
+        "Hero at: [1,9]\n" +
         "Enemies at: [[3,2],[5,12],[13,12],[12,13],[6,13],[10,13],[1,4]]\n" +
-        "Bulets at: [[1,8]]\n", board.toString());
+        "Torpedoes at: [[1,8]]\n", board.toString());
 
     assertEquals("[3,2],[5,12],[13,12],[12,13],[6,13],[10,13],[1,4]",
         board.getEnemies());
@@ -132,22 +132,22 @@ var RawelbbubTest = module.exports = function(){
         board.getBarriers());
 
     assertEquals("[1,8]",
-        board.getBullets());
+        board.getTorpedoes());
 
     assertEquals("☼,☼,☼,•, , ,╬,╬",
         board.getNear(1, 9));
 
     assertEquals("[6,13],[10,13]",
-        board.findAll(Element.AI_TANK_RIGHT));
+        board.findAll(Element.AI_RIGHT));
 
     assertEquals("[1,8]",
-        board.findAll(Element.BULLET));
+        board.findAll(Element.TORPEDO_LEFT));
 
     assertEquals("[1,4]",
-        board.findAll(Element.OTHER_TANK_DOWN));
+        board.findAll(Element.OTHER_HERO_DOWN));
 
     assertEquals("",
-        board.findAll(Element.BANG));
+        board.findAll(Element.BLAST));
 
     assertEquals("[0,0],[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0],[9,0]," +
         "[10,0],[11,0],[12,0],[13,0],[14,0],[0,1],[14,1],[0,2],[14,2],[0,3]," +
@@ -155,7 +155,7 @@ var RawelbbubTest = module.exports = function(){
         "[14,8],[0,9],[14,9],[0,10],[14,10],[0,11],[7,11],[14,11],[0,12]," +
         "[14,12],[0,13],[14,13],[0,14],[1,14],[2,14],[3,14],[4,14],[5,14]," +
         "[6,14],[7,14],[8,14],[9,14],[10,14],[11,14],[12,14],[13,14],[14,14]",
-        board.findAll(Element.BATTLE_WALL));
+        board.findAll(Element.REEFS));
 
     assertEquals("[6,1],[8,1],[2,2],[6,2],[7,2],[8,2],[12,2],[2,3],[12,3]," +
         "[2,4],[4,4],[6,4],[8,4],[10,4],[12,4],[2,5],[4,5],[6,5],[7,5],[8,5]," +
@@ -163,85 +163,85 @@ var RawelbbubTest = module.exports = function(){
         "[12,9],[2,10],[4,10],[6,10],[8,10],[10,10],[12,10],[2,11],[4,11]," +
         "[6,11],[8,11],[10,11],[12,11],[2,12],[4,12],[6,12],[8,12],[10,12]," +
         "[12,12]",
-        board.findAll(Element.WALL));
+        board.findAll(Element.ICEBERG_HUGE));
 
     assertEquals("",
-        board.findAll(Element.TANK_DOWN));
+        board.findAll(Element.HERO_DOWN));
 
     assertEquals(true,
         board.isAnyOfAt(1, 9,
-            [Element.TANK_UP,
-            Element.WALL,
-            Element.OTHER_TANK_DOWN]));
+            [Element.HERO_UP,
+            Element.ICEBERG_HUGE,
+            Element.OTHER_HERO_DOWN]));
 
     assertEquals(true,
         board.isAnyOfAt(1, 9,
-            [Element.TANK_UP]));
+            [Element.HERO_UP]));
 
     assertEquals(true,
         board.isAnyOfAt(1, 9,
-            Element.TANK_UP));
+            Element.HERO_UP));
 
     assertEquals(false,
         board.isAnyOfAt(1, 9,
-            [Element.WALL,
-            Element.OTHER_TANK_DOWN]));
+            [Element.ICEBERG_HUGE,
+            Element.OTHER_HERO_DOWN]));
 
     assertEquals(false,
         board.isAnyOfAt(1, 9,
-            [Element.WALL]));
+            [Element.ICEBERG_HUGE]));
 
     assertEquals(false,
         board.isAnyOfAt(1, 9,
-            Element.WALL));
+            Element.ICEBERG_HUGE));
 
     assertEquals(false,
         board.isAnyOfAt(3, -1,
-            Element.TANK_UP));
+            Element.HERO_UP));
 
     assertEquals(true,
         board.isNear(0, 8,
-            Element.TANK_UP));
+            Element.HERO_UP));
 
     assertEquals(true,
         board.isNear(0, 9,
-            Element.TANK_UP));
+            Element.HERO_UP));
 
     assertEquals(true,
         board.isNear(0, 10,
-            Element.TANK_UP));
+            Element.HERO_UP));
 
     assertEquals(true,
         board.isNear(1, 8,
-            Element.TANK_UP));
+            Element.HERO_UP));
 
     assertEquals(false,
-        board.isNear(1, 9,   // сам танк
-            Element.TANK_UP));
+        board.isNear(1, 9,   // сам герой
+            Element.HERO_UP));
 
     assertEquals(true,
         board.isNear(1, 10,
-            Element.TANK_UP));
+            Element.HERO_UP));
 
     assertEquals(true,
         board.isNear(2, 8,
-            Element.TANK_UP));
+            Element.HERO_UP));
 
     assertEquals(true,
         board.isNear(2, 9,
-            Element.TANK_UP));
+            Element.HERO_UP));
 
     assertEquals(true,
         board.isNear(2, 10,
-            Element.TANK_UP));
+            Element.HERO_UP));
 
     assertEquals(false,
         board.isNear(1, -9,
-            Element.TANK_UP));
+            Element.HERO_UP));
 
     assertEquals(false,
         board.isNear(-1, 9,
-            Element.TANK_UP));
+            Element.HERO_UP));
 
     assertEquals(false,
         board.isBarrierAt(9, 13));
@@ -255,10 +255,10 @@ var RawelbbubTest = module.exports = function(){
     assertEquals(false,
         board.isBarrierAt(3, 3));
 
-    assertEquals(0, board.countNear(0, 0, Element.WALL));
-    assertEquals(1, board.countNear(2, 1, Element.WALL));
-    assertEquals(5, board.countNear(5, 5, Element.WALL));
-    assertEquals(5, board.countNear(7, 6, Element.WALL));
+    assertEquals(0, board.countNear(0, 0, Element.ICEBERG_HUGE));
+    assertEquals(1, board.countNear(2, 1, Element.ICEBERG_HUGE));
+    assertEquals(5, board.countNear(5, 5, Element.ICEBERG_HUGE));
+    assertEquals(5, board.countNear(7, 6, Element.ICEBERG_HUGE));
 
     assertEquals("[5,4]",
         Direction.DOWN.change(new Point(5, 5)));

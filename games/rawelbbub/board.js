@@ -30,12 +30,12 @@ var RawelbbubBoard = module.exports = function(board){
 
     var board = new Board(board);
 
-    board.getMe = function() {
+    board.getHero = function() {
         var result = [];
-        result = result.concat(board.findAll(Element.TANK_UP));
-        result = result.concat(board.findAll(Element.TANK_DOWN));
-        result = result.concat(board.findAll(Element.TANK_LEFT));
-        result = result.concat(board.findAll(Element.TANK_RIGHT));
+        result = result.concat(board.findAll(Element.HERO_UP));
+        result = result.concat(board.findAll(Element.HERO_DOWN));
+        result = result.concat(board.findAll(Element.HERO_LEFT));
+        result = result.concat(board.findAll(Element.HERO_RIGHT));
         if (result.lenght == 0) {
             return null;
         }
@@ -43,50 +43,60 @@ var RawelbbubBoard = module.exports = function(board){
     }
 
     board.isGameOver = function() {
-        return board.getMe() == null;
+        return board.getHero() == null;
     }
 
     board.getEnemies = function() {
         var result = [];
-        result = result.concat(board.findAll(Element.AI_TANK_UP));
-        result = result.concat(board.findAll(Element.AI_TANK_DOWN));
-        result = result.concat(board.findAll(Element.AI_TANK_LEFT));
-        result = result.concat(board.findAll(Element.AI_TANK_RIGHT));
-        result = result.concat(board.findAll(Element.OTHER_TANK_UP));
-        result = result.concat(board.findAll(Element.OTHER_TANK_DOWN));
-        result = result.concat(board.findAll(Element.OTHER_TANK_LEFT));
-        result = result.concat(board.findAll(Element.OTHER_TANK_RIGHT));
+        result = result.concat(board.findAll(Element.AI_UP));
+        result = result.concat(board.findAll(Element.AI_DOWN));
+        result = result.concat(board.findAll(Element.AI_LEFT));
+        result = result.concat(board.findAll(Element.AI_RIGHT));
+        
+        result = result.concat(board.findAll(Element.AI_PRIZE_UP));
+        result = result.concat(board.findAll(Element.AI_PRIZE_DOWN));
+        result = result.concat(board.findAll(Element.AI_PRIZE_LEFT));
+        result = result.concat(board.findAll(Element.AI_PRIZE_RIGHT));
+        
+        result = result.concat(board.findAll(Element.OTHER_HERO_UP));
+        result = result.concat(board.findAll(Element.OTHER_HERO_DOWN));
+        result = result.concat(board.findAll(Element.OTHER_HERO_LEFT));
+        result = result.concat(board.findAll(Element.OTHER_HERO_RIGHT));
+
+        result = result.concat(board.findAll(Element.ENEMY_HERO_UP));
+        result = result.concat(board.findAll(Element.ENEMY_HERO_DOWN));
+        result = result.concat(board.findAll(Element.ENEMY_HERO_LEFT));
+        result = result.concat(board.findAll(Element.ENEMY_HERO_RIGHT));
         return result;
     }
 
-    board.getBullets = function() {
+    board.getTorpedoes = function() {
         var result = [];
-        result = result.concat(board.findAll(Element.BULLET));
+        result = result.concat(board.findAll(Element.TORPEDO_UP));
+        result = result.concat(board.findAll(Element.TORPEDO_DOWN));
+        result = result.concat(board.findAll(Element.TORPEDO_LEFT));
+        result = result.concat(board.findAll(Element.TORPEDO_RIGHT));
         return result;
-    }
-
-    board.isBulletAt = function(x, y) {
-        return board.isAt(x, y, Element.BULLET);
     }
 
     board.getBarriers = function() {
         var result = [];
-        result = result.concat(board.findAll(Element.BATTLE_WALL));
-        result = result.concat(board.findAll(Element.WALL));
-        result = result.concat(board.findAll(Element.WALL_DESTROYED_DOWN));
-        result = result.concat(board.findAll(Element.WALL_DESTROYED_UP));
-        result = result.concat(board.findAll(Element.WALL_DESTROYED_LEFT));
-        result = result.concat(board.findAll(Element.WALL_DESTROYED_RIGHT));
-        result = result.concat(board.findAll(Element.WALL_DESTROYED_DOWN_TWICE));
-        result = result.concat(board.findAll(Element.WALL_DESTROYED_UP_TWICE));
-        result = result.concat(board.findAll(Element.WALL_DESTROYED_LEFT_TWICE));
-        result = result.concat(board.findAll(Element.WALL_DESTROYED_RIGHT_TWICE));
-        result = result.concat(board.findAll(Element.WALL_DESTROYED_LEFT_RIGHT));
-        result = result.concat(board.findAll(Element.WALL_DESTROYED_UP_DOWN));
-        result = result.concat(board.findAll(Element.WALL_DESTROYED_UP_LEFT));
-        result = result.concat(board.findAll(Element.WALL_DESTROYED_RIGHT_UP));
-        result = result.concat(board.findAll(Element.WALL_DESTROYED_DOWN_LEFT));
-        result = result.concat(board.findAll(Element.WALL_DESTROYED_DOWN_RIGHT));
+        result = result.concat(board.findAll(Element.REEFS));
+        result = result.concat(board.findAll(Element.ICEBERG_HUGE));
+        result = result.concat(board.findAll(Element.ICEBERG_MEDIUM_LEFT));
+        result = result.concat(board.findAll(Element.ICEBERG_MEDIUM_RIGHT));
+        result = result.concat(board.findAll(Element.ICEBERG_MEDIUM_UP));
+        result = result.concat(board.findAll(Element.ICEBERG_MEDIUM_DOWN));
+        result = result.concat(board.findAll(Element.ICEBERG_SMALL_LEFT_LEFT));
+        result = result.concat(board.findAll(Element.ICEBERG_SMALL_RIGHT_RIGHT));
+        result = result.concat(board.findAll(Element.ICEBERG_SMALL_UP_UP));
+        result = result.concat(board.findAll(Element.ICEBERG_SMALL_DOWN_DOWN));
+        result = result.concat(board.findAll(Element.ICEBERG_SMALL_LEFT_RIGHT));
+        result = result.concat(board.findAll(Element.ICEBERG_SMALL_UP_DOWN));
+        result = result.concat(board.findAll(Element.ICEBERG_SMALL_UP_LEFT));
+        result = result.concat(board.findAll(Element.ICEBERG_SMALL_UP_RIGHT));
+        result = result.concat(board.findAll(Element.ICEBERG_SMALL_DOWN_LEFT));
+        result = result.concat(board.findAll(Element.ICEBERG_SMALL_DOWN_RIGHT));
         return board.sort(result);
     }
 
@@ -100,13 +110,13 @@ var RawelbbubBoard = module.exports = function(board){
 
     board.toString = function() {
         return Stuff.format("Board:\n%s\n" +
-            "My tank at: %s\n" +
+            "Hero at: %s\n" +
             "Enemies at: %s\n" +
-            "Bulets at: %s\n",
+            "Torpedoes at: %s\n",
             board.boardAsString(),
-            board.getMe(),
+            board.getHero(),
             board.getEnemies(),
-            board.getBullets()
+            board.getTorpedoes()
         );
     }
 
