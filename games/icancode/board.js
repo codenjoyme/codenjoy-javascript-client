@@ -619,7 +619,7 @@ var IcancodeBoard = module.exports = function(boardString){
                     result += ' Zombies: ' + Stuff.printArray(getZombies());
                     break;
                 case 9:
-                    result += ' Perks: ' + printArray(getPerks());
+                    result += ' Perks: ' + Stuff.printArray(getPerks());
                     break;
             }
 
