@@ -22,11 +22,11 @@
 
 var ChessElement = module.exports = {
 
-        // .
+        // Поле.
 
     SQUARE : '.',
 
-        // .
+        // Препятствие для фигур.
 
     BARRIER : ' ',
 
@@ -126,7 +126,7 @@ var ChessElement = module.exports = {
 
     BLUE_PAWN : 'z',
 
-        // Системный спрайт - изображение шахматной доски.
+        // Изображение шахматной доски (фон).
 
     BACKGROUND : '-'
 }
