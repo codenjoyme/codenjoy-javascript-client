@@ -22,61 +22,119 @@
 
 var ExpansionElement = module.exports = {
 
+        // Empty space (at layer 2) where player can go.
+
     EMPTY : '-',
+
+        // Empty space (at layer 1) where player can go.
 
     FLOOR : '.',
 
+        // Wall.
+
     ANGLE_IN_LEFT : '╔',
+
+        // Wall.
 
     WALL_FRONT : '═',
 
+        // Wall.
+
     ANGLE_IN_RIGHT : '┐',
+
+        // Wall.
 
     WALL_RIGHT : '│',
 
+        // Wall.
+
     ANGLE_BACK_RIGHT : '┘',
+
+        // Wall.
 
     WALL_BACK : '─',
 
+        // Wall.
+
     ANGLE_BACK_LEFT : '└',
+
+        // Wall.
 
     WALL_LEFT : '║',
 
+        // Wall.
+
     WALL_BACK_ANGLE_LEFT : '┌',
+
+        // Wall.
 
     WALL_BACK_ANGLE_RIGHT : '╗',
 
+        // Wall.
+
     ANGLE_OUT_RIGHT : '╝',
+
+        // Wall.
 
     ANGLE_OUT_LEFT : '╚',
 
+        // Wall.
+
     SPACE : ' ',
+
+        // Forces of player 1.
 
     FORCE1 : '♥',
 
+        // Forces of player 2.
+
     FORCE2 : '♦',
+
+        // Forces of player 3.
 
     FORCE3 : '♣',
 
+        // Forces of player 4.
+
     FORCE4 : '♠',
+
+        // Exit.
 
     EXIT : 'E',
 
+        // Hole.
+
     HOLE : 'O',
+
+        // Unpassable break.
 
     BREAK : 'B',
 
+        // Gold.
+
     GOLD : '$',
+
+        // Base of player 1.
 
     BASE1 : '1',
 
+        // Base of player 2.
+
     BASE2 : '2',
+
+        // Base of player 3.
 
     BASE3 : '3',
 
+        // Base of player 4.
+
     BASE4 : '4',
 
+        // Fog of war system layer.
+
     FOG : 'F',
+
+        // Background system layer.
 
     BACKGROUND : 'G'
 }
