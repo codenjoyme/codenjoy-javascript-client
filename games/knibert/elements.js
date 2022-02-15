@@ -56,43 +56,43 @@ var KnibertElement = module.exports = {
 
     HEAD_UP : '▲',
 
-        // Horizontal part of the body.
+        // Horizontal middle part of the body.
 
     TAIL_HORIZONTAL : '═',
 
-        // Vertical part of the body.
+        // Vertical middle part of the body.
 
     TAIL_VERTICAL : '║',
 
-        // Turning the hero body from left to down.
+        // Turning the hero body (middle) from left to down.
 
     TAIL_LEFT_DOWN : '╗',
 
-        // Turning the hero body from left to up.
+        // Turning the hero body (middle) from left to up.
 
     TAIL_LEFT_UP : '╝',
 
-        // Turning the hero body from right to down.
+        // Turning the hero body (middle) from right to down.
 
     TAIL_RIGHT_DOWN : '╔',
 
-        // Turning the hero body from right to up.
+        // Turning the hero body (middle) from right to up.
 
     TAIL_RIGHT_UP : '╚',
 
-        // Down tail.
+        // Down tail end.
 
     TAIL_END_DOWN : '╙',
 
-        // Left tail.
+        // Left tail end.
 
     TAIL_END_LEFT : '╘',
 
-        // Up tail.
+        // Up tail end.
 
     TAIL_END_UP : '╓',
 
-        // Right tail.
+        // Right tail end.
 
     TAIL_END_RIGHT : '╕'
 }
