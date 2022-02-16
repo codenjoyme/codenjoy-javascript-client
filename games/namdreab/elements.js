@@ -34,10 +34,6 @@ var NamdreabElement = module.exports = {
 
     START_FLOOR : '#',
 
-        // .
-
-    OTHER : '?',
-
         // Apple.
 
     APPLE : '○',
