@@ -22,7 +22,7 @@
 
 var SokobanElement = module.exports = {
 
-        // Emty space.
+        // Empty space.
 
     NONE : ' ',
 
