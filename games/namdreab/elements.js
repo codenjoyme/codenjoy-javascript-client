@@ -26,9 +26,9 @@ var NamdreabElement = module.exports = {
 
     NONE : ' ',
 
-        // Impenetrable wall.
+        // Impenetrable rock.
 
-    WALL : '☼',
+    ROCK : '☼',
 
         // Respawn point from which the hero starts its movement.
 
