@@ -38,9 +38,9 @@ var NamdreabElement = module.exports = {
 
     BLUEBERRY : '○',
 
-        // Stone.
+        // Acorn.
 
-    STONE : '●',
+    ACORN : '●',
 
         // Flying pill/Angel's wings.
 
