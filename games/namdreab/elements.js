@@ -34,9 +34,9 @@ var NamdreabElement = module.exports = {
 
     START_SPOT : '#',
 
-        // Apple.
+        // Blueberry.
 
-    APPLE : '○',
+    BLUEBERRY : '○',
 
         // Stone.
 
