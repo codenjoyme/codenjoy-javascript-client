@@ -26,7 +26,7 @@ var NamdreabElement = module.exports = {
 
     NONE : ' ',
 
-        // Impenetrable rock.
+        // Impassable obstacle.
 
     ROCK : '☼',
 
@@ -56,155 +56,155 @@ var NamdreabElement = module.exports = {
 
     STRAWBERRY : '$',
 
-        // Your hero head pointing down.
+        // Your hero is pointing down.
 
-    HEAD_DOWN : '▼',
+    HERO_DOWN : '▼',
 
-        // Your hero head pointing left.
+        // Your hero is pointing left.
 
-    HEAD_LEFT : '◄',
+    HERO_LEFT : '◄',
 
-        // Your hero head pointing right.
+        // Your hero is pointing right.
 
-    HEAD_RIGHT : '►',
+    HERO_RIGHT : '►',
 
-        // Your hero head pointing up.
+        // Your hero is pointing up.
 
-    HEAD_UP : '▲',
+    HERO_UP : '▲',
 
         // Your hero is dead.
 
-    HEAD_DEAD : '☻',
+    HERO_DEAD : '☻',
 
-        // Your hero head under influence fly agaric.
+        // Your hero is influenced by Fly agaric.
 
-    HEAD_EVIL : '♥',
+    HERO_EVIL : '♥',
 
-        // Your hero head under influence death cap.
+        // Your hero is influenced by Death cap.
 
-    HEAD_FLY : '♠',
+    HERO_FLY : '♠',
 
-        // Your hero head when hero is inactive.
+        // Your hero when inactive.
 
-    HEAD_SLEEP : '&',
+    HERO_SLEEP : '&',
 
-        // Body of your hero is directed horizontally.
+        // Your hero's beard is directed horizontally.
 
-    BODY_HORIZONTAL : '═',
+    HERO_BEARD_HORIZONTAL : '═',
 
-        // Body of your hero is directed vertically.
+        // Your hero's beard is directed vertically.
 
-    BODY_VERTICAL : '║',
+    HERO_BEARD_VERTICAL : '║',
 
-        // Turning your hero body from left to down.
+        // Turning your hero's beard from left to down.
 
-    BODY_LEFT_DOWN : '╗',
+    HERO_BEARD_LEFT_DOWN : '╗',
 
-        // Turning your hero body from left to up.
+        // Turning your hero's beard from left to up.
 
-    BODY_LEFT_UP : '╝',
+    HERO_BEARD_LEFT_UP : '╝',
 
-        // Turning your hero body from right to down.
+        // Turning your hero's beard from right to down.
 
-    BODY_RIGHT_DOWN : '╔',
+    HERO_BEARD_RIGHT_DOWN : '╔',
 
-        // Turning your hero body from left to up.
+        // Turning your hero's beard from left to up.
 
-    BODY_RIGHT_UP : '╚',
+    HERO_BEARD_RIGHT_UP : '╚',
 
-        // Your hero tail (end) pointing down.
+        // Tail of your hero's beard that points to the down.
 
-    TAIL_END_DOWN : '╙',
+    HERO_TAIL_DOWN : '╙',
 
-        // Your hero tail (end) pointing left.
+        // Tail of your hero's beard that points to the left.
 
-    TAIL_END_LEFT : '╘',
+    HERO_TAIL_LEFT : '╘',
 
-        // Your hero tail (end) pointing up.
+        // Tail of your hero's beard that points to the up.
 
-    TAIL_END_UP : '╓',
+    HERO_TAIL_UP : '╓',
 
-        // Your hero tail (end) pointing right.
+        // Tail of your hero's beard that points to the right.
 
-    TAIL_END_RIGHT : '╕',
+    HERO_TAIL_RIGHT : '╕',
 
-        // Your hero tail (end) when hero is inactive.
+        // Tail of your hero's beard when inactive.
 
-    TAIL_INACTIVE : '~',
+    HERO_TAIL_INACTIVE : '~',
 
-        // Enemy hero head pointing down.
+        // Enemy hero is pointing down.
 
-    ENEMY_HEAD_DOWN : '˅',
+    ENEMY_HERO_DOWN : '˅',
 
-        // Enemy hero head pointing left.
+        // Enemy hero is pointing left.
 
-    ENEMY_HEAD_LEFT : '<',
+    ENEMY_HERO_LEFT : '<',
 
-        // Enemy hero head pointing right.
+        // Enemy hero is pointing right.
 
-    ENEMY_HEAD_RIGHT : '>',
+    ENEMY_HERO_RIGHT : '>',
 
-        // Enemy hero head pointing up.
+        // Enemy hero is pointing up.
 
-    ENEMY_HEAD_UP : '˄',
+    ENEMY_HERO_UP : '˄',
 
         // Enemy hero is dead.
 
-    ENEMY_HEAD_DEAD : '☺',
+    ENEMY_HERO_DEAD : '☺',
 
-        // Enemy hero head under influence fly agaric.
+        // Enemy hero is influenced by Fly agaric.
 
-    ENEMY_HEAD_EVIL : '♣',
+    ENEMY_HERO_EVIL : '♣',
 
-        // Enemy hero head under influence death cap.
+        // Enemy hero is influenced by Death cap.
 
-    ENEMY_HEAD_FLY : '♦',
+    ENEMY_HERO_FLY : '♦',
 
-        // Enemy hero head when hero is inactive.
+        // Enemy hero when inactive.
 
-    ENEMY_HEAD_SLEEP : 'ø',
+    ENEMY_HERO_SLEEP : 'ø',
 
-        // Body of enemy hero is directed horizontally.
+        // Enemy hero's beard is directed horizontally.
 
-    ENEMY_BODY_HORIZONTAL : '─',
+    ENEMY_HERO_BEARD_HORIZONTAL : '─',
 
-        // Body of enemy hero is directed vertically.
+        // Enemy hero's beard is directed vertically.
 
-    ENEMY_BODY_VERTICAL : '│',
+    ENEMY_HERO_BEARD_VERTICAL : '│',
 
-        // Turning enemy hero body from left to down.
+        // Turning enemy hero's beard from left to down.
 
-    ENEMY_BODY_LEFT_DOWN : '┐',
+    ENEMY_HERO_BEARD_LEFT_DOWN : '┐',
 
-        // Turning enemy hero body from left to up.
+        // Turning enemy hero's beard from left to up.
 
-    ENEMY_BODY_LEFT_UP : '┘',
+    ENEMY_HERO_BEARD_LEFT_UP : '┘',
 
-        // Turning enemy hero body from right to down.
+        // Turning enemy hero's beard from right to down.
 
-    ENEMY_BODY_RIGHT_DOWN : '┌',
+    ENEMY_HERO_BEARD_RIGHT_DOWN : '┌',
 
-        // Turning enemy hero body from left to up.
+        // Turning enemy hero's beard from left to up.
 
-    ENEMY_BODY_RIGHT_UP : '└',
+    ENEMY_HERO_BEARD_RIGHT_UP : '└',
 
-        // Enemy hero tail (end) pointing down.
+        // Tail of enemy hero's beard that points to the down.
 
-    ENEMY_TAIL_END_DOWN : '¤',
+    ENEMY_HERO_TAIL_DOWN : '¤',
 
-        // Enemy hero tail (end) pointing left.
+        // Tail of enemy hero's beard that points to the left.
 
-    ENEMY_TAIL_END_LEFT : '×',
+    ENEMY_HERO_TAIL_LEFT : '×',
 
-        // Enemy hero tail (end) pointing up.
+        // Tail of enemy hero's beard that points to the up.
 
-    ENEMY_TAIL_END_UP : 'æ',
+    ENEMY_HERO_TAIL_UP : 'æ',
 
-        // Enemy hero tail (end) pointing right.
+        // Tail of enemy hero's beard that points to the right.
 
-    ENEMY_TAIL_END_RIGHT : 'ö',
+    ENEMY_HERO_TAIL_RIGHT : 'ö',
 
-        // Enemy hero tail (end) when hero is inactive.
+        // Tail of enemy hero's beard when inactive.
 
-    ENEMY_TAIL_INACTIVE : '*'
+    ENEMY_HERO_TAIL_INACTIVE : '*'
 }
