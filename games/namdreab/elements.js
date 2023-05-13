@@ -46,9 +46,9 @@ var NamdreabElement = module.exports = {
 
     DEATH_CAP : '©',
 
-        // Fury pill/Devil's mask.
+        // Fly agaric/Devil's mask.
 
-    FURY_PILL : '®',
+    FLY_AGARIC : '®',
 
         // Gold.
 
@@ -74,7 +74,7 @@ var NamdreabElement = module.exports = {
 
     HEAD_DEAD : '☻',
 
-        // Your hero head under influence Fury pill/Devils mask.
+        // Your hero head under influence Fly agaric/Devils mask.
 
     HEAD_EVIL : '♥',
 
@@ -150,7 +150,7 @@ var NamdreabElement = module.exports = {
 
     ENEMY_HEAD_DEAD : '☺',
 
-        // Enemy hero head under influence Fury pill/Devils mask.
+        // Enemy hero head under influence Fly agaric/Devils mask.
 
     ENEMY_HEAD_EVIL : '♣',
 
